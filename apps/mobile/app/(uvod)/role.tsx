@@ -145,7 +145,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   titulek: {
-    fontSize: 24,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
     textAlign: 'center',
   },
@@ -183,7 +185,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     padding: 12,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 14,
   },
   vysvetlivkaText: {
     fontSize: 13,

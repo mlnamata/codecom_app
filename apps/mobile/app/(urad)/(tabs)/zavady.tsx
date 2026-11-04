@@ -452,8 +452,9 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -484,7 +485,7 @@ const styles = StyleSheet.create({
   filtrCip: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     minHeight: 44,
     justifyContent: 'center',
@@ -517,7 +518,7 @@ const styles = StyleSheet.create({
   stavOdznak: {
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   stavText: {
@@ -556,7 +557,7 @@ const styles = StyleSheet.create({
   modalObsah: {
     width: '100%',
     maxWidth: 420,
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 1,
     padding: 20,
     gap: 10,
@@ -580,7 +581,7 @@ const styles = StyleSheet.create({
   popisKrabice: {
     padding: 10,
     backgroundColor: '#F8FAFC',
-    borderRadius: 6,
+    borderRadius: 10,
     marginTop: 6,
     gap: 2,
   },
@@ -605,7 +606,7 @@ const styles = StyleSheet.create({
   stavTlacitko: {
     paddingHorizontal: 10,
     paddingVertical: 6,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
     minHeight: 40,
     justifyContent: 'center',

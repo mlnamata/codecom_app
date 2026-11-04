@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { Tabs } from 'expo-router'
 import { useTema } from '@/tema'
 import { Ikona, type NazevIkony } from '@/ui/Ikony'
@@ -22,9 +23,9 @@ export default function UradTabsLayout() {
           backgroundColor: barvy.surface,
           borderTopColor: barvy.line,
           borderTopWidth: 1,
-          height: 80,
-          paddingTop: 8,
-          paddingBottom: 16,
+          height: 92,
+          paddingTop: 10,
+          paddingBottom: 14,
         },
         tabBarActiveTintColor: barvy.primary,
         tabBarInactiveTintColor: barvy.muted,
@@ -32,14 +33,24 @@ export default function UradTabsLayout() {
           fontFamily: pismo.rodina,
           fontSize: 12,
           fontWeight: pismo.vahy.polotucne,
-          marginTop: 2,
+          marginTop: 4,
         },
-        tabBarIcon: ({ color }) => (
-          <Ikona
-            nazev={IKONY[route.name] ?? 'domu'}
-            barva={typeof color === 'string' ? color : barvy.muted}
-            velikost={24}
-          />
+        tabBarIcon: ({ color, focused }) => (
+          // Aktivní záložka má ikonu v tónované „pilulce“ (Material 3).
+          <View
+            style={{
+              paddingHorizontal: 18,
+              paddingVertical: 3,
+              borderRadius: 999,
+              backgroundColor: focused ? barvy.primarySoft : 'transparent',
+            }}
+          >
+            <Ikona
+              nazev={IKONY[route.name] ?? 'domu'}
+              barva={typeof color === 'string' ? color : barvy.muted}
+              velikost={22}
+            />
+          </View>
         ),
       })}
     >

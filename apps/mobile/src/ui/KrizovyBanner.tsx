@@ -213,7 +213,7 @@ export function KrizovyBanner({
 const styles = StyleSheet.create({
   banner: {
     padding: 14,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginVertical: 8,
     width: '100%',

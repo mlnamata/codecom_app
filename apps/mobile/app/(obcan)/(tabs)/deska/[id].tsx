@@ -195,9 +195,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   titulek: {
-    fontSize: 22,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 16,
-    lineHeight: 28,
   },
   kartaDetail: {
     padding: 16,
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
   },
   prilohaBox: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginBottom: 16,
   },

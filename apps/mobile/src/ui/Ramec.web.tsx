@@ -10,7 +10,23 @@ export interface RamecProps {
  * Webová varianta rámu. Na širokém okně kreslí obrys telefonu uprostřed
  * a na úzkém zabere celou šířku. Obrys je jemný stín, ne tvrdá hrana.
  */
+const ADRESA_PISMA =
+  'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
+
+/** Jednou vloží do hlavičky stránky písmo Plus Jakarta Sans (umí češtinu). */
+function nactiPismo() {
+  if (typeof document === 'undefined') return
+  if (document.getElementById('codekom-pismo')) return
+  const odkaz = document.createElement('link')
+  odkaz.id = 'codekom-pismo'
+  odkaz.rel = 'stylesheet'
+  odkaz.href = ADRESA_PISMA
+  document.head.appendChild(odkaz)
+}
+
 export function Ramec({ children }: RamecProps) {
+  useEffect(nactiPismo, [])
+
   const { barvy } = useTema()
   const [sirkaOkna, setSirkaOkna] = useState(() => Dimensions.get('window').width)
 

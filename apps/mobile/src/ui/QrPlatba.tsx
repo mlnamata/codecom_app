@@ -112,7 +112,7 @@ export function QrPlatba(props: QrPlatbaProps) {
 const styles = StyleSheet.create({
   kontejner: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginVertical: 12,
   },
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   qrRamec: {
     padding: 8,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 14,
     backgroundColor: '#FFFFFF',
   },
   qrPlaceholder: {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   ukazkovyUcetBox: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     width: '100%',
     alignItems: 'center',

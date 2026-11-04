@@ -262,12 +262,14 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   titulek: {
-    fontSize: 24,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 16,
   },
   prepinar: {
     flexDirection: 'row',
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     padding: 2,
     marginBottom: 12,
@@ -277,7 +279,7 @@ const styles = StyleSheet.create({
     minHeight: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 10,
   },
   prepinarText: {
     fontSize: 14,

@@ -54,9 +54,9 @@ export function Tlacitko({
         }
       case 'secondary':
         return {
-          bg: barvy.surface,
-          text: barvy.ink,
-          border: barvy.line,
+          bg: barvy.primarySoft,
+          text: barvy.primary,
+          border: 'transparent',
         }
       case 'outline':
         return {
@@ -130,8 +130,8 @@ export function Tlacitko({
               {
                 color: barvyVarianty.text,
                 fontFamily: pismo.rodina,
-                fontWeight: pismo.vahy.polotucne,
-                fontSize: pismo.velikosti.zaklad,
+                fontWeight: pismo.vahy.tucne,
+                fontSize: 16,
               },
               ikonaPred ? { marginLeft: 8 } : null,
               ikonaZa ? { marginRight: 8 } : null,
@@ -149,11 +149,11 @@ export function Tlacitko({
 
 const styles = StyleSheet.create({
   tlacitko: {
-    minHeight: 44,
+    minHeight: 50,
     minWidth: 44,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

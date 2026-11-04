@@ -372,12 +372,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   titulek: {
-    fontSize: 24,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
   },
   varovaniBox: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginBottom: 8,
   },
@@ -401,7 +403,7 @@ const styles = StyleSheet.create({
   kategorieTlacitko: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     minHeight: 40,
     justifyContent: 'center',
@@ -421,7 +423,7 @@ const styles = StyleSheet.create({
   },
   fotoSekce: {
     padding: 14,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginVertical: 12,
   },

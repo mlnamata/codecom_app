@@ -552,8 +552,9 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -581,7 +582,7 @@ const styles = StyleSheet.create({
   uradBox: {
     marginTop: 12,
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 8,
   },

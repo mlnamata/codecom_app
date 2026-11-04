@@ -603,8 +603,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
   },
   podtitul: {
@@ -629,7 +630,7 @@ const styles = StyleSheet.create({
   },
   prostorKarta: {
     padding: 14,
-    borderRadius: 8,
+    borderRadius: 14,
     gap: 6,
     minHeight: 44,
   },
@@ -651,7 +652,7 @@ const styles = StyleSheet.create({
   denTlacitko: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     minHeight: 44,
     justifyContent: 'center',
@@ -665,7 +666,7 @@ const styles = StyleSheet.create({
   },
   blokKarta: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 14,
     minHeight: 44,
     justifyContent: 'center',
   },
@@ -738,7 +739,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   stavOdznakText: {
@@ -758,7 +759,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginTop: 8,
     gap: 6,

@@ -154,7 +154,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   titulek: {
-    fontSize: 24,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
     textAlign: 'center',
   },

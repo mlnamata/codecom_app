@@ -191,7 +191,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   titulek: {
-    fontSize: 24,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
     textAlign: 'center',
   },
@@ -212,7 +214,7 @@ const styles = StyleSheet.create({
   },
   volbaRadio: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 14,
   },
   radioNazev: {
     fontSize: 15,

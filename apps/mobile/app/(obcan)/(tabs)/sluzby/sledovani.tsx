@@ -367,8 +367,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 8,
   },
   podtitul: {
@@ -397,7 +398,7 @@ const styles = StyleSheet.create({
   cip: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     minHeight: 44,
     justifyContent: 'center',
@@ -430,7 +431,7 @@ const styles = StyleSheet.create({
   stavStitek: {
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   stavText: {
@@ -445,7 +446,7 @@ const styles = StyleSheet.create({
   },
   odpovedBox: {
     padding: 12,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
   },
   odpovedText: {
@@ -469,7 +470,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginTop: 8,
     gap: 6,

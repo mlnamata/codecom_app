@@ -379,8 +379,9 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 16,
   },
   sekceKarta: {
@@ -460,7 +461,7 @@ const styles = StyleSheet.create({
   modalObsah: {
     width: '100%',
     maxWidth: 400,
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 1,
     padding: 20,
     gap: 12,

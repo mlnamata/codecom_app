@@ -310,8 +310,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -349,7 +350,7 @@ const styles = StyleSheet.create({
   svickyPocitadlo: {
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   svickyPocet: {
@@ -382,7 +383,7 @@ const styles = StyleSheet.create({
   stavOdznak: {
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   stavOdznakText: {
@@ -394,7 +395,7 @@ const styles = StyleSheet.create({
   },
   varovaniBox: {
     padding: 10,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
     marginTop: 4,
   },
@@ -404,7 +405,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
   },

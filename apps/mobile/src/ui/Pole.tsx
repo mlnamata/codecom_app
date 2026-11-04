@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   vstup: {
     minHeight: 44,
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 14,
     paddingHorizontal: 12,
     paddingVertical: 10,
     width: '100%',

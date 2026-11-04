@@ -11,13 +11,47 @@ export interface BarvyTemy {
   primary: string
   onPrimary: string
   link: string
+  /** Jemně tónovaná plocha hlavní barvy (aktivní záložka, ikony rychlých akcí). */
+  primarySoft: string
+  /** Druhá plocha pro skupiny a stopy přepínačů. */
+  surfaceAlt: string
+  /** Doplňková teplá barva pro zvýraznění (body, odznaky). */
+  accent: string
 }
+
+/**
+ * Moderní vzhled aplikace: neutrální chladné pozadí, bílé karty, svěží
+ * smaragdová. Kontrasty ověřuje test `tema.test.ts` (WCAG 2.2 AA).
+ */
+const MODERNI: BarvyTemy = {
+  bg: '#F4F6F5',
+  surface: '#FFFFFF',
+  ink: '#0F1B16',
+  muted: '#5A6862',
+  line: '#E3E8E5',
+  primary: '#0B7A4B',
+  onPrimary: '#FFFFFF',
+  link: '#0B7A4B',
+  primarySoft: '#E7F5EE',
+  surfaceAlt: '#EBEFED',
+  accent: '#F2A93B',
+}
+
+/** Zaoblení rohů. */
+export const zaobleni = {
+  male: 10,
+  stredni: 14,
+  velke: 20,
+  plne: 999,
+} as const
 
 export interface Tema {
   sablona: string
   paletaIndex: number
   paletaNazev: string
   barvy: BarvyTemy
+  /** Barvy z palety obce (znak, akcenty obce). */
+  paletaObce: { primary: string; surface: string }
   krize: Record<Uroven, UrovenInfo>
   pismo: typeof pismo
 }
@@ -28,16 +62,8 @@ export function vytvorTemu(sablonaKlic = 'naves', paletaIndex = 0): Tema {
     sablona: sablonaKlic,
     paletaIndex,
     paletaNazev: p.nazev,
-    barvy: {
-      bg: p.bg,
-      surface: p.surface,
-      ink: p.ink,
-      muted: p.muted,
-      line: p.line,
-      primary: p.primary,
-      onPrimary: p.onPrimary,
-      link: p.link,
-    },
+    barvy: MODERNI,
+    paletaObce: { primary: p.primary, surface: p.surface },
     krize: UROVNE,
     pismo,
   }

@@ -189,8 +189,9 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
   ziveOdznak: {
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   ziveOdznakText: {
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
   },
   obrazRamec: {
     height: 140,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     padding: 12,
     justifyContent: 'center',
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
   },

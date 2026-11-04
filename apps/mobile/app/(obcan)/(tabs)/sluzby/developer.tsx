@@ -209,8 +209,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
   },
   potvrzeniBox: {
     padding: 10,
-    borderRadius: 6,
+    borderRadius: 10,
     backgroundColor: '#DCFCE7',
     borderWidth: 1,
     borderColor: '#22C55E',
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
   metodaStitek: {
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   metodaText: {
@@ -276,7 +277,7 @@ const styles = StyleSheet.create({
   },
   kodRamec: {
     padding: 12,
-    borderRadius: 6,
+    borderRadius: 10,
     backgroundColor: '#0F172A',
     marginTop: 4,
   },
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
   },

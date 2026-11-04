@@ -77,7 +77,7 @@ export function Karta({
 
 const styles = StyleSheet.create({
   karta: {
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 16,
     marginVertical: 6,
     width: '100%',

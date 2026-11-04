@@ -781,7 +781,7 @@ const styles = StyleSheet.create({
   },
   upozorneniPanel: {
     padding: 14,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     marginBottom: 18,
     gap: 4,
@@ -861,7 +861,7 @@ const styles = StyleSheet.create({
   },
   upozorneniPolozka: {
     padding: 8,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   upozorneniUroven: {},
@@ -891,7 +891,7 @@ const styles = StyleSheet.create({
   },
   mistnostKarta: {
     padding: 10,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   mistnostHorni: {
@@ -919,7 +919,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
     gap: 8,
   },
@@ -944,7 +944,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 8,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
     gap: 10,
   },
@@ -961,7 +961,7 @@ const styles = StyleSheet.create({
   },
   energiePolozka: {
     padding: 6,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
     minWidth: 64,
     alignItems: 'center',

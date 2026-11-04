@@ -295,8 +295,9 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   titulek: {
-    fontSize: 24,
-    lineHeight: 30,
+    fontSize: 30,
+    letterSpacing: -0.6,
+    lineHeight: 36,
     marginBottom: 4,
   },
   podtitul: {
@@ -342,7 +343,7 @@ const styles = StyleSheet.create({
   dostupnostOdznak: {
     paddingHorizontal: 8,
     paddingVertical: 3,
-    borderRadius: 6,
+    borderRadius: 10,
     borderWidth: 1,
   },
   dostupnostText: {
@@ -378,7 +379,7 @@ const styles = StyleSheet.create({
   modalObsah: {
     width: '100%',
     maxWidth: 400,
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 1,
     padding: 20,
     gap: 12,
@@ -396,7 +397,7 @@ const styles = StyleSheet.create({
   },
   uradFallback: {
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 14,
     borderWidth: 1,
     gap: 6,
   },
