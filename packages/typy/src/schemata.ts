@@ -282,6 +282,8 @@ export const HlaseniZavad = z.object({
   zmeneno: Okamzik,
 })
 export type HlaseniZavad = z.infer<typeof HlaseniZavad>
+export const HlaseniZavady = HlaseniZavad
+export type HlaseniZavady = HlaseniZavad
 
 export const HlaseniZavadSoubor = z.object({
   kategorie: z.array(z.object({ id: Text, nazev: Text })),
@@ -431,3 +433,76 @@ export type NovaKrizeVstup = z.infer<typeof NovaKrizeVstup>
 
 export const ChybaOdpoved = z.object({ chyba: Text, pole: z.record(z.string(), z.array(z.string())).optional() })
 export type ChybaOdpoved = z.infer<typeof ChybaOdpoved>
+
+// --- Rozšíření pro aplikaci (Zadání 08) ---
+
+export const Prehled = PrehledOdpoved
+export type Prehled = z.infer<typeof Prehled>
+
+export const FiltrDesky = z.object({
+  kategorie: z.string().nullable().optional(),
+  hledani: z.string().optional(),
+  archiv: z.boolean().optional(),
+})
+export type FiltrDesky = z.infer<typeof FiltrDesky>
+
+export const StavZavadyVerejny = z.object({
+  cislo: Text,
+  kategorie: Text,
+  stav: z.enum(STAVY_ZAVADY),
+  stavNazev: Text.optional(),
+  verejnaOdpoved: z.string().nullable().optional(),
+  vytvoreno: Okamzik,
+})
+export type StavZavadyVerejny = z.infer<typeof StavZavadyVerejny>
+
+export const VstupZavady = z.object({
+  kategorie: Text,
+  popis: z.string().trim().max(1000),
+  poloha: z.object({ lat: z.number(), lng: z.number() }).optional(),
+  popisMista: z.string().trim().max(200).optional(),
+  cast: Text.optional(),
+  pocetFotek: z.number().int().nonnegative().optional(),
+})
+export type VstupZavady = z.infer<typeof VstupZavady>
+
+export const VstupRezervace = z.object({
+  prostorId: Text,
+  den: Den,
+  casOd: CasDne,
+  casDo: CasDne,
+  ucel: z.string().trim().max(300),
+  jmeno: Text,
+  email: z.string().email(),
+  telefon: Text,
+})
+export type VstupRezervace = z.infer<typeof VstupRezervace>
+
+export const VstupKrize = z.object({
+  uroven: z.enum(UROVNE_KRIZE),
+  titulek: z.string().trim().min(3).max(90),
+  text: z.string().trim().min(10).max(300),
+  odkazText: z.string().trim().max(60).optional(),
+  odkazUrl: z.string().trim().max(300).optional(),
+  casti: z.array(Text).optional(),
+  platiDo: Okamzik.optional(),
+})
+export type VstupKrize = z.infer<typeof VstupKrize>
+
+export const VstupRozhlasu = z.object({
+  text: z.string().trim().min(10).max(300),
+  casti: z.array(Text).optional(),
+})
+export type VstupRozhlasu = z.infer<typeof VstupRozhlasu>
+
+export const PrehledUradu = z.object({
+  novaHlaseniZavad: z.number().int().nonnegative(),
+  rezervaceKeSchvaleni: z.number().int().nonnegative(),
+  aktivniKrize: KrizoveHlaseni.nullable(),
+  budovSVyhradou: z.number().int().nonnegative(),
+  celkemBudov: z.number().int().nonnegative(),
+})
+export type PrehledUradu = z.infer<typeof PrehledUradu>
+
+export const ROLE_URADU = ['spravce', 'redaktor'] as const
+export type RoleUradu = (typeof ROLE_URADU)[number]

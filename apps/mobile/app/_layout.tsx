@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Slot } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { TemaProvider } from '../src/tema'
-import { Ramec } from '../src/ui/Ramec'
+import { ZdrojProvider } from '../src/zdroj'
+import { Ramec, PruhUkazky } from '../src/ui'
 
 export default function RootLayout() {
   const [queryClient] = useState(
@@ -20,12 +21,15 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TemaProvider>
-        <Ramec>
-          <StatusBar style="auto" />
-          <Slot />
-        </Ramec>
-      </TemaProvider>
+      <ZdrojProvider>
+        <TemaProvider>
+          <Ramec>
+            <StatusBar style="auto" />
+            <PruhUkazky />
+            <Slot />
+          </Ramec>
+        </TemaProvider>
+      </ZdrojProvider>
     </QueryClientProvider>
   )
 }
