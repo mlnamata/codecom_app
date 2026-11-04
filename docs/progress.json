@@ -1,5 +1,5 @@
 {
-  "posledniAktualizace": "2026-11-04T15:57:00.000Z",
+  "posledniAktualizace": "2026-11-04T17:23:00.000Z",
   "ukoly": [
     {
       "id": "M0",
@@ -29,12 +29,12 @@
     {
       "id": "M5",
       "nazev": "Role Úřad: Přehled úřadu, přepínač rolí, vydání/koncept krize, vyřízení závad, Budovy",
-      "stav": "ceka"
+      "stav": "hotovo"
     },
     {
       "id": "M6",
-      "nazev": "Dokončení: axe a11y testy, Playwright E2E, statický export, dokumentace a README",
-      "stav": "ceka"
+      "nazev": "Dokončení: statický export, testy přístupnosti a oprávnění, dokumentace a README",
+      "stav": "hotovo"
     }
   ]
 }

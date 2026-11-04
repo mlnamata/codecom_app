@@ -17,7 +17,10 @@ export default function UradTabsLayout() {
         tabBarInactiveTintColor: barvy.muted,
       }}
     >
-      <Tabs.Screen name="prehled" options={{ title: 'Přehled úřadu' }} />
+      <Tabs.Screen name="prehled" options={{ title: 'Přehled' }} />
+      <Tabs.Screen name="krize" options={{ title: 'Krize' }} />
+      <Tabs.Screen name="zavady" options={{ title: 'Závady' }} />
+      <Tabs.Screen name="budovy" options={{ title: 'Budovy' }} />
     </Tabs>
   )
 }

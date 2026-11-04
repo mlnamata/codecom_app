@@ -19,3 +19,17 @@ Písma šablon obce jsou určena pro web a v aplikaci by vyžadovala stahování
 
 Prototyp aplikace je založen na Expo SDK 58 (58.0.23), Expo Router (58.0.30), React 19 (19.3.0), react-native 0.88.1, react-native-web 0.21.4 a TanStack Query v5. Metro v monorepu sleduje i kořenový adresář (`packages/*`, `obsah/`).
 Webový rámec (`Ramec.web.tsx`) vykresluje aplikaci na desktopu v rámu telefonu o maximální šířce 430 px uprostřed obrazovky.
+
+## 4. Rozšíření služeb občana o 5 oblastí chytré obce (4. 11. 2026)
+
+Na vyžádání uživatele byl do sekce Služby v roli Občan (`apps/mobile/app/(obcan)/(tabs)/sluzby/`) doplněn kompletní ekosystém 14 interaktivních obrazovek rozdělených do 5 tematických celků:
+1. **Senzorika, IoT a Chytrá obec (`senzory.tsx`):** enviromentální čidla (hladina potoka s varováním, AQI, teplota vozovky, vlhkost půdy), GPS poloha komunální techniky a protažených ulic, chytré parkování a nabíječky EV, živé odjezdy spojů.
+2. **Komunitní sdílení a lokální ekonomika (`pujcovna.tsx`, `bazar.tsx`, `spolujizda.tsx`, `dobrovolnictvi.tsx`):** obecní půjčovna nářadí, sousedský bazar a darovna, sousedská spolujízda a burza dobrovolnictví.
+3. **Pokročilá správa majetku a infrastruktury (`nemovitosti.tsx`, `energetika.tsx`, `hrbitov.tsx`):** obecní byty a zasíťované parcely, komunitní energetika (FVE dashboard a registrace EDC), Hřbitov 2.0 (platnost nájemní smlouvy a virtuální svíčka).
+4. **Bezpečnost a krizové situace (`ztraty-a-nalezy.tsx`, `aed.tsx`, `kamery.tsx`):** Ztráty a nálezy 2.0 (registr nalezených zvířat s GPS a útulkem), mapa AED defibrilátorů s postupem první pomoci, veřejné webkamery v souladu s GDPR.
+5. **Zákulisní portály a Gamifikace (`body.tsx`, `zastupitelstvo.tsx`, `developer.tsx`):** občanské body a odměny, zastupitelský extranet pro radní a zastupitele, developer portál s otevřeným REST API a webhooky.
+
+## 5. Simulace rolí Úřadu a správa budov pouze ke čtení (4. 11. 2026)
+
+- V roli Úřad se přepíná podrole **Správce** a **Redaktor**. Hlavička `X-Ukazka-Role` slouží výhradně k simulaci oprávnění v ukázce (redaktor může krizové hlášení uložit pouze jako koncept, vydat a ukončit platnost smí jen správce; žádné krizové hlášení nelze smazat).
+- Obrazovka **Budovy** (`app/(urad)/(tabs)/budovy.tsx`) dodržuje pravidlo 5: zobrazuje stavy budov, místností, oken a dveří slovem a obsahuje povinné upozornění, že ovládání budov přibude v další verzi (zadání 04) a ochrana proti mrazu běží v bráně nezávisle na cloudu. Tlačítka pro odemčení dveří ani přepínání režimu vytápění v prototypu nejsou.

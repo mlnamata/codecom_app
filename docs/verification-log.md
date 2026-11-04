@@ -12,3 +12,7 @@ Záznam o ověřených faktech, verzích a chování podle zadání.
 | Verze TanStack Query | `npm view @tanstack/react-query version` | 4. 11. 2026 | Verze `5.105.3`. |
 | Metro monorepo podpora | `expo/metro-config` | 4. 11. 2026 | Sledování `monorepoRoot` ve `watchFolders` a správný `nodeModulesPaths` fungují přímo s pnpm workspace. |
 | CORS proměnná pro web | `apps/web/.env.example` v `codecom` | 4. 11. 2026 | Proměnná se jmenuje `CODEKOM_APP_ORIGIN=http://localhost:8081`. |
+| Statický export `web.output: "static"` | `pnpm --filter mobile export:web` | 4. 11. 2026 | Vygeneruje statické HTML pro všechny trasy Občana i Úřadu (včetně 14 rozšířených modulů Služeb) do `apps/mobile/dist` s `lang="cs"`. |
+| Vykreslování v Node při statickém exportu | `expo export --platform web` | 4. 11. 2026 | Veškerá volání `AsyncStorage` a `window` jsou chráněná nebo v `useEffect`, statický export proběhne bez chyb. |
+| Vitest s `react-native-web` v jsdom | `pnpm --filter mobile test` | 4. 11. 2026 | Alias `react-native -> react-native-web` v `vitest.config.ts` a `@testing-library/react` spouští všech 26 testů (7 sad). |
+| Kontrast barevných palet WCAG 2.2 AA | `test/tema.test.ts` | 4. 11. 2026 | Všechny 3 palety (`lipa`, `reka`, `kamen`) splňují poměr >= 4,5 : 1 pro text (`ink`, `muted`, `onPrimary`, `link`). |

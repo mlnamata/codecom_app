@@ -4,6 +4,7 @@
   "packageManager": "pnpm@10.34.9",
   "engines": { "node": ">=22.13" },
   "scripts": {
+    "demo": "pnpm --filter mobile web",
     "typecheck": "pnpm -r typecheck",
     "lint": "eslint .",
     "test": "pnpm -r test"

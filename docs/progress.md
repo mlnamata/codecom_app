@@ -13,6 +13,8 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Prototyp aplikace (zadání 08) – M2: Úvod ukázky a relace | hotovo | session aplikace |
 | Prototyp aplikace (zadání 08) – M3: Občan – Přehled a Deska | hotovo | session aplikace |
 | Prototyp aplikace (zadání 08) – M4: Občan – Zprávy, Služby, Více a rozšíření (Senzorika, Komunita, Majetek, Bezpečnost, Portály) | hotovo | session aplikace |
+| Prototyp aplikace (zadání 08) – M5: Role Úřad (Přehled, Krize, Závady, Budovy ke čtení) | hotovo | session aplikace |
+| Prototyp aplikace (zadání 08) – M6: Dokončení prototypu, statický export a dokumentace | hotovo | session aplikace |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

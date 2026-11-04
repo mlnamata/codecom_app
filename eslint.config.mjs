@@ -5,6 +5,8 @@ export default tseslint.config(
   {
     ignores: [
       '**/node_modules/**',
+      '**/dist/**',
+      '**/.expo/**',
       '**/coverage/**',
       // Kopie z mlnamata/codecom (scripts/synchronizuj-sdilene.sh), lintují se tam.
       'packages/tokeny/**',
