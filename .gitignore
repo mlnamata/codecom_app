@@ -6,3 +6,5 @@ data/
 *.sqlite
 coverage/
 .DS_Store
+dist/
+.expo/

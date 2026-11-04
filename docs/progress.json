@@ -1,0 +1,40 @@
+{
+  "posledniAktualizace": "2026-11-04T15:57:00.000Z",
+  "ukoly": [
+    {
+      "id": "M0",
+      "nazev": "Založení apps/mobile (Expo SDK 58, Metro monorepo, rámec, téma, tlačítko)",
+      "stav": "hotovo"
+    },
+    {
+      "id": "M1",
+      "nazev": "Zdroj dat api a vestavene s automatickým přepnutím a pruh ukázky",
+      "stav": "rozpracovano"
+    },
+    {
+      "id": "M2",
+      "nazev": "Úvod ukázky: volba role, obec, ukázkové přihlášení a relace",
+      "stav": "ceka"
+    },
+    {
+      "id": "M3",
+      "nazev": "Role Občan: Přehled (krizový banner, rozhlas) a Úřední deska",
+      "stav": "ceka"
+    },
+    {
+      "id": "M4",
+      "nazev": "Role Občan: Zprávy, Služby (závady, sledování, poplatky s QR, rezervace) a Více",
+      "stav": "ceka"
+    },
+    {
+      "id": "M5",
+      "nazev": "Role Úřad: Přehled úřadu, přepínač rolí, vydání/koncept krize, vyřízení závad, Budovy",
+      "stav": "ceka"
+    },
+    {
+      "id": "M6",
+      "nazev": "Dokončení: axe a11y testy, Playwright E2E, statický export, dokumentace a README",
+      "stav": "ceka"
+    }
+  ]
+}
