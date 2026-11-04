@@ -20,7 +20,7 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Kategorie závad slovy a jednotně: formulář občana ukládá id z dat (dřív „Výmol“ místo `vymol`), úřad a sledování ukazují název | hotovo | session aplikace (design 2) |
 | Sjednocení karet (zaoblení 12, jemný stín), mezery ve Zprávách, česká data u akcí, rezervací a desky na přehledech | hotovo | session aplikace (design 2) |
 | Moderní vzhled: vlastní barevný systém (bílé karty, smaragdová, tónované plochy), písmo Plus Jakarta Sans, logo CodeKom, větší zaoblení a nadpisy, lišta s aktivní „pilulkou“, barevné rychlé akce | hotovo | session aplikace (design 2) |
-| Moderní vzhled: úvod a volba role s logem, Služby (mřížka s barevnými ikonami), přepínače jako segmenty | čeká | session aplikace (design 2) |
+| Moderní vzhled: úvod s logem a ikonami rolí, Služby s barevnými ikonami a šipkami | hotovo | session aplikace (design 2) |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

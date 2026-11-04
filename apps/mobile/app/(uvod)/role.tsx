@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
 import { useRouter } from 'expo-router'
 import { useTema } from '../../src/tema'
 import { useRelace } from '../../src/stav/relace'
-import { Karta } from '../../src/ui'
+import { Karta, Logo } from '../../src/ui'
+import { Ikona, type NazevIkony } from '../../src/ui/Ikony'
 
 export default function RoleScreen() {
   const router = useRouter()
@@ -22,6 +23,12 @@ export default function RoleScreen() {
       keyboardShouldPersistTaps="handled"
     >
       <View style={styles.obsah}>
+        <View style={styles.logo}>
+          <Logo velikost={64} />
+          <Text style={[styles.znacka, { color: barvy.ink, fontFamily: pismo.rodina }]}>
+            Code<Text style={{ color: barvy.primary }}>Kom</Text>
+          </Text>
+        </View>
         <Text
           role="heading"
           aria-level={1}
@@ -46,22 +53,30 @@ export default function RoleScreen() {
           popisekProCtecku="Vstoupit jako Občan. Prohlížení zpráv, úřední desky, hlášení závad a rezervace."
           style={styles.kartaRole}
         >
-          <Text
-            style={[
-              styles.nazevRole,
-              {
-                color: barvy.ink,
-                fontFamily: pismo.rodina,
-                fontWeight: pismo.vahy.polotucne,
-              },
-            ]}
-          >
-            Občan
-          </Text>
-          <Text style={[styles.popisRole, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-            Přehled obce, aktivní krizová hlášení, úřední deska, hlášení závad se sledováním a
-            místní poplatky s QR platbou.
-          </Text>
+          <View style={styles.roleRadek}>
+            <View style={[styles.roleIkona, { backgroundColor: '#E7F5EE' }]}>
+              <Ikona nazev={'lide' satisfies NazevIkony} barva="#0B7A4B" velikost={26} />
+            </View>
+            <View style={styles.roleText}>
+              <Text
+                style={[
+                  styles.nazevRole,
+                  {
+                    color: barvy.ink,
+                    fontFamily: pismo.rodina,
+                    fontWeight: pismo.vahy.polotucne,
+                  },
+                ]}
+              >
+                Občan
+              </Text>
+              <Text style={[styles.popisRole, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+                Přehled obce, aktivní krizová hlášení, úřední deska, hlášení závad se sledováním a
+                místní poplatky s QR platbou.
+              </Text>
+            </View>
+            <Ikona nazev="sipka" barva={barvy.muted} velikost={20} />
+          </View>
         </Karta>
 
         <Karta
@@ -69,22 +84,30 @@ export default function RoleScreen() {
           popisekProCtecku="Vstoupit jako Úřad. Správa hlášení, vydávání krizových oznámení a přehled budov."
           style={styles.kartaRole}
         >
-          <Text
-            style={[
-              styles.nazevRole,
-              {
-                color: barvy.ink,
-                fontFamily: pismo.rodina,
-                fontWeight: pismo.vahy.polotucne,
-              },
-            ]}
-          >
-            Úřad
-          </Text>
-          <Text style={[styles.popisRole, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-            Přehled úřadu, vyřizování závad s veřejnou odpovědí, vydání krizového hlášení nebo
-            rozhlasu a kontrola obecních budov.
-          </Text>
+          <View style={styles.roleRadek}>
+            <View style={[styles.roleIkona, { backgroundColor: '#E8EFFE' }]}>
+              <Ikona nazev={'budovy' satisfies NazevIkony} barva="#1D4ED8" velikost={26} />
+            </View>
+            <View style={styles.roleText}>
+              <Text
+                style={[
+                  styles.nazevRole,
+                  {
+                    color: barvy.ink,
+                    fontFamily: pismo.rodina,
+                    fontWeight: pismo.vahy.polotucne,
+                  },
+                ]}
+              >
+                Úřad
+              </Text>
+              <Text style={[styles.popisRole, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+                Přehled úřadu, vyřizování závad s veřejnou odpovědí, vydání krizového hlášení nebo
+                rozhlasu a kontrola obecních budov.
+              </Text>
+            </View>
+            <Ikona nazev="sipka" barva={barvy.muted} velikost={20} />
+          </View>
         </Karta>
 
         <View style={styles.vysvetlivkaKontejner}>
@@ -120,7 +143,9 @@ export default function RoleScreen() {
                 },
               ]}
             >
-              <Text style={[styles.vysvetlivkaText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
+              <Text
+                style={[styles.vysvetlivkaText, { color: barvy.ink, fontFamily: pismo.rodina }]}
+              >
                 Tato aplikace je funkční ukázka systému CodeKom. Všechna data v aplikaci jsou
                 fiktivní (obec Javoří Lhota). Žádné e-maily ani SMS se neodesílají a žádné platby se
                 neprovádějí.
@@ -157,9 +182,34 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
   },
+  logo: {
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 28,
+  },
+  znacka: {
+    fontSize: 26,
+    fontWeight: '800',
+    letterSpacing: -0.8,
+  },
   kartaRole: {
     marginVertical: 8,
     padding: 18,
+  },
+  roleRadek: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+  },
+  roleIkona: {
+    width: 56,
+    height: 56,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  roleText: {
+    flex: 1,
   },
   nazevRole: {
     fontSize: 18,
