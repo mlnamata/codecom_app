@@ -1,0 +1,30 @@
+{
+  "upozorneni": "Jsem umělá inteligence. Odpovídám jen z dokumentů obce Javoří Lhota a u každé odpovědi uvádím, odkud ji mám. Můžu se splést. U důležitých věcí zavolejte na úřad: [TELEFON]. Dotazy neukládáme ke jménu.",
+  "otazky": [
+    {
+      "id": "autobus-most",
+      "otazka": "Kudy jede autobus, když je zavřený most?",
+      "odpoved": "Odpovídá umělá inteligence z dokumentů obce. Od 2. do 30. listopadu jezdí linka 431 objížďkou přes Hájek. Zastávka Javoří Lhota, most se ruší, náhradní zastávka je u hájovny. Časy odjezdů se nemění. Pěší a cyklisté mohou přes lávku vedle mostu.",
+      "zdroje": [
+        { "dokument": "uzavirka-mostu", "nazev": "Veřejná vyhláška: uzavírka mostu přes Javornický potok" }
+      ]
+    },
+    {
+      "id": "pitna-voda",
+      "otazka": "Můžu pít vodu z vodovodu?",
+      "odpoved": "Odpovídá umělá inteligence z dokumentů obce. Ne, voda z obecního vodovodu teď není pitná. Rozbor z 1. listopadu našel bakterie. Vodu na pití, vaření a čištění zubů převařujte. Cisterny s pitnou vodou stojí na návsi a u hasičárny, načepujete si od 7 do 20 hodin. Ve čtvrtek 5. listopadu od 8 do 14 hodin navíc v ulicích Hlavní a K Javorníku voda nepoteče vůbec.",
+      "zdroje": [
+        { "dokument": "opatreni-pitna-voda", "nazev": "Oznámení: voda z obecního vodovodu není pitná" },
+        { "dokument": "odstavka-vody-5-11", "nazev": "Oznámení o přerušení dodávky vody 5. listopadu, ulice Hlavní a K Javorníku" }
+      ]
+    },
+    {
+      "id": "poplatek-psi",
+      "otazka": "Kolik zaplatím za psa a do kdy?",
+      "odpoved": "Odpovídá umělá inteligence z dokumentů obce. Poplatek ze psů je 200 Kč za jednoho psa a rok a je splatný do 31. května. Platí ho držitel psa staršího 3 měsíců s trvalým pobytem v obci. Nového psa ohlaste na úřadě do 15 dnů, jde to i online.",
+      "zdroje": [
+        { "dokument": "ozv-poplatek-ze-psu", "nazev": "Obecně závazná vyhláška o místním poplatku ze psů" }
+      ]
+    }
+  ]
+}

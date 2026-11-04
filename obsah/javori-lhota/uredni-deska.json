@@ -1,0 +1,358 @@
+{
+  "kategorie": [
+    { "id": "zastupitelstvo", "nazev": "Zastupitelstvo", "slug": "zastupitelstvo", "poradi": 10 },
+    { "id": "doprava", "nazev": "Doprava", "slug": "doprava", "poradi": 20 },
+    { "id": "rozpocet", "nazev": "Rozpočet", "slug": "rozpocet", "poradi": 30 },
+    { "id": "oznameni", "nazev": "Oznámení", "slug": "oznameni", "poradi": 40 },
+    { "id": "vyhlasky", "nazev": "Vyhlášky", "slug": "vyhlasky", "poradi": 50 },
+    { "id": "majetek-obce", "nazev": "Majetek obce", "slug": "majetek-obce", "poradi": 60 }
+  ],
+  "dokumenty": [
+    {
+      "id": "vystraha-silny-vitr-5-11",
+      "nazev": "Výstraha ČHMÚ: silný vítr ve čtvrtek 5. listopadu",
+      "kategorie": "oznameni",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "Český hydrometeorologický ústav",
+      "vyvesenoOd": "2026-11-04",
+      "vyvesenoDo": "2026-11-05",
+      "skrytPoSejmuti": true,
+      "anotace": "Ve čtvrtek od 14 do 22 hodin nárazy větru až 90 km/h. Ukliďte věci ze zahrad a nechoďte do lesa.",
+      "text": [
+        "Český hydrometeorologický ústav vydal výstrahu před silným větrem pro okres Klatovy.",
+        "Výstraha platí ve čtvrtek 5. listopadu 2026 od 14 do 22 hodin. Nárazy větru mohou dosáhnout až 90 km/h.",
+        "Ukliďte volně ležící věci ze zahrad a balkonů, zavřete okna a neparkujte pod stromy. Do lesa v tu dobu nechoďte.",
+        "Při ohrožení života nebo zdraví volejte 112."
+      ],
+      "soubor": { "nazev": "Vystraha_CHMU_silny_vitr.pdf", "url": "/demo/deska/vystraha-silny-vitr-5-11.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "zamer-pronajmu-pozemku-1245-3",
+      "nazev": "Záměr pronájmu části pozemku p. č. 1245/3 v katastrálním území Javoří Lhota",
+      "kategorie": "majetek-obce",
+      "cisloJednaci": "JL 124/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-11-03",
+      "vyvesenoDo": "2026-11-19",
+      "skrytPoSejmuti": false,
+      "anotace": "Obec chce pronajmout 120 m² pozemku za hasičárnou jako zahradu. Nabídky do 19. listopadu.",
+      "text": [
+        "Obec Javoří Lhota zveřejňuje záměr pronajmout část pozemku p. č. 1245/3 o výměře 120 m² v katastrálním území Javoří Lhota. Pozemek leží za hasičárnou a má sloužit jako zahrada.",
+        "Nájem je navržený na dobu neurčitou s výpovědní dobou 3 měsíce.",
+        "Nabídky a připomínky můžete podat písemně na obecní úřad do 19. listopadu 2026.",
+        "O pronájmu rozhodne zastupitelstvo obce po uplynutí doby zveřejnění, nejdříve na zasedání 9. prosince 2026."
+      ],
+      "soubor": { "nazev": "Zamer_pronajmu_1245-3.pdf", "url": "/demo/deska/zamer-pronajmu-pozemku-1245-3.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "preruseni-elektriny-12-11",
+      "nazev": "Oznámení o přerušení dodávky elektřiny 12. listopadu, ulice Za Školou",
+      "kategorie": "oznameni",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "Provozovatel distribuční soustavy",
+      "vyvesenoOd": "2026-11-02",
+      "vyvesenoDo": "2026-11-12",
+      "skrytPoSejmuti": true,
+      "anotace": "Ve čtvrtek 12. listopadu od 7:30 do 15 hodin nepoteče elektřina v ulici Za Školou, včetně sokolovny.",
+      "text": [
+        "Ve čtvrtek 12. listopadu 2026 od 7:30 do 15:00 bude přerušena dodávka elektřiny v ulici Za Školou. Vypnutí se týká i sokolovny.",
+        "Důvodem je výměna sloupů vedení nízkého napětí. Práce mohou skončit dřív a elektřina se pak zapne bez dalšího upozornění.",
+        "Po celou dobu prací považujte vedení za zapnuté a na nic nesahejte."
+      ],
+      "soubor": { "nazev": "Preruseni_elektriny_Za_Skolou.pdf", "url": "/demo/deska/preruseni-elektriny-12-11.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "opatreni-pitna-voda",
+      "nazev": "Oznámení: voda z obecního vodovodu není pitná",
+      "kategorie": "oznameni",
+      "cisloJednaci": "JL 122/2026",
+      "puvodce": "Obec Javoří Lhota, provozovatel vodovodu",
+      "vyvesenoOd": "2026-11-02",
+      "vyvesenoDo": "2026-11-16",
+      "skrytPoSejmuti": false,
+      "anotace": "Rozbor z 1. listopadu našel ve vodě bakterie. Vodu na pití převařujte, cisterny stojí na návsi a u hasičárny.",
+      "text": [
+        "Rozbor vzorku vody z obecního vodovodu odebraného 1. listopadu 2026 našel bakterie. Voda z vodovodu není do odvolání pitná.",
+        "Vodu na pití, vaření a čištění zubů převařujte. Na mytí a splachování ji můžete používat bez převaření.",
+        "Cisterny s pitnou vodou stojí na návsi a u hasičárny. Načepujete si od 7 do 20 hodin. Seniorům nad 75 let vodu přivezou hasiči, stačí zavolat na obecní úřad.",
+        "Obec vodovod propláchla a nechala odebrat nový vzorek. O výsledku a o konci opatření dáme vědět na webu, v aplikaci a rozhlasem."
+      ],
+      "soubor": { "nazev": "Voda_neni_pitna.pdf", "url": "/demo/deska/opatreni-pitna-voda.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "odstavka-vody-5-11",
+      "nazev": "Oznámení o přerušení dodávky vody 5. listopadu, ulice Hlavní a K Javorníku",
+      "kategorie": "oznameni",
+      "cisloJednaci": "JL 123/2026",
+      "puvodce": "Obec Javoří Lhota, provozovatel vodovodu",
+      "vyvesenoOd": "2026-11-02",
+      "vyvesenoDo": "2026-11-05",
+      "skrytPoSejmuti": true,
+      "anotace": "Ve čtvrtek 5. listopadu od 8 do 14 hodin nepoteče voda v ulicích Hlavní a K Javorníku.",
+      "text": [
+        "Ve čtvrtek 5. listopadu 2026 od 8 do 14 hodin nepoteče voda v ulicích Hlavní a K Javorníku. Důvodem je oprava vodovodního řadu.",
+        "Cisterna s pitnou vodou bude stát na návsi.",
+        "Po obnovení dodávky může voda chvíli téct zakalená. Nechte ji odtéct, než ji použijete.",
+        "Oznámení o tom, že voda z vodovodu není pitná, platí dál."
+      ],
+      "soubor": { "nazev": "Preruseni_dodavky_vody.pdf", "url": "/demo/deska/odstavka-vody-5-11.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "pozvanka-zasedani-9-11",
+      "nazev": "Pozvánka na zasedání zastupitelstva 9. listopadu",
+      "kategorie": "zastupitelstvo",
+      "cisloJednaci": "JL 121/2026",
+      "puvodce": "Obec Javoří Lhota, starostka",
+      "vyvesenoOd": "2026-10-30",
+      "vyvesenoDo": "2026-11-09",
+      "skrytPoSejmuti": false,
+      "anotace": "Veřejné zasedání v pondělí 9. listopadu v 18 hodin v sále obecního úřadu.",
+      "text": [
+        "Starostka obce svolává veřejné zasedání zastupitelstva obce Javoří Lhota na pondělí 9. listopadu 2026 v 18 hodin do sálu obecního úřadu, Náves 1.",
+        "Program: 1. Zahájení a volba ověřovatelů zápisu. 2. Připomínky občanů k návrhu rozpočtu na rok 2027. 3. Informace o uzavírce mostu přes Javornický potok. 4. Příspěvek na letní tábor pro děti z obce. 5. Diskuse.",
+        "Zasedání je veřejné. Materiály jsou k nahlédnutí na obecním úřadě v úředních hodinách."
+      ],
+      "soubor": { "nazev": "Pozvanka_zasedani_2026-11-09.pdf", "url": "/demo/deska/pozvanka-zasedani-9-11.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "sber-nebezpecneho-odpadu-7-11",
+      "nazev": "Oznámení o sběru nebezpečného odpadu 7. listopadu",
+      "kategorie": "oznameni",
+      "cisloJednaci": "JL 120/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-10-30",
+      "vyvesenoDo": "2026-11-07",
+      "skrytPoSejmuti": true,
+      "anotace": "V sobotu 7. listopadu od 9 do 11 hodin u hasičárny: barvy, oleje, baterie a léky.",
+      "text": [
+        "V sobotu 7. listopadu 2026 od 9 do 11 hodin se u hasičárny sbírá nebezpečný odpad.",
+        "Přineste barvy, oleje, baterie a léky.",
+        "Odpad předejte osobně pracovníkům na místě. Nenechávejte ho u hasičárny před začátkem sběru."
+      ],
+      "soubor": { "nazev": "Sber_nebezpecneho_odpadu.pdf", "url": "/demo/deska/sber-nebezpecneho-odpadu-7-11.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "uzavirka-mostu",
+      "nazev": "Veřejná vyhláška: uzavírka mostu přes Javornický potok",
+      "kategorie": "doprava",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "[ORP], silniční správní úřad",
+      "vyvesenoOd": "2026-10-28",
+      "vyvesenoDo": "2026-11-30",
+      "skrytPoSejmuti": false,
+      "anotace": "Most je zavřený od 2. do 30. listopadu. Objížďka přes Hájek, autobus 431 staví u hájovny.",
+      "text": [
+        "Silniční správní úřad povoluje úplnou uzavírku mostu přes Javornický potok v Javoří Lhotě od 2. do 30. listopadu 2026. Důvodem je oprava nosné konstrukce mostu, kterou provádí kraj.",
+        "Objížďka pro auta vede přes Hájek a je delší asi o tři kilometry.",
+        "Linka 431 do Klatov jezdí ve stejných časech. Zastávka Javoří Lhota, most se ruší, náhradní zastávka je u hájovny.",
+        "Pěší a cyklisté mohou přes lávku vedle mostu. Most se otevře nejpozději 30. listopadu."
+      ],
+      "soubor": { "nazev": "Uzavirka_mostu_Javornicky_potok.pdf", "url": "/demo/deska/uzavirka-mostu.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "navrh-zmeny-uzemniho-planu-2",
+      "nazev": "Veřejná vyhláška: veřejné projednání návrhu změny č. 2 územního plánu Javoří Lhota",
+      "kategorie": "oznameni",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "[ORP], úřad územního plánování",
+      "vyvesenoOd": "2026-10-22",
+      "vyvesenoDo": "2026-11-25",
+      "skrytPoSejmuti": false,
+      "anotace": "Veřejné projednání ve středu 25. listopadu v 17 hodin v sále obecního úřadu. Změna řeší lokality Za Humny a Za pilou.",
+      "text": [
+        "Úřad územního plánování oznamuje veřejné projednání návrhu změny č. 2 územního plánu Javoří Lhota.",
+        "Změna řeší lokalitu Za Humny, kde má vzniknout 12 stavebních parcel, a plochu Za pilou pro dílny a sklady.",
+        "Veřejné projednání bude ve středu 25. listopadu 2026 v 17 hodin v sále obecního úřadu, Náves 1.",
+        "Návrh je k nahlédnutí na obecním úřadě v úředních hodinách. Lhůta a způsob podání námitek a připomínek jsou uvedené v příloze vyhlášky."
+      ],
+      "soubor": { "nazev": "Verejna_vyhlaska_zmena_UP_2.pdf", "url": "/demo/deska/navrh-zmeny-uzemniho-planu-2.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "navrh-rozpoctu-2027",
+      "nazev": "Návrh rozpočtu obce na rok 2027",
+      "kategorie": "rozpocet",
+      "cisloJednaci": "JL 115/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-10-26",
+      "vyvesenoDo": "2026-11-11",
+      "skrytPoSejmuti": false,
+      "anotace": "Víc peněz na cesty, škola beze změny. Připomínky do zasedání 9. listopadu, hlasuje se 9. prosince.",
+      "text": [
+        "Obec Javoří Lhota zveřejňuje návrh rozpočtu na rok 2027.",
+        "Proti letošku je v návrhu víc peněz na opravy místních komunikací, včetně chodníku v Lipové ulici. Výdaje na školu a školku zůstávají beze změny. Návrh počítá s příspěvkem 2 000 Kč na letní tábor pro každé dítě z obce.",
+        "Připomínky můžete poslat e-mailem na obecní úřad nebo je říct na zasedání zastupitelstva 9. listopadu. O rozpočtu bude zastupitelstvo hlasovat 9. prosince.",
+        "Úplné znění návrhu v členění podle rozpočtové skladby je v příloze a k nahlédnutí na obecním úřadě."
+      ],
+      "soubor": { "nazev": "Navrh_rozpoctu_2027.pdf", "url": "/demo/deska/navrh-rozpoctu-2027.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "navrh-vyhledu-2028-2029",
+      "nazev": "Návrh střednědobého výhledu rozpočtu na roky 2028 a 2029",
+      "kategorie": "rozpocet",
+      "cisloJednaci": "JL 116/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-10-26",
+      "vyvesenoDo": "2026-11-11",
+      "skrytPoSejmuti": false,
+      "anotace": "Výhled navazuje na rozpočet 2027. Počítá s kanalizací v Podjavoří, pokud obec získá dotaci.",
+      "text": [
+        "Střednědobý výhled navazuje na návrh rozpočtu na rok 2027 a ukazuje, s jakými příjmy a výdaji obec počítá v dalších dvou letech.",
+        "Hlavní plánované akce jsou kanalizace v Podjavoří, pokud obec získá dotaci, a dokončení sítí v lokalitě Za Humny.",
+        "Připomínky přijímá obecní úřad do zasedání zastupitelstva 9. listopadu."
+      ],
+      "soubor": { "nazev": "Navrh_vyhledu_2028-2029.pdf", "url": "/demo/deska/navrh-vyhledu-2028-2029.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "rozpoctove-opatreni-5-2026",
+      "nazev": "Rozpočtové opatření č. 5/2026",
+      "kategorie": "rozpocet",
+      "cisloJednaci": "JL 112/2026",
+      "puvodce": "Obec Javoří Lhota, starostka",
+      "vyvesenoOd": "2026-10-20",
+      "vyvesenoDo": "2026-11-19",
+      "skrytPoSejmuti": false,
+      "anotace": "Opatření zapisuje do rozpočtu dotaci Plzeňského kraje na hřiště za školou.",
+      "text": [
+        "Rozpočtové opatření č. 5/2026 schválila starostka obce 15. října 2026 v rozsahu pravomoci, kterou jí svěřilo zastupitelstvo.",
+        "Opatření zvyšuje příjmy o dotaci Plzeňského kraje na hřiště za školou a o stejnou částku výdaje na jeho stavbu.",
+        "Úplné znění je v příloze a k nahlédnutí na obecním úřadě."
+      ],
+      "soubor": { "nazev": "Rozpoctove_opatreni_5-2026.pdf", "url": "/demo/deska/rozpoctove-opatreni-5-2026.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "ozv-poplatek-ze-psu",
+      "nazev": "Obecně závazná vyhláška o místním poplatku ze psů",
+      "kategorie": "vyhlasky",
+      "cisloJednaci": "OZV 2/2026",
+      "puvodce": "Zastupitelstvo obce Javoří Lhota",
+      "vyvesenoOd": "2026-10-01",
+      "vyvesenoDo": null,
+      "skrytPoSejmuti": false,
+      "anotace": "Poplatek ze psů je 200 Kč za psa a rok, splatný do 31. května.",
+      "text": [
+        "Zastupitelstvo obce Javoří Lhota vydalo obecně závaznou vyhlášku o místním poplatku ze psů.",
+        "Poplatek platí držitel psa staršího 3 měsíců, který má v obci trvalý pobyt nebo sídlo.",
+        "Sazba je 200 Kč za jednoho psa a rok. Poplatek je splatný do 31. května kalendářního roku.",
+        "Držitel ohlásí přihlášení i odhlášení psa na obecním úřadě do 15 dnů. Přihlásit psa jde také online.",
+        "Vyhláška nabývá účinnosti 1. ledna 2027."
+      ],
+      "soubor": { "nazev": "OZV_poplatek_ze_psu.pdf", "url": "/demo/deska/ozv-poplatek-ze-psu.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "zamer-pronajmu-cp-12",
+      "nazev": "Záměr pronájmu nebytových prostor v domě čp. 12",
+      "kategorie": "majetek-obce",
+      "cisloJednaci": "JL 108/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-10-15",
+      "vyvesenoDo": "2026-10-31",
+      "skrytPoSejmuti": false,
+      "anotace": "Nebytový prostor 46 m² v přízemí domu čp. 12 na návsi, vhodný pro obchod nebo službu.",
+      "text": [
+        "Obec Javoří Lhota zveřejňuje záměr pronajmout nebytový prostor o výměře 46 m² v přízemí domu čp. 12 na návsi.",
+        "Prostor je vhodný pro obchod nebo službu. Nájem je navržený na dobu neurčitou.",
+        "Nabídky přijímá obecní úřad písemně do 31. října 2026."
+      ],
+      "soubor": { "nazev": "Zamer_pronajmu_cp12.pdf", "url": "/demo/deska/zamer-pronajmu-cp-12.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "ulozeni-pisemnosti",
+      "nazev": "Veřejná vyhláška: oznámení o uložení písemnosti pro adresáta s neznámým pobytem",
+      "kategorie": "oznameni",
+      "cisloJednaci": "JL 105/2026",
+      "puvodce": "Obecní úřad Javoří Lhota",
+      "vyvesenoOd": "2026-10-12",
+      "vyvesenoDo": "2026-10-27",
+      "skrytPoSejmuti": true,
+      "anotace": "Pro adresáta s trvalým pobytem na adrese obecního úřadu je uložena písemnost.",
+      "text": [
+        "Obecní úřad Javoří Lhota oznamuje, že pro adresáta [JMÉNO], hlášeného k trvalému pobytu na adrese Náves 1, je uložena písemnost.",
+        "Písemnost si adresát může vyzvednout na obecním úřadě v úředních hodinách.",
+        "Oznámení obsahuje osobní údaje, proto se po sejmutí na webu nezveřejňuje."
+      ],
+      "soubor": { "nazev": "Ulozeni_pisemnosti.pdf", "url": "/demo/deska/ulozeni-pisemnosti.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "preruseni-elektriny-20-10",
+      "nazev": "Oznámení o přerušení dodávky elektřiny 20. října, Podjavoří",
+      "kategorie": "oznameni",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "Provozovatel distribuční soustavy",
+      "vyvesenoOd": "2026-10-09",
+      "vyvesenoDo": "2026-10-20",
+      "skrytPoSejmuti": true,
+      "anotace": "V úterý 20. října od 8 do 14 hodin bez elektřiny v Podjavoří.",
+      "text": [
+        "V úterý 20. října 2026 od 8 do 14 hodin bude přerušena dodávka elektřiny v celé části Podjavoří.",
+        "Důvodem je údržba trafostanice. Práce mohou skončit dřív a elektřina se pak zapne bez dalšího upozornění."
+      ],
+      "soubor": { "nazev": "Preruseni_elektriny_Podjavori.pdf", "url": "/demo/deska/preruseni-elektriny-20-10.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "rozpoctove-opatreni-4-2026",
+      "nazev": "Rozpočtové opatření č. 4/2026",
+      "kategorie": "rozpocet",
+      "cisloJednaci": "JL 98/2026",
+      "puvodce": "Zastupitelstvo obce Javoří Lhota",
+      "vyvesenoOd": "2026-09-21",
+      "vyvesenoDo": "2026-10-21",
+      "skrytPoSejmuti": false,
+      "anotace": "Opatření přesouvá peníze na opravu sloupu se sochou svatého Jana.",
+      "text": [
+        "Rozpočtové opatření č. 4/2026 schválilo zastupitelstvo obce na zasedání 14. září 2026.",
+        "Opatření zapisuje do rozpočtu příspěvek ministerstva kultury na opravu sloupu se sochou svatého Jana a podíl obce na této opravě.",
+        "Úplné znění je k nahlédnutí na obecním úřadě."
+      ],
+      "soubor": { "nazev": "Rozpoctove_opatreni_4-2026.pdf", "url": "/demo/deska/rozpoctove-opatreni-4-2026.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "pozvanka-zasedani-19-10",
+      "nazev": "Pozvánka na zasedání zastupitelstva 19. října",
+      "kategorie": "zastupitelstvo",
+      "cisloJednaci": "JL 103/2026",
+      "puvodce": "Obec Javoří Lhota, starostka",
+      "vyvesenoOd": "2026-10-09",
+      "vyvesenoDo": "2026-10-19",
+      "skrytPoSejmuti": false,
+      "anotace": "Veřejné zasedání v pondělí 19. října v 18 hodin. Na programu je oprava chodníku v Lipové.",
+      "text": [
+        "Starostka obce svolává veřejné zasedání zastupitelstva obce Javoří Lhota na pondělí 19. října 2026 v 18 hodin do sálu obecního úřadu, Náves 1.",
+        "Program: 1. Zahájení a volba ověřovatelů zápisu. 2. Oprava chodníku v Lipové ulici. 3. Příprava rozpočtu na rok 2027. 4. Diskuse."
+      ],
+      "soubor": { "nazev": "Pozvanka_zasedani_2026-10-19.pdf", "url": "/demo/deska/pozvanka-zasedani-19-10.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "rozhodnuti-pripojka-vody-87-4",
+      "nazev": "Oznámení o vydání rozhodnutí: přípojka vody pro pozemek p. č. 87/4",
+      "kategorie": "oznameni",
+      "cisloJednaci": "[ČÍSLO JEDNACÍ]",
+      "puvodce": "[ORP], stavební úřad",
+      "vyvesenoOd": "2026-09-30",
+      "vyvesenoDo": "2026-10-15",
+      "skrytPoSejmuti": true,
+      "anotace": "Stavební úřad oznamuje vydání rozhodnutí o přípojce vody v Hájku.",
+      "text": [
+        "Stavební úřad oznamuje, že vydal rozhodnutí o povolení přípojky vody pro pozemek p. č. 87/4 v katastrálním území Hájek. Stavebníkem je [JMÉNO].",
+        "Do rozhodnutí lze nahlédnout na stavebním úřadě. Poučení o odvolání je uvedené v rozhodnutí.",
+        "Oznámení obsahuje osobní údaje, proto se po sejmutí na webu nezveřejňuje."
+      ],
+      "soubor": { "nazev": "Rozhodnuti_pripojka_87-4.pdf", "url": "/demo/deska/rozhodnuti-pripojka-vody-87-4.pdf", "typ": "application/pdf", "velikost": null }
+    },
+    {
+      "id": "zamer-prodeje-455-2",
+      "nazev": "Záměr prodeje pozemku p. č. 455/2 v katastrálním území Podjavoří",
+      "kategorie": "majetek-obce",
+      "cisloJednaci": "JL 96/2026",
+      "puvodce": "Obec Javoří Lhota",
+      "vyvesenoOd": "2026-09-18",
+      "vyvesenoDo": "2026-10-05",
+      "skrytPoSejmuti": false,
+      "anotace": "Obec chtěla prodat 310 m² pozemku u cesty k vlekům v Podjavoří.",
+      "text": [
+        "Obec Javoří Lhota zveřejňuje záměr prodat pozemek p. č. 455/2 o výměře 310 m² v katastrálním území Podjavoří. Pozemek leží u cesty k vlekům.",
+        "Nabídky přijímá obecní úřad písemně do 5. října 2026. O prodeji rozhodne zastupitelstvo."
+      ],
+      "soubor": { "nazev": "Zamer_prodeje_455-2.pdf", "url": "/demo/deska/zamer-prodeje-455-2.pdf", "typ": "application/pdf", "velikost": null }
+    }
+  ]
+}

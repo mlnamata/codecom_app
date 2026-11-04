@@ -2,7 +2,16 @@ import js from '@eslint/js'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['**/node_modules/**', '**/coverage/**'] },
+  {
+    ignores: [
+      '**/node_modules/**',
+      '**/coverage/**',
+      // Kopie z mlnamata/codecom (scripts/synchronizuj-sdilene.sh), lintují se tam.
+      'packages/tokeny/**',
+      'packages/typy/**',
+      'packages/demo-data/**',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

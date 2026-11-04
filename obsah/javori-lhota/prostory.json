@@ -1,0 +1,139 @@
+{
+  "prostory": [
+    {
+      "id": "sal-uradu",
+      "slug": "sal-obecniho-uradu",
+      "nazev": "Sál obecního úřadu",
+      "adresa": "Náves 1",
+      "budova": "urad",
+      "kapacita": 80,
+      "cenaZaBlok": 800,
+      "kauce": 1000,
+      "mena": "CZK",
+      "bloky": [
+        { "id": "odpoledne", "od": "14:00", "do": "18:00" },
+        { "id": "vecer", "od": "18:00", "do": "22:00" }
+      ],
+      "popis": "Sál pro oslavy, schůze a kurzy do 80 osob. Sál před akcí předtopíme.",
+      "uradCesta": "Termín domluvíte i telefonicky nebo osobně na obecním úřadě."
+    },
+    {
+      "id": "hasicarna",
+      "slug": "sal-v-hasicarne",
+      "nazev": "Sál v hasičárně",
+      "adresa": "U Rybníka 3",
+      "budova": "hasicarna",
+      "kapacita": 120,
+      "cenaZaBlok": 800,
+      "kauce": 1000,
+      "mena": "CZK",
+      "bloky": [
+        { "id": "odpoledne", "od": "14:00", "do": "18:00" },
+        { "id": "vecer", "od": "18:00", "do": "22:00" }
+      ],
+      "popis": "Větší sál pro zábavy a spolkové akce do 120 lidí.",
+      "uradCesta": "Termín domluvíte i telefonicky nebo osobně na obecním úřadě."
+    }
+  ],
+  "rezervace": [
+    {
+      "id": "rez-2026-11-04-spolek-rodicu",
+      "prostor": "sal-uradu",
+      "den": "2026-11-04",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Schůze Spolku rodičů",
+      "zadatel": { "jmeno": "Spolek rodičů při ZŠ a MŠ", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-20T09:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-06-sdh",
+      "prostor": "hasicarna",
+      "den": "2026-11-06",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Schůze Sboru dobrovolných hasičů",
+      "zadatel": { "jmeno": "Sbor dobrovolných hasičů", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-02T10:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-09-zastupitelstvo",
+      "prostor": "sal-uradu",
+      "den": "2026-11-09",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Zasedání zastupitelstva",
+      "zadatel": { "jmeno": "Obec Javoří Lhota", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-30T08:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-14-oslava",
+      "prostor": "sal-uradu",
+      "den": "2026-11-14",
+      "od": "14:00",
+      "do": "18:00",
+      "ucel": "Rodinná oslava",
+      "zadatel": { "jmeno": "[JMÉNO]", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-25T18:20:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-25-uzemni-plan",
+      "prostor": "sal-uradu",
+      "den": "2026-11-25",
+      "od": "14:00",
+      "do": "18:00",
+      "ucel": "Veřejné projednání změny územního plánu",
+      "zadatel": { "jmeno": "Obec Javoří Lhota", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-22T08:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-25-uzemni-plan-vecer",
+      "prostor": "sal-uradu",
+      "den": "2026-11-25",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Veřejné projednání změny územního plánu",
+      "zadatel": { "jmeno": "Obec Javoří Lhota", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-22T08:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-12-04-sdh",
+      "prostor": "hasicarna",
+      "den": "2026-12-04",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Schůze Sboru dobrovolných hasičů",
+      "zadatel": { "jmeno": "Sbor dobrovolných hasičů", "kontakt": "[E-MAIL]" },
+      "stav": "schvaleno",
+      "vytvoreno": "2026-10-02T10:00:00.000Z"
+    },
+    {
+      "id": "rez-2026-12-12-narozeniny",
+      "prostor": "sal-uradu",
+      "den": "2026-12-12",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Narozeninová oslava",
+      "zadatel": { "jmeno": "[JMÉNO]", "kontakt": "[E-MAIL]" },
+      "stav": "ceka",
+      "vytvoreno": "2026-11-03T19:05:00.000Z"
+    },
+    {
+      "id": "rez-2026-11-21-zabava",
+      "prostor": "hasicarna",
+      "den": "2026-11-21",
+      "od": "18:00",
+      "do": "22:00",
+      "ucel": "Soukromá zábava",
+      "zadatel": { "jmeno": "[JMÉNO]", "kontakt": "[E-MAIL]" },
+      "stav": "zamitnuto",
+      "vytvoreno": "2026-10-28T12:00:00.000Z"
+    }
+  ]
+}

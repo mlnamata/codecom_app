@@ -1,0 +1,38 @@
+[
+  {
+    "id": "most-uzavreny",
+    "uroven": "info",
+    "titulek": "most přes Javornický potok je zavřený",
+    "text": "Od 2. do 30. listopadu. Objížďka vede přes Hájek, autobus 431 staví u hájovny.",
+    "odkazText": "Mapa objížďky",
+    "odkazUrl": "/uredni-deska/uzavirka-mostu",
+    "casti": [],
+    "platiOd": "2026-11-01T23:00:00.000Z",
+    "platiDo": "2026-11-30T22:59:59.000Z",
+    "updatedAt": "2026-10-28T09:00:00.000Z"
+  },
+  {
+    "id": "silny-vitr-5-11",
+    "uroven": "warning",
+    "titulek": "silný vítr ve čtvrtek 5. listopadu",
+    "text": "ČHMÚ varuje od 14 do 22 hodin před nárazy větru až 90 km/h. Ukliďte věci ze zahrad a nechoďte do lesa.",
+    "odkazText": "Výstraha ČHMÚ",
+    "odkazUrl": "/uredni-deska/vystraha-silny-vitr-5-11",
+    "casti": [],
+    "platiOd": "2026-11-04T07:00:00.000Z",
+    "platiDo": "2026-11-05T21:00:00.000Z",
+    "updatedAt": "2026-11-04T07:00:00.000Z"
+  },
+  {
+    "id": "nepijte-vodu",
+    "uroven": "emergency",
+    "titulek": "nepijte vodu z obecního vodovodu",
+    "text": "Rozbor z 1. listopadu našel bakterie. Vodu do odvolání převařujte. Cisterna s pitnou vodou stojí na návsi od 14 hodin.",
+    "odkazText": "Co dělat a kdy to skončí",
+    "odkazUrl": "/aktuality/pitna-voda-cisterny",
+    "casti": [],
+    "platiOd": "2026-11-02T12:00:00.000Z",
+    "platiDo": null,
+    "updatedAt": "2026-11-02T12:00:00.000Z"
+  }
+]

@@ -21,8 +21,52 @@ importers:
         specifier: 8.72.1
         version: 8.72.1(eslint@10.14.0)(typescript@5.9.3)
 
+  packages/demo-data:
+    dependencies:
+      '@codekom/typy':
+        specifier: workspace:*
+        version: link:../typy
+      zod:
+        specifier: 4.6.7
+        version: 4.6.7
+    devDependencies:
+      '@types/node':
+        specifier: 22.20.5
+        version: 22.20.5
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 3.2.7
+        version: 3.2.7(@types/node@22.20.5)(tsx@4.23.15)
+
   packages/iot:
     dependencies:
+      zod:
+        specifier: 4.6.7
+        version: 4.6.7
+    devDependencies:
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 3.2.7
+        version: 3.2.7(@types/node@22.20.5)(tsx@4.23.15)
+
+  packages/tokeny:
+    devDependencies:
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 3.2.7
+        version: 3.2.7(@types/node@22.20.5)(tsx@4.23.15)
+
+  packages/typy:
+    dependencies:
+      '@codekom/tokeny':
+        specifier: workspace:*
+        version: link:../tokeny
       zod:
         specifier: 4.6.7
         version: 4.6.7
@@ -1232,7 +1276,6 @@ snapshots:
   '@types/node@22.20.5':
     dependencies:
       undici-types: 6.21.0
-    optional: true
 
   '@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@10.14.0)(typescript@5.9.3))(eslint@10.14.0)(typescript@5.9.3)':
     dependencies:
@@ -1754,8 +1797,7 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  undici-types@6.21.0:
-    optional: true
+  undici-types@6.21.0: {}
 
   uri-js@4.4.1:
     dependencies:

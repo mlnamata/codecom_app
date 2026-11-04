@@ -1,0 +1,123 @@
+{
+  "kategorie": [
+    { "id": "vymol", "nazev": "Výmol" },
+    { "id": "osvetleni", "nazev": "Osvětlení" },
+    { "id": "odpad", "nazev": "Odpad" },
+    { "id": "zelen", "nazev": "Zeleň" },
+    { "id": "jine", "nazev": "Jiné" }
+  ],
+  "stavy": [
+    { "id": "nove", "nazev": "Přijato" },
+    { "id": "prijato", "nazev": "Převzato" },
+    { "id": "v_reseni", "nazev": "Řeší se" },
+    { "id": "vyrizeno", "nazev": "Vyřízeno" },
+    { "id": "zamitnuto", "nazev": "Zamítnuto" }
+  ],
+  "hlaseni": [
+    {
+      "id": "hz-2026-0047",
+      "cislo": "HZ-2026-0047",
+      "sledovaciKod": "K7MPQ4TX",
+      "stav": "nove",
+      "verejnaOdpoved": null,
+      "kategorie": "osvetleni",
+      "popis": "Nesvítí lampa u zastávky na návsi, je tam večer úplná tma.",
+      "misto": "zastávka Javoří Lhota, náves",
+      "poloha": null,
+      "kontakt": null,
+      "pocetFotek": 1,
+      "vytvoreno": "2026-11-04T06:40:00.000Z",
+      "zmeneno": "2026-11-04T06:40:00.000Z"
+    },
+    {
+      "id": "hz-2026-0046",
+      "cislo": "HZ-2026-0046",
+      "sledovaciKod": "R3HWZ8CE",
+      "stav": "prijato",
+      "verejnaOdpoved": null,
+      "kategorie": "odpad",
+      "popis": "Přeplněný kontejner na sklo na návsi, sklo leží i vedle.",
+      "misto": "kontejnery na návsi",
+      "poloha": null,
+      "kontakt": { "jmeno": "[JMÉNO]", "email": "[E-MAIL]", "telefon": null },
+      "pocetFotek": 1,
+      "vytvoreno": "2026-11-03T15:12:00.000Z",
+      "zmeneno": "2026-11-04T07:30:00.000Z"
+    },
+    {
+      "id": "hz-2026-0045",
+      "cislo": "HZ-2026-0045",
+      "sledovaciKod": "B6NFT2VA",
+      "stav": "vyrizeno",
+      "verejnaOdpoved": "Spadlou větev jsme 2. listopadu odklidili a cesta je zase průjezdná. Děkujeme za upozornění.",
+      "kategorie": "zelen",
+      "popis": "Přes cestu k Hájku leží velká spadlá větev.",
+      "misto": "cesta z Javoří Lhoty do Hájku",
+      "poloha": null,
+      "kontakt": null,
+      "pocetFotek": 2,
+      "vytvoreno": "2026-11-01T09:25:00.000Z",
+      "zmeneno": "2026-11-02T13:10:00.000Z"
+    },
+    {
+      "id": "hz-2026-0044",
+      "cislo": "HZ-2026-0044",
+      "sledovaciKod": "W9DGU5HR",
+      "stav": "v_reseni",
+      "verejnaOdpoved": "Úklid jsme objednali u svozové firmy. Odvoz proběhne do konce týdne.",
+      "kategorie": "odpad",
+      "popis": "Černá skládka u lesa za pilou, pytle s odpadem a stará pneumatika.",
+      "misto": "les za pilou Na Rovném",
+      "poloha": null,
+      "kontakt": null,
+      "pocetFotek": 3,
+      "vytvoreno": "2026-10-30T16:45:00.000Z",
+      "zmeneno": "2026-11-02T08:00:00.000Z"
+    },
+    {
+      "id": "hz-2026-0043",
+      "cislo": "HZ-2026-0043",
+      "sledovaciKod": "T4XAJ7MN",
+      "stav": "v_reseni",
+      "verejnaOdpoved": "Oprava je objednaná na středu 4. listopadu.",
+      "kategorie": "osvetleni",
+      "popis": "Nesvítí lampa v ulici K Javorníku u posledního domu.",
+      "misto": "ulice K Javorníku",
+      "poloha": null,
+      "kontakt": { "jmeno": "[JMÉNO]", "email": null, "telefon": "[TELEFON]" },
+      "pocetFotek": 0,
+      "vytvoreno": "2026-10-29T18:30:00.000Z",
+      "zmeneno": "2026-10-30T09:00:00.000Z"
+    },
+    {
+      "id": "hz-2026-0042",
+      "cislo": "HZ-2026-0042",
+      "sledovaciKod": "P2EYC6KS",
+      "stav": "zamitnuto",
+      "verejnaOdpoved": "Lavička u rozhledny na Javorníku není v péči obce. Hlášení jsme předali správci rozhledny.",
+      "kategorie": "jine",
+      "popis": "Rozbitá lavička u rozhledny, chybí dvě prkna.",
+      "misto": "rozhledna na Javorníku",
+      "poloha": null,
+      "kontakt": null,
+      "pocetFotek": 1,
+      "vytvoreno": "2026-10-27T11:00:00.000Z",
+      "zmeneno": "2026-10-28T10:15:00.000Z"
+    },
+    {
+      "id": "hz-2026-0038",
+      "cislo": "HZ-2026-0038",
+      "sledovaciKod": "H5VRM3QZ",
+      "stav": "vyrizeno",
+      "verejnaOdpoved": "Výmol jsme 9. října opravili.",
+      "kategorie": "vymol",
+      "popis": "Hluboký výmol v ulici Za Školou před sokolovnou.",
+      "misto": "ulice Za Školou",
+      "poloha": null,
+      "kontakt": null,
+      "pocetFotek": 1,
+      "vytvoreno": "2026-10-02T07:50:00.000Z",
+      "zmeneno": "2026-10-09T14:00:00.000Z"
+    }
+  ]
+}

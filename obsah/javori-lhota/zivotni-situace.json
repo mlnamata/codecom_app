@@ -1,0 +1,58 @@
+[
+  {
+    "id": "stehovani",
+    "slug": "stehuji-se-do-obce",
+    "nazev": "Stěhuji se do Javoří Lhoty",
+    "kratkyNazev": "Stěhuji se do obce",
+    "kdoPoradi": "Poradí evidence obyvatel, kancelář č. 2, telefon [TELEFON].",
+    "kroky": [
+      { "poradi": 1, "nazev": "Přihlaste se k trvalému pobytu", "zpusob": "urad", "text": "Přijďte s občanským průkazem a dokladem, že na adrese smíte bydlet, například nájemní smlouvou. Poplatek je 50 Kč, děti do 15 let ho neplatí.", "sluzba": null },
+      { "poradi": 2, "nazev": "Přihlaste se k poplatku za odpad", "zpusob": "online", "text": "Formulář vyplníte na webu do 15 dnů. Poplatek je 900 Kč na osobu a rok, popelnici vydáme na úřadě.", "sluzba": "zaplatit-poplatek-za-odpad" },
+      { "poradi": 3, "nazev": "Máte psa? Přihlaste ho", "zpusob": "online", "text": "Poplatek ze psů je 200 Kč na rok. Známku vám pošleme poštou.", "sluzba": "prihlasit-psa" },
+      { "poradi": 4, "nazev": "Zapište děti do školy nebo školky", "zpusob": "urad", "text": "ZŠ a MŠ Javoří Lhota má 1. až 5. ročník. Zápis do první třídy je v dubnu, do školky v květnu.", "sluzba": null }
+    ],
+    "uradCesta": "Všechno vyřídíte i osobně na obecním úřadě, Náves 1, v úředních hodinách."
+  },
+  {
+    "id": "narozeni",
+    "slug": "narodilo-se-nam-dite",
+    "nazev": "Narodilo se nám dítě",
+    "kratkyNazev": "Narodilo se nám dítě",
+    "kdoPoradi": "Poradí matrika, kancelář č. 1, telefon [TELEFON].",
+    "kroky": [
+      { "poradi": 1, "nazev": "Porodnice ohlásí narození matrice", "zpusob": "samo", "text": "Rodný list vystaví matrika podle místa porodu.", "sluzba": null },
+      { "poradi": 2, "nazev": "Dítě získá trvalý pobyt u matky", "zpusob": "samo", "text": "Nic nevyplňujete, údaj se propíše z registru obyvatel.", "sluzba": null },
+      { "poradi": 3, "nazev": "Přihlaste dítě k poplatku za odpad", "zpusob": "online", "text": "Stačí doplnit jméno do vašeho přihlášení, do 15 dnů od narození.", "sluzba": "zaplatit-poplatek-za-odpad" },
+      { "poradi": 4, "nazev": "Přijďte na vítání občánků", "zpusob": "online", "text": "Pozvánku pošleme, když nám k tomu dáte souhlas. Souhlas můžete kdykoli odvolat.", "sluzba": null }
+    ],
+    "uradCesta": "Přihlášku k poplatku i souhlas s vítáním občánků podáte i osobně na obecním úřadě."
+  },
+  {
+    "id": "stavba",
+    "slug": "stavim-nebo-opravuji-dum",
+    "nazev": "Stavím nebo opravuji dům",
+    "kratkyNazev": "Stavím nebo opravuji dům",
+    "kdoPoradi": "Stavby povoluje stavební úřad v [ORP]. Na obci poradí místostarosta, telefon [TELEFON].",
+    "kroky": [
+      { "poradi": 1, "nazev": "Podívejte se do územního plánu", "zpusob": "online", "text": "Mapa s územním plánem je na webu. Ukáže, co se na pozemku smí stavět.", "sluzba": null },
+      { "poradi": 2, "nazev": "Podejte žádost přes Portál stavebníka", "zpusob": "online", "text": "Stavební řízení se vede digitálně. Žádost vyřizuje stavební úřad, ne obec.", "sluzba": null },
+      { "poradi": 3, "nazev": "Domluvte připojení na vodovod a kanalizaci", "zpusob": "urad", "text": "Smlouvu uzavřete s obcí. Technik se nejdřív podívá na místo.", "sluzba": null },
+      { "poradi": 4, "nazev": "Ohlaste lešení nebo kontejner na ulici", "zpusob": "online", "text": "Zábor obecního pozemku ohlaste předem. Platí se místní poplatek podle vyhlášky.", "sluzba": "ohlasit-zabor" }
+    ],
+    "uradCesta": "S územním plánem i se záborem vám poradí místostarosta na obecním úřadě."
+  },
+  {
+    "id": "umrti",
+    "slug": "zemrel-nam-blizky-clovek",
+    "nazev": "Zemřel nám blízký člověk",
+    "kratkyNazev": "Zemřel nám blízký člověk",
+    "kdoPoradi": "Poradí matrika, kancelář č. 1, telefon [TELEFON].",
+    "kroky": [
+      { "poradi": 1, "nazev": "Lékař vystaví list o prohlídce zemřelého", "zpusob": "samo", "text": "List předá matrice a pohřební službě.", "sluzba": null },
+      { "poradi": 2, "nazev": "Matrika vystaví úmrtní list", "zpusob": "urad", "text": "Vydává ho matrika podle místa úmrtí. Často ho vyřídí pohřební služba za vás.", "sluzba": null },
+      { "poradi": 3, "nazev": "Domluvte hrobové místo", "zpusob": "urad", "text": "Nájem hrobu na hřbitově u kostela svatého Václava uzavřete s obcí.", "sluzba": null },
+      { "poradi": 4, "nazev": "Poplatky se upraví", "zpusob": "samo", "text": "Obec údaje převezme z registru obyvatel. Nemusíte nic odhlašovat.", "sluzba": null }
+    ],
+    "uradCesta": "Na obecním úřadě vám se vším poradíme osobně, přijďte v úředních hodinách nebo zavolejte."
+  }
+]

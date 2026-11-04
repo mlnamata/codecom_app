@@ -1,0 +1,50 @@
+[
+  {
+    "id": "r-2026-11-04-vitr",
+    "cas": "2026-11-04T07:10:00.000Z",
+    "titulek": "Ve čtvrtek silný vítr",
+    "text": "Český hydrometeorologický ústav varuje ve čtvrtek 5. listopadu od 14 do 22 hodin před nárazy větru až 90 km/h. Ukliďte věci ze zahrad a nechoďte do lesa.",
+    "casti": [],
+    "audioUrl": null
+  },
+  {
+    "id": "r-2026-11-03-plasty",
+    "cas": "2026-11-03T08:15:00.000Z",
+    "titulek": "Plasty se vyvážejí ve středu 4. listopadu",
+    "text": "Žluté nádoby připravte do 6 hodin ráno. Na Hájku se plasty vyvážejí každou druhou středu.",
+    "casti": [],
+    "audioUrl": null
+  },
+  {
+    "id": "r-2026-11-02-cisterny",
+    "cas": "2026-11-02T13:00:00.000Z",
+    "titulek": "Voda z vodovodu není pitná",
+    "text": "Rozbor z 1. listopadu našel ve vodě z obecního vodovodu bakterie. Vodu na pití převařujte. Cisterny s pitnou vodou stojí na návsi a u hasičárny, načepujete si od 7 do 20 hodin.",
+    "casti": [],
+    "audioUrl": null
+  },
+  {
+    "id": "r-2026-11-02-voda-ctvrtek",
+    "cas": "2026-11-02T08:00:00.000Z",
+    "titulek": "Ve čtvrtek nepoteče voda",
+    "text": "Ve čtvrtek 5. listopadu od 8 do 14 hodin nepoteče voda v ulicích Hlavní a K Javorníku. Cisterna s pitnou vodou bude stát na návsi.",
+    "casti": ["javori-lhota"],
+    "audioUrl": null
+  },
+  {
+    "id": "r-2026-11-02-most",
+    "cas": "2026-11-02T07:00:00.000Z",
+    "titulek": "Most přes potok je zavřený",
+    "text": "Most přes Javornický potok je zavřený do 30. listopadu. Autobus 431 staví u hájovny.",
+    "casti": [],
+    "audioUrl": null
+  },
+  {
+    "id": "r-2026-10-30-nebezpecny-odpad",
+    "cas": "2026-10-30T16:00:00.000Z",
+    "titulek": "Sběr nebezpečného odpadu",
+    "text": "V sobotu 7. listopadu od 9 do 11 hodin se u hasičárny sbírá nebezpečný odpad: barvy, oleje, baterie a léky.",
+    "casti": [],
+    "audioUrl": null
+  }
+]

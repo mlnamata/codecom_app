@@ -1,0 +1,139 @@
+{
+  "sluzby": [
+    {
+      "id": "zaplatit-poplatek-za-odpad",
+      "slug": "zaplatit-poplatek-za-odpad",
+      "nazev": "Zaplatit poplatek za odpad",
+      "popis": "900 Kč na osobu a rok, splatný do 31. května.",
+      "zpusob": "online",
+      "odkaz": "/sluzby/platby",
+      "uradCesta": "Převodem nebo hotově na úřadě v úředních hodinách.",
+      "klicovaSlova": ["zaplatit", "odpad", "poplatek", "popelnice", "platba"]
+    },
+    {
+      "id": "zaplatit-poplatek-ze-psu",
+      "slug": "zaplatit-poplatek-ze-psu",
+      "nazev": "Zaplatit poplatek ze psů",
+      "popis": "200 Kč na rok.",
+      "zpusob": "online",
+      "odkaz": "/sluzby/platby",
+      "uradCesta": "Převodem nebo hotově na úřadě v úředních hodinách.",
+      "klicovaSlova": ["zaplatit", "pes", "psa", "poplatek"]
+    },
+    {
+      "id": "prihlasit-psa",
+      "slug": "prihlasit-psa",
+      "nazev": "Přihlásit nebo odhlásit psa",
+      "popis": "Do 15 dnů od pořízení psa nebo jeho odhlášení.",
+      "zpusob": "online",
+      "odkaz": null,
+      "uradCesta": "Formulář vyplníte i na úřadě.",
+      "klicovaSlova": ["prihlasit", "odhlasit", "pes", "psa"]
+    },
+    {
+      "id": "nahlasit-zavadu",
+      "slug": "nahlasit-zavadu",
+      "nazev": "Nahlásit závadu",
+      "popis": "Lampa, výmol, rozbitá lavička, černá skládka. Fotka a místo na mapě.",
+      "zpusob": "online",
+      "odkaz": "/sluzby/nahlasit-zavadu",
+      "uradCesta": "Zavolejte na úřad nebo se zastavte v úředních hodinách.",
+      "klicovaSlova": ["nahlasit", "zavada", "rozbite", "lampa", "vymol", "most"]
+    },
+    {
+      "id": "pronajmout-sal",
+      "slug": "pronajmout-sal",
+      "nazev": "Pronajmout sál nebo hasičárnu",
+      "popis": "Rezervace s potvrzením od obce.",
+      "zpusob": "online",
+      "odkaz": "/sluzby/rezervace",
+      "uradCesta": "Termín domluvíte i telefonicky nebo osobně na úřadě.",
+      "klicovaSlova": ["pronajmout", "sal", "hasicarna", "rezervace", "oslava"]
+    },
+    {
+      "id": "svoz-odpadu",
+      "slug": "svoz-odpadu",
+      "nazev": "Zjistit termín svozu odpadu",
+      "popis": "Kalendář podle ulice, bioodpad do 20. listopadu.",
+      "zpusob": "online",
+      "odkaz": null,
+      "uradCesta": "Tištěný svozový kalendář dostanete na úřadě.",
+      "klicovaSlova": ["svoz", "odpad", "bio", "plast", "popelnice"]
+    },
+    {
+      "id": "kaceni-stromu",
+      "slug": "kaceni-stromu",
+      "nazev": "Požádat o povolení ke kácení stromu",
+      "popis": "Formulář s mapou.",
+      "zpusob": "online",
+      "odkaz": null,
+      "uradCesta": "Papírovou žádost podáte na úřadě.",
+      "klicovaSlova": ["kaceni", "strom", "drevina", "zadost"]
+    },
+    {
+      "id": "ohlasit-zabor",
+      "slug": "ohlasit-zabor",
+      "nazev": "Ohlásit zábor veřejného prostranství",
+      "popis": "Lešení, kontejner, stánek.",
+      "zpusob": "online",
+      "odkaz": null,
+      "uradCesta": "Ohlášení podáte i na úřadě.",
+      "klicovaSlova": ["zabor", "leseni", "kontejner", "stanek"]
+    },
+    {
+      "id": "objednat-se-na-urad",
+      "slug": "objednat-se-na-urad",
+      "nazev": "Objednat se na úřad",
+      "popis": "Czech POINT, ověření podpisu, přihlášení k pobytu.",
+      "zpusob": "urad",
+      "odkaz": null,
+      "uradCesta": "Zavolejte na úřad, nebo přijďte v úředních hodinách bez objednání.",
+      "klicovaSlova": ["objednat", "overeni", "podpis", "czech point", "vypis"]
+    }
+  ],
+  "poplatky": [
+    {
+      "id": "odpad-osoba",
+      "nazev": "Poplatek za odpad",
+      "castka": 900,
+      "mena": "CZK",
+      "jednotka": "na osobu a rok",
+      "splatnost": "05-31",
+      "splatnostText": "do 31. května",
+      "kdoPlati": "každý s trvalým pobytem v obci",
+      "ulevy": "děti do 3 let a lidé starší 80 let neplatí",
+      "poradiVs": 1,
+      "zpusobyPlatby": ["qr", "prevod", "hotove"],
+      "uradCesta": "převodem nebo hotově na úřadě"
+    },
+    {
+      "id": "pes",
+      "nazev": "Poplatek ze psů",
+      "castka": 200,
+      "mena": "CZK",
+      "jednotka": "za psa a rok",
+      "splatnost": "05-31",
+      "splatnostText": "do 31. května",
+      "kdoPlati": "držitel psa staršího 3 měsíců s trvalým pobytem v obci",
+      "ulevy": null,
+      "poradiVs": 2,
+      "zpusobyPlatby": ["qr", "prevod", "hotove"],
+      "uradCesta": "převodem nebo hotově na úřadě",
+      "vyhlaska": "ozv-poplatek-ze-psu"
+    },
+    {
+      "id": "odpad-chalupa",
+      "nazev": "Poplatek za odpad z chalupy",
+      "castka": 900,
+      "mena": "CZK",
+      "jednotka": "za stavbu a rok",
+      "splatnost": "05-31",
+      "splatnostText": "do 31. května",
+      "kdoPlati": "majitelé chalup a domů, ve kterých nikdo nemá trvalý pobyt",
+      "ulevy": null,
+      "poradiVs": 3,
+      "zpusobyPlatby": ["qr", "prevod", "hotove"],
+      "uradCesta": "převodem nebo hotově na úřadě"
+    }
+  ]
+}

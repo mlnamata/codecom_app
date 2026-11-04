@@ -1,0 +1,102 @@
+{
+  "nazev": "Javoří Lhota",
+  "slug": "javori-lhota",
+  "vLokale": "v Javoří Lhotě",
+  "okres": "Klatovy",
+  "kraj": "Plzeňský kraj",
+  "orp": "[ORP]",
+  "obyvatel": 684,
+  "adresa": {
+    "ulice": "Náves 1",
+    "psc": "[PSČ]",
+    "obec": "Javoří Lhota"
+  },
+  "ico": "[IČO]",
+  "dic": "[DIČ]",
+  "datovaSchranka": "[ID DS]",
+  "cisloUctu": "[ČÍSLO ÚČTU]",
+  "email": "[E-MAIL]",
+  "telefon": "[TELEFON]",
+  "uredniHodiny": [
+    { "den": 1, "od": "08:00", "do": "17:00" },
+    { "den": 2, "od": "08:00", "do": "12:00" },
+    { "den": 3, "od": "08:00", "do": "17:00" },
+    { "den": 4, "od": "08:00", "do": "12:00" }
+  ],
+  "uredniHodinyText": "pondělí a středa 8 až 17, úterý a čtvrtek 8 až 12",
+  "castiObce": [
+    { "nazev": "Javoří Lhota", "slug": "javori-lhota", "obyvatel": 412 },
+    { "nazev": "Podjavoří", "slug": "podjavori", "obyvatel": 138 },
+    { "nazev": "Hájek", "slug": "hajek", "obyvatel": 86 },
+    { "nazev": "Na Rovném", "slug": "na-rovnem", "obyvatel": 48 }
+  ],
+  "kontakty": [
+    {
+      "id": "starostka",
+      "jmeno": "Marie Šťastná",
+      "funkce": "Starostka",
+      "agenda": "vedení obce, zastupitelstvo, krizová hlášení",
+      "kancelar": null,
+      "kdy": "Po a St od 15 do 17 hodin, Út a Čt 8 až 12, jindy po domluvě",
+      "email": "[E-MAIL]",
+      "telefon": "[TELEFON]"
+    },
+    {
+      "id": "mistostarosta",
+      "jmeno": "Petr Kos",
+      "funkce": "Místostarosta",
+      "agenda": "stavby a pozemky, územní plán, přípojky, zábory",
+      "kancelar": null,
+      "kdy": "po domluvě",
+      "email": "[E-MAIL]",
+      "telefon": "[TELEFON]"
+    },
+    {
+      "id": "ucetni",
+      "jmeno": "Jana Malá",
+      "funkce": "Účetní obce",
+      "agenda": "poplatky a pokladna, odpad, psi, nájmy, platby kartou, správa webu",
+      "kancelar": null,
+      "kdy": "v úředních hodinách",
+      "email": "[E-MAIL]",
+      "telefon": "[TELEFON]"
+    },
+    {
+      "id": "evidence",
+      "jmeno": null,
+      "funkce": "Evidence obyvatel",
+      "agenda": "přihlášení k pobytu, Czech POINT, ověřování",
+      "kancelar": "kancelář č. 2",
+      "kdy": "v úředních hodinách",
+      "email": "[E-MAIL]",
+      "telefon": "[TELEFON]"
+    },
+    {
+      "id": "matrika",
+      "jmeno": null,
+      "funkce": "Matrika",
+      "agenda": "narození, úmrtí, vítání občánků",
+      "kancelar": "kancelář č. 1",
+      "kdy": "v úředních hodinách",
+      "email": "[E-MAIL]",
+      "telefon": "[TELEFON]"
+    }
+  ],
+  "poverenec": {
+    "jmeno": "[POVĚŘENEC]",
+    "email": "[E-MAIL]",
+    "telefon": "[TELEFON]"
+  },
+  "znakUrl": null,
+  "sablona": "naves",
+  "paleta": 0,
+  "urovenEditoru": "zaklad",
+  "moduly": ["web", "aplikace", "urad", "iot", "ai"],
+  "popis": "684 obyvatel, náves s třistaletou lípou, kostel svatého Václava a Mlýnský rybník pod Javorníkem.",
+  "spravceWebu": {
+    "jmeno": "Jana Malá",
+    "funkce": "účetní obce",
+    "aktualizovano": "2026-10-26"
+  },
+  "ukazka": true
+}

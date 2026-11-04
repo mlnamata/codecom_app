@@ -1,0 +1,196 @@
+{
+  "stavKDni": "2026-11-04T09:50:00.000Z",
+  "budovy": [
+    {
+      "id": "urad",
+      "nazev": "Obecní úřad a sál",
+      "adresa": "Náves 1",
+      "stav": "ok",
+      "souhrn": "21 °C, sál rezervován 18:00–22:00",
+      "rezimTopeni": "auto",
+      "brana": { "online": true, "posledniZprava": "2026-11-04T09:49:40.000Z" },
+      "kdoMaKlic": "starostka, účetní obce a údržbář obce",
+      "mistnosti": [
+        { "id": "urad-sal", "nazev": "Sál", "teplota": 17.5, "cilovaTeplota": 21, "cilText": "21 °C od 16:00", "okno": "zavreno" },
+        { "id": "urad-kancelar", "nazev": "Kancelář", "teplota": 21.2, "cilovaTeplota": 21, "cilText": "21 °C", "okno": "zavreno" },
+        { "id": "urad-zasedacka", "nazev": "Zasedačka", "teplota": 19.0, "cilovaTeplota": 19, "cilText": "19 °C", "okno": "otevreno", "poznamka": "otevřeno, hlavice zavřena" }
+      ],
+      "plan": [
+        { "nazev": "Kancelář: komfort", "od": "07:00", "do": "17:00" },
+        { "nazev": "Sál: předtopení a akce", "od": "16:00", "do": "21:30" },
+        { "nazev": "PIN nájemce", "od": "17:30", "do": "22:30" }
+      ],
+      "dvere": [
+        { "id": "urad-vchod", "nazev": "Hlavní vchod", "stav": "zamceno", "posledniVstup": { "cas": "2026-11-04T06:42:00.000Z", "kdo": "Jana M.", "zpusob": "PIN" } }
+      ],
+      "upozorneni": [],
+      "energie": [
+        { "den": "2026-10-29", "kWh": 52 },
+        { "den": "2026-10-30", "kWh": 48 },
+        { "den": "2026-10-31", "kWh": 30 },
+        { "den": "2026-11-01", "kWh": 22 },
+        { "den": "2026-11-02", "kWh": 55 },
+        { "den": "2026-11-03", "kWh": 61 },
+        { "den": "2026-11-04", "kWh": 58 }
+      ]
+    },
+    {
+      "id": "sokolovna",
+      "nazev": "Sokolovna",
+      "adresa": "Za Školou 210",
+      "stav": "alarm",
+      "souhrn": "4 °C v tělocvičně, alarm",
+      "rezimTopeni": "auto",
+      "brana": { "online": true, "posledniZprava": "2026-11-04T09:49:30.000Z" },
+      "kdoMaKlic": "údržbář obce a TJ Sokol",
+      "mistnosti": [
+        { "id": "sokol-telocvicna", "nazev": "Tělocvična", "teplota": 4.0, "cilovaTeplota": 8, "cilText": "8 °C (protimrazová ochrana)", "okno": "zavreno" },
+        { "id": "sokol-satny", "nazev": "Šatny", "teplota": 9.5, "cilovaTeplota": 8, "cilText": "8 °C", "okno": "zavreno" }
+      ],
+      "plan": [
+        { "nazev": "Protimrazová ochrana", "od": "00:00", "do": "24:00" },
+        { "nazev": "Trénink TJ Sokol", "od": "17:00", "do": "20:00" }
+      ],
+      "dvere": [
+        { "id": "sokol-vchod", "nazev": "Hlavní vchod", "stav": "zamceno", "posledniVstup": { "cas": "2026-11-03T19:15:00.000Z", "kdo": "TJ Sokol", "zpusob": "karta" } }
+      ],
+      "upozorneni": [
+        {
+          "id": "sokol-mraz",
+          "uroven": "alarm",
+          "text": "Teplota v tělocvičně 4 °C, hrozí zamrznutí. Protimrazové topení se zapnulo samo, SMS odešla správci.",
+          "od": "2026-11-04T09:12:00.000Z",
+          "prevzal": null
+        }
+      ],
+      "energie": [
+        { "den": "2026-10-29", "kWh": 38 },
+        { "den": "2026-10-30", "kWh": 35 },
+        { "den": "2026-10-31", "kWh": 40 },
+        { "den": "2026-11-01", "kWh": 37 },
+        { "den": "2026-11-02", "kWh": 42 },
+        { "den": "2026-11-03", "kWh": 44 },
+        { "den": "2026-11-04", "kWh": 51 }
+      ]
+    },
+    {
+      "id": "skolka",
+      "nazev": "Mateřská škola",
+      "adresa": "Školní 15",
+      "stav": "varovani",
+      "souhrn": "baterie hlavice ve třídě Berušky 12 %",
+      "rezimTopeni": "auto",
+      "brana": { "online": true, "posledniZprava": "2026-11-04T09:49:50.000Z" },
+      "kdoMaKlic": "ředitelka školy, úklid a údržbář obce",
+      "mistnosti": [
+        { "id": "skolka-berusky", "nazev": "Berušky", "teplota": 21.8, "cilovaTeplota": 22, "cilText": "22 °C", "okno": "zavreno" },
+        { "id": "skolka-slunicka", "nazev": "Sluníčka", "teplota": 22.1, "cilovaTeplota": 22, "cilText": "22 °C", "okno": "zavreno" },
+        { "id": "skolka-jidelna", "nazev": "Jídelna", "teplota": 20.4, "cilovaTeplota": 20, "cilText": "20 °C", "okno": "zavreno" }
+      ],
+      "plan": [
+        { "nazev": "Provoz školky", "od": "06:30", "do": "16:30" }
+      ],
+      "dvere": [
+        { "id": "skolka-vchod", "nazev": "Hlavní vchod", "stav": "zamceno", "posledniVstup": { "cas": "2026-11-04T05:30:00.000Z", "kdo": "úklid", "zpusob": "karta" } }
+      ],
+      "upozorneni": [
+        {
+          "id": "skolka-baterie",
+          "uroven": "varovani",
+          "text": "Slabá baterie hlavice ve třídě Berušky, 12 %.",
+          "od": "2026-11-03T06:00:00.000Z",
+          "prevzal": null
+        }
+      ],
+      "energie": [
+        { "den": "2026-10-29", "kWh": 88 },
+        { "den": "2026-10-30", "kWh": 91 },
+        { "den": "2026-10-31", "kWh": 20 },
+        { "den": "2026-11-01", "kWh": 18 },
+        { "den": "2026-11-02", "kWh": 86 },
+        { "den": "2026-11-03", "kWh": 90 },
+        { "den": "2026-11-04", "kWh": 84 }
+      ]
+    },
+    {
+      "id": "hasicarna",
+      "nazev": "Hasičská zbrojnice",
+      "adresa": "U Rybníka 3",
+      "stav": "ok",
+      "souhrn": "15 °C, útlum",
+      "rezimTopeni": "utlum",
+      "brana": { "online": true, "posledniZprava": "2026-11-04T09:49:45.000Z" },
+      "kdoMaKlic": "velitel SDH a údržbář obce",
+      "mistnosti": [
+        { "id": "hasici-garaz", "nazev": "Garáž", "teplota": 12.0, "cilovaTeplota": 12, "cilText": "12 °C", "okno": "zavreno" },
+        { "id": "hasici-sal", "nazev": "Sál a klubovna", "teplota": 15.1, "cilovaTeplota": 15, "cilText": "15 °C", "okno": "zavreno" }
+      ],
+      "plan": [
+        { "nazev": "Útlum", "od": "00:00", "do": "24:00" }
+      ],
+      "dvere": [
+        { "id": "hasici-vchod", "nazev": "Hlavní vchod", "stav": "zamceno", "posledniVstup": { "cas": "2026-10-30T18:05:00.000Z", "kdo": "SDH", "zpusob": "karta" } }
+      ],
+      "upozorneni": [],
+      "energie": [
+        { "den": "2026-10-29", "kWh": 12 },
+        { "den": "2026-10-30", "kWh": 25 },
+        { "den": "2026-10-31", "kWh": 14 },
+        { "den": "2026-11-01", "kWh": 11 },
+        { "den": "2026-11-02", "kWh": 11 },
+        { "den": "2026-11-03", "kWh": 12 },
+        { "den": "2026-11-04", "kWh": 10 }
+      ]
+    },
+    {
+      "id": "knihovna",
+      "nazev": "Knihovna",
+      "adresa": "Náves 4",
+      "stav": "ok",
+      "souhrn": "20 °C, otevřeno od 13:00",
+      "rezimTopeni": "auto",
+      "brana": { "online": true, "posledniZprava": "2026-11-04T09:49:35.000Z" },
+      "kdoMaKlic": "knihovnice a údržbář obce",
+      "mistnosti": [
+        { "id": "knihovna-pujcovna", "nazev": "Půjčovna", "teplota": 18.6, "cilovaTeplota": 20, "cilText": "20 °C od 12:30", "okno": "zavreno" }
+      ],
+      "plan": [
+        { "nazev": "Otevírací doba", "od": "12:30", "do": "18:00" }
+      ],
+      "dvere": [
+        { "id": "knihovna-vchod", "nazev": "Hlavní vchod", "stav": "zamceno", "posledniVstup": { "cas": "2026-11-02T12:02:00.000Z", "kdo": "knihovnice", "zpusob": "PIN" } }
+      ],
+      "upozorneni": [],
+      "energie": [
+        { "den": "2026-10-29", "kWh": 9 },
+        { "den": "2026-10-30", "kWh": 14 },
+        { "den": "2026-10-31", "kWh": 3 },
+        { "den": "2026-11-01", "kWh": 3 },
+        { "den": "2026-11-02", "kWh": 8 },
+        { "den": "2026-11-03", "kWh": 15 },
+        { "den": "2026-11-04", "kWh": 9 }
+      ]
+    }
+  ],
+  "prvky": [
+    { "id": "urad-brana", "budova": "urad", "mistnost": null, "typ": "brana", "nazev": "Brána CodeKom", "baterie": null, "stav": "online" },
+    { "id": "urad-hlavice-sal", "budova": "urad", "mistnost": "urad-sal", "typ": "hlavice", "nazev": "Hlavice sál", "baterie": 78, "stav": "online" },
+    { "id": "urad-hlavice-kancelar", "budova": "urad", "mistnost": "urad-kancelar", "typ": "hlavice", "nazev": "Hlavice kancelář", "baterie": 64, "stav": "online" },
+    { "id": "urad-hlavice-zasedacka", "budova": "urad", "mistnost": "urad-zasedacka", "typ": "hlavice", "nazev": "Hlavice zasedačka", "baterie": 81, "stav": "online" },
+    { "id": "urad-zamek", "budova": "urad", "mistnost": null, "typ": "zamek", "nazev": "Zámek hlavního vchodu", "baterie": 92, "stav": "online" },
+    { "id": "urad-elektromer", "budova": "urad", "mistnost": null, "typ": "elektromer", "nazev": "Elektroměr", "baterie": null, "stav": "online" },
+    { "id": "sokol-brana", "budova": "sokolovna", "mistnost": null, "typ": "brana", "nazev": "Brána CodeKom", "baterie": null, "stav": "online" },
+    { "id": "sokol-hlavice-telocvicna", "budova": "sokolovna", "mistnost": "sokol-telocvicna", "typ": "hlavice", "nazev": "Hlavice tělocvična", "baterie": 55, "stav": "online" },
+    { "id": "sokol-hlavice-satny", "budova": "sokolovna", "mistnost": "sokol-satny", "typ": "hlavice", "nazev": "Hlavice šatny", "baterie": 60, "stav": "online" },
+    { "id": "sokol-zamek", "budova": "sokolovna", "mistnost": null, "typ": "zamek", "nazev": "Zámek hlavního vchodu", "baterie": 70, "stav": "online" },
+    { "id": "skolka-brana", "budova": "skolka", "mistnost": null, "typ": "brana", "nazev": "Brána CodeKom", "baterie": null, "stav": "online" },
+    { "id": "skolka-hlavice-berusky", "budova": "skolka", "mistnost": "skolka-berusky", "typ": "hlavice", "nazev": "Hlavice Berušky", "baterie": 12, "stav": "online" },
+    { "id": "skolka-hlavice-slunicka", "budova": "skolka", "mistnost": "skolka-slunicka", "typ": "hlavice", "nazev": "Hlavice Sluníčka", "baterie": 71, "stav": "online" },
+    { "id": "skolka-hlavice-jidelna", "budova": "skolka", "mistnost": "skolka-jidelna", "typ": "hlavice", "nazev": "Hlavice jídelna", "baterie": 68, "stav": "online" },
+    { "id": "hasici-brana", "budova": "hasicarna", "mistnost": null, "typ": "brana", "nazev": "Brána CodeKom", "baterie": null, "stav": "online" },
+    { "id": "hasici-hlavice-garaz", "budova": "hasicarna", "mistnost": "hasici-garaz", "typ": "hlavice", "nazev": "Hlavice garáž", "baterie": 90, "stav": "online" },
+    { "id": "hasici-hlavice-sal", "budova": "hasicarna", "mistnost": "hasici-sal", "typ": "hlavice", "nazev": "Hlavice sál a klubovna", "baterie": 88, "stav": "online" },
+    { "id": "knihovna-brana", "budova": "knihovna", "mistnost": null, "typ": "brana", "nazev": "Brána CodeKom", "baterie": null, "stav": "online" },
+    { "id": "knihovna-hlavice-pujcovna", "budova": "knihovna", "mistnost": "knihovna-pujcovna", "typ": "hlavice", "nazev": "Hlavice půjčovna", "baterie": 73, "stav": "online" }
+  ]
+}
