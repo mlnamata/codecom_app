@@ -77,9 +77,15 @@ export function Karta({
 
 const styles = StyleSheet.create({
   karta: {
-    borderRadius: 8,
+    borderRadius: 12,
     padding: 16,
     marginVertical: 6,
     width: '100%',
+    // Jemný stín odliší kartu od pozadí i u palet, kde mají podobný odstín.
+    shadowColor: '#000',
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 1,
   },
 })

@@ -18,7 +18,7 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Redesign vzhledu prototypu: ikony v navigaci, rámec telefonu, tenký pruh ukázky, rychlé akce na přehledu, barvy přepínačů | hotovo | session aplikace (design) |
 | Oprava úřední desky: filtry z kategorií v datech (dřív pevné a neexistující), čitelné názvy kategorií, české datum | hotovo | session aplikace (design 2) |
 | Kategorie závad slovy a jednotně: formulář občana ukládá id z dat (dřív „Výmol“ místo `vymol`), úřad a sledování ukazují název | hotovo | session aplikace (design 2) |
-| Sjednocení vzhledu karet a štítků na obrazovkách Zprávy, Deska, Krize, Závady, Budovy | dělá se | session aplikace (design 2) |
+| Sjednocení karet (zaoblení 12, jemný stín), mezery ve Zprávách, česká data u akcí, rezervací a desky na přehledech | hotovo | session aplikace (design 2) |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

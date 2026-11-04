@@ -6,6 +6,7 @@ import { useRelace } from '@/stav/relace'
 import { useZdroj } from '@/zdroj'
 import { Karta, Tlacitko } from '@/ui'
 import type { PrehledUradu, Rezervace, RoleUradu } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 export default function UradPrehledScreen() {
   const router = useRouter()
@@ -355,7 +356,7 @@ export default function UradPrehledScreen() {
                     { color: barvy.ink, fontFamily: pismo.rodina, fontWeight: pismo.vahy.polotucne },
                   ]}
                 >
-                  {rez.prostor === 'sal-uradu' ? 'Sál obecního úřadu' : 'Sál v hasičárně'} • {rez.den}
+                  {rez.prostor === 'sal-uradu' ? 'Sál obecního úřadu' : 'Sál v hasičárně'} • {formatDay(rez.den)}
                 </Text>
                 <Text style={[styles.rezervaceCas, { color: barvy.muted, fontFamily: pismo.rodina }]}>
                   Čas: {rez.od}–{rez.do} • Účel: {rez.ucel}

@@ -5,6 +5,7 @@ import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { Karta } from '@/ui'
 import type { Aktualita, Akce } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 export default function ZpravyScreen() {
   const { barvy, pismo } = useTema()
@@ -150,7 +151,7 @@ export default function ZpravyScreen() {
       ) : (
         <View style={styles.seznam}>
           {akceList.map((akce) => (
-            <Karta key={akce.id} popisekProCtecku={`Akce: ${akce.nazev}, datum: ${akce.den}`}>
+            <Karta key={akce.id} popisekProCtecku={`Akce: ${akce.nazev}, datum: ${formatDay(akce.den)}`}>
               <Text
                 style={[
                   styles.polozkaTitulek,
@@ -172,7 +173,7 @@ export default function ZpravyScreen() {
                 </Text>
               )}
               <Text style={[styles.polozkaDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-                Den konání: {akce.den}
+                Den konání: {formatDay(akce.den)}
               </Text>
             </Karta>
           ))}
@@ -211,9 +212,7 @@ const styles = StyleSheet.create({
   nacitac: {
     marginVertical: 40,
   },
-  seznam: {
-    gap: 8,
-  },
+  seznam: {},
   polozkaTitulek: {
     fontSize: 16,
     marginBottom: 4,

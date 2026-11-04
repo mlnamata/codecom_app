@@ -14,6 +14,7 @@ import { useRelace } from '@/stav/relace'
 import { KrizovyBanner, Karta, Tlacitko } from '@/ui'
 import { Ikona, type NazevIkony } from '@/ui/Ikony'
 import type { Prehled, KrizoveHlaseni } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 function zacinaVelkym(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1)
@@ -329,7 +330,7 @@ export default function ObcanPrehledScreen() {
                   {d.kategorie}
                 </Text>
                 <Text style={[styles.kartaDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-                  Vyvěšeno: {d.vyvesenoOd}
+                  Vyvěšeno {formatDay(d.vyvesenoOd)}
                 </Text>
               </View>
             </Karta>
