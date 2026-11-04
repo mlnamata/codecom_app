@@ -6,6 +6,10 @@ export interface RamecProps {
   children: React.ReactNode
 }
 
+/**
+ * Webová varianta rámu. Na širokém okně kreslí obrys telefonu uprostřed
+ * a na úzkém zabere celou šířku. Obrys je jemný stín, ne tvrdá hrana.
+ */
 export function Ramec({ children }: RamecProps) {
   const { barvy } = useTema()
   const [sirkaOkna, setSirkaOkna] = useState(() => Dimensions.get('window').width)
@@ -26,17 +30,7 @@ export function Ramec({ children }: RamecProps) {
 
   return (
     <View style={styles.webPozadi}>
-      <View
-        style={[
-          styles.telefonRamec,
-          {
-            backgroundColor: barvy.bg,
-            borderColor: barvy.line,
-          },
-        ]}
-      >
-        {children}
-      </View>
+      <View style={[styles.telefon, { backgroundColor: barvy.bg }]}>{children}</View>
     </View>
   )
 }
@@ -52,20 +46,20 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     minHeight: '100vh' as unknown as number,
-    backgroundColor: '#EAEAEA',
+    backgroundColor: '#E6EBE2',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 16,
+    paddingVertical: 24,
   },
-  telefonRamec: {
+  telefon: {
     width: '100%',
-    maxWidth: 430,
+    maxWidth: 412,
     height: '100%',
-    maxHeight: 932,
-    borderWidth: 1,
-    borderRadius: 24,
+    maxHeight: 892,
+    borderRadius: 36,
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
+    boxShadow: '0 24px 60px rgba(30, 42, 34, 0.18), 0 2px 6px rgba(30, 42, 34, 0.08)',
   },
 })

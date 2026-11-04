@@ -8,6 +8,10 @@ export interface PruhUkazkyProps {
   onZmenitRoli?: () => void
 }
 
+/**
+ * Tenký pruh nad aplikací, který jasně říká, že jde o ukázku.
+ * Stav spojení je jedna věta, ovládání jsou textové odkazy.
+ */
 export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
   const router = useRouter()
   const { barvy, pismo } = useTema()
@@ -32,47 +36,27 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
   }
 
   const jeOffline = rezim === 'vestavene'
+  const barvaStavu = jeOffline ? barvy.muted : barvy.primary
+  const tecka = jeOffline ? '#B7791F' : barvy.primary
 
   return (
     <View
-      style={[
-        styles.pruh,
-        {
-          backgroundColor: barvy.surface,
-          borderBottomColor: barvy.line,
-        },
-      ]}
+      style={[styles.pruh, { backgroundColor: barvy.surface, borderBottomColor: barvy.line }]}
       accessibilityRole="toolbar"
       accessibilityLabel="Ovládání ukázky CodeKom"
     >
-      <View style={styles.hlavicka}>
+      <View style={styles.radek}>
         <View style={styles.vlevo}>
+          <View style={[styles.tecka, { backgroundColor: tecka }]} />
           <Text
-            style={[
-              styles.nazevUkazky,
-              {
-                color: barvy.ink,
-                fontFamily: pismo.rodina,
-                fontWeight: pismo.vahy.polotucne,
-              },
-            ]}
+            style={[styles.stav, { color: barvaStavu, fontFamily: pismo.rodina }]}
+            numberOfLines={1}
           >
-            Ukázka CodeKom
-          </Text>
-          <Text
-            style={[
-              styles.stavPripojeni,
-              {
-                color: jeOffline ? '#CA8504' : '#007A3D',
-                fontFamily: pismo.rodina,
-              },
-            ]}
-          >
-            {jeOffline ? 'Offline ukázka' : 'Připojeno k ukázkovému webu'}
+            {jeOffline ? 'Ukázka · vestavěná data' : 'Ukázka · připojeno'}
           </Text>
         </View>
 
-        <View style={styles.tlacitka}>
+        <View style={styles.vpravo}>
           {jeOffline && (
             <Pressable
               role="button"
@@ -80,13 +64,11 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
               accessibilityLabel="Zkusit znovu připojit"
               onPress={() => void zkusitZnovuPripojit()}
               disabled={overujeSe}
-              style={({ pressed }) => [
-                styles.malaVolba,
-                { borderColor: barvy.line, opacity: pressed || overujeSe ? 0.6 : 1 },
-              ]}
+              hitSlop={8}
+              style={({ pressed }) => [styles.odkaz, { opacity: pressed || overujeSe ? 0.6 : 1 }]}
             >
-              <Text style={[styles.textVolby, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-                {overujeSe ? 'Ověřuji...' : 'Znovu připojit'}
+              <Text style={[styles.odkazText, { color: barvy.link, fontFamily: pismo.rodina }]}>
+                {overujeSe ? 'Ověřuji…' : 'Znovu připojit'}
               </Text>
             </Pressable>
           )}
@@ -97,13 +79,11 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
             accessibilityLabel="Obnovit ukázku"
             onPress={() => void handleObnovit()}
             disabled={obnovuji}
-            style={({ pressed }) => [
-              styles.malaVolba,
-              { borderColor: barvy.line, opacity: pressed || obnovuji ? 0.6 : 1 },
-            ]}
+            hitSlop={8}
+            style={({ pressed }) => [styles.odkaz, { opacity: pressed || obnovuji ? 0.6 : 1 }]}
           >
-            <Text style={[styles.textVolby, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-              {obnovuji ? 'Obnovuji...' : 'Obnovit'}
+            <Text style={[styles.odkazText, { color: barvy.link, fontFamily: pismo.rodina }]}>
+              {obnovuji ? 'Obnovuji…' : 'Obnovit'}
             </Text>
           </Pressable>
 
@@ -112,12 +92,10 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
             accessibilityRole="button"
             accessibilityLabel="Změnit roli"
             onPress={handleZmenitRoli}
-            style={({ pressed }) => [
-              styles.malaVolba,
-              { borderColor: barvy.line, opacity: pressed ? 0.6 : 1 },
-            ]}
+            hitSlop={8}
+            style={({ pressed }) => [styles.odkaz, { opacity: pressed ? 0.6 : 1 }]}
           >
-            <Text style={[styles.textVolby, { color: barvy.ink, fontFamily: pismo.rodina }]}>
+            <Text style={[styles.odkazText, { color: barvy.link, fontFamily: pismo.rodina }]}>
               Změnit roli
             </Text>
           </Pressable>
@@ -125,10 +103,10 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
       </View>
 
       {jeOffline && (
-        <Text style={[styles.offlinePoznamka, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+        <Text style={[styles.poznamka, { color: barvy.muted, fontFamily: pismo.rodina }]}>
           {bylPrepadNaVestavene
-            ? 'Připojení k webu selhalo. Aplikace přešla na vestavěná data, změny zůstanou jen zde.'
-            : 'Ukázkový web neběží, aplikace používá vestavěná data. Změny zůstanou jen v tomto prohlížeči.'}
+            ? 'Připojení k webu selhalo, změny zůstanou jen v tomto prohlížeči.'
+            : 'Ukázkový web neběží, změny zůstanou jen v tomto prohlížeči.'}
         </Text>
       )}
     </View>
@@ -137,11 +115,11 @@ export function PruhUkazky({ onZmenitRoli }: PruhUkazkyProps) {
 
 const styles = StyleSheet.create({
   pruh: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     paddingVertical: 8,
     borderBottomWidth: 1,
   },
-  hlavicka: {
+  radek: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -149,34 +127,36 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   vlevo: {
-    flexDirection: 'column',
-  },
-  nazevUkazky: {
-    fontSize: 13,
-  },
-  stavPripojeni: {
-    fontSize: 12,
-    fontWeight: '500',
-  },
-  tlacitka: {
     flexDirection: 'row',
-    gap: 6,
     alignItems: 'center',
+    gap: 8,
+    flexShrink: 1,
   },
-  malaVolba: {
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 6,
-    borderWidth: 1,
+  tecka: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  stav: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  vpravo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  odkaz: {
     minHeight: 32,
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  textVolby: {
+  odkazText: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  poznamka: {
     fontSize: 12,
-  },
-  offlinePoznamka: {
-    fontSize: 11,
+    lineHeight: 17,
     marginTop: 4,
   },
 })

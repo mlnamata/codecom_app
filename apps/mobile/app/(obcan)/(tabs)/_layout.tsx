@@ -1,29 +1,48 @@
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { useTema } from '@/tema'
+import { Ikona, type NazevIkony } from '@/ui/Ikony'
+
+const IKONY: Record<string, NazevIkony> = {
+  prehled: 'domu',
+  deska: 'deska',
+  zpravy: 'zpravy',
+  sluzby: 'sluzby',
+  vice: 'vice',
+}
 
 export default function ObcanTabsLayout() {
   const { barvy, pismo } = useTema()
 
   return (
     <Tabs
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerShown: false,
+        sceneStyle: { backgroundColor: barvy.bg },
         tabBarStyle: {
           backgroundColor: barvy.surface,
           borderTopColor: barvy.line,
-          minHeight: 56,
-          paddingBottom: 6,
-          paddingTop: 6,
+          borderTopWidth: 1,
+          height: 80,
+          paddingTop: 8,
+          paddingBottom: 16,
         },
         tabBarActiveTintColor: barvy.primary,
         tabBarInactiveTintColor: barvy.muted,
         tabBarLabelStyle: {
           fontFamily: pismo.rodina,
           fontSize: 12,
-          fontWeight: '500',
+          fontWeight: pismo.vahy.polotucne,
+          marginTop: 2,
         },
-      }}
+        tabBarIcon: ({ color }) => (
+          <Ikona
+            nazev={IKONY[route.name] ?? 'domu'}
+            barva={typeof color === 'string' ? color : barvy.muted}
+            velikost={24}
+          />
+        ),
+      })}
     >
       <Tabs.Screen name="prehled" options={{ title: 'Přehled' }} />
       <Tabs.Screen name="deska" options={{ title: 'Deska' }} />

@@ -206,7 +206,16 @@ export default function UradPrehledScreen() {
                 },
               ]}
             >
-              {nacitaSe ? '…' : (data?.budovSVyhradou ?? 0) > 0 ? `${data?.budovSVyhradou} upozornění` : 'V pořádku'}
+              {nacitaSe ? (
+                '…'
+              ) : (data?.budovSVyhradou ?? 0) > 0 ? (
+                <>
+                  {data?.budovSVyhradou}
+                  <Text style={{ fontSize: 16, fontWeight: '600' }}> upozornění</Text>
+                </>
+              ) : (
+                'V pořádku'
+              )}
             </Text>
           </View>
           <Text style={[styles.kartaPodtitul, { color: barvy.ink, fontFamily: pismo.rodina }]}>

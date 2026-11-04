@@ -152,6 +152,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.krize}
             onValueChange={prepnoutKrizi}
             accessibilityLabel="Přepínač oznámení: Krize a výstrahy"
@@ -173,6 +175,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.informace}
             onValueChange={(v) => zmenitNastaveni('informace', v)}
             accessibilityLabel="Přepínač oznámení: Informace obce a rozhlas"
@@ -194,6 +198,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.aktuality}
             onValueChange={(v) => zmenitNastaveni('aktuality', v)}
             accessibilityLabel="Přepínač oznámení: Aktuality a akce"
@@ -215,6 +221,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.deska}
             onValueChange={(v) => zmenitNastaveni('deska', v)}
             accessibilityLabel="Přepínač oznámení: Úřední deska"
@@ -236,6 +244,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.mojeHlaseni}
             onValueChange={(v) => zmenitNastaveni('mojeHlaseni', v)}
             accessibilityLabel="Přepínač oznámení: Moje hlášení závad"
@@ -257,6 +267,8 @@ export default function ViceScreen() {
             </Text>
           </View>
           <Switch
+            trackColor={{ false: barvy.line, true: barvy.primary }}
+            thumbColor={barvy.surface}
             value={nastaveni.tichyRezim}
             onValueChange={(v) => zmenitNastaveni('tichyRezim', v)}
             accessibilityLabel="Přepínač tichého režimu"

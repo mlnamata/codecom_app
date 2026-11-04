@@ -12,7 +12,25 @@ import { useTema } from '@/tema'
 import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { KrizovyBanner, Karta, Tlacitko } from '@/ui'
+import { Ikona, type NazevIkony } from '@/ui/Ikony'
 import type { Prehled, KrizoveHlaseni } from '@codekom/typy'
+
+function zacinaVelkym(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+interface RychlaAkce {
+  nazev: string
+  cil: string
+  ikona: NazevIkony
+}
+
+const RYCHLE_AKCE: RychlaAkce[] = [
+  { nazev: 'Nahlásit závadu', cil: '/(obcan)/(tabs)/sluzby/zavada', ikona: 'zavada' },
+  { nazev: 'Poplatky', cil: '/(obcan)/(tabs)/sluzby/poplatky', ikona: 'platby' },
+  { nazev: 'Rezervace', cil: '/(obcan)/(tabs)/sluzby/rezervace', ikona: 'rezervace' },
+  { nazev: 'Úřední deska', cil: '/(obcan)/(tabs)/deska', ikona: 'deska' },
+]
 
 export default function ObcanPrehledScreen() {
   const router = useRouter()
@@ -85,6 +103,57 @@ export default function ObcanPrehledScreen() {
         dalsich={aktivniKrize.dalsich}
         onZobrazitDalsi={() => router.push('/(obcan)/(tabs)/zpravy')}
       />
+
+      <View style={styles.zahlavi}>
+        <Text style={[styles.zahlaviDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+          {zacinaVelkym(
+            new Date().toLocaleDateString('cs-CZ', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+            }),
+          )}
+        </Text>
+        <Text
+          role="heading"
+          aria-level={1}
+          accessibilityRole="header"
+          style={[styles.zahlaviNadpis, { color: barvy.ink, fontFamily: pismo.rodina }]}
+        >
+          Přehled obce
+        </Text>
+      </View>
+
+      {/* Rychlé akce */}
+      <View style={styles.rychleAkce} accessibilityRole="menu">
+        {RYCHLE_AKCE.map((akce) => (
+          <Pressable
+            key={akce.cil}
+            role="menuitem"
+            accessibilityRole="button"
+            accessibilityLabel={akce.nazev}
+            onPress={() => router.push(akce.cil)}
+            style={({ pressed }) => [
+              styles.rychlaAkce,
+              {
+                backgroundColor: barvy.surface,
+                borderColor: barvy.line,
+                opacity: pressed ? 0.8 : 1,
+              },
+            ]}
+          >
+            <View style={[styles.rychlaIkona, { backgroundColor: barvy.bg }]}>
+              <Ikona nazev={akce.ikona} barva={barvy.primary} velikost={22} />
+            </View>
+            <Text
+              style={[styles.rychlaNazev, { color: barvy.ink, fontFamily: pismo.rodina }]}
+              numberOfLines={2}
+            >
+              {akce.nazev}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
 
       {/* Hlášení rozhlasu */}
       {nejnovejsiRozhlas && (
@@ -327,9 +396,49 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textAlign: 'center',
   },
+  zahlavi: {
+    gap: 2,
+    marginTop: 4,
+    marginBottom: 4,
+  },
+  zahlaviDatum: {
+    fontSize: 14,
+  },
+  zahlaviNadpis: {
+    fontSize: 28,
+    fontWeight: '700',
+    letterSpacing: -0.4,
+  },
+  rychleAkce: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 16,
+  },
+  rychlaAkce: {
+    flexGrow: 1,
+    flexBasis: '45%',
+    minHeight: 76,
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 12,
+    gap: 10,
+    justifyContent: 'space-between',
+  },
+  rychlaIkona: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rychlaNazev: {
+    fontSize: 15,
+    fontWeight: '600',
+  },
   rozhlasBox: {
-    padding: 14,
-    borderRadius: 8,
+    padding: 16,
+    borderRadius: 16,
     borderWidth: 1,
     marginVertical: 8,
   },
