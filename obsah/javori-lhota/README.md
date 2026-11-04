@@ -84,7 +84,7 @@ Pole podle kolekce `Zastupitele.ts`: `{id, titulPred, jmeno, titulZa, funkce: st
 
 ### `hlaseni-zavad.json` (objekt)
 
-- `kategorie`: `[{id, nazev}]`: Výmol, Osvětlení, Odpad, Zeleň, Jiné (výchozí sada z promptu 08).
+- `kategorie`: `[{id, nazev}]`: 16 kategorií od nevyvezeného koše, nepořádku a vysoké trávy po výmoly, lampy, kanály a sníh. Původní id `vymol`, `osvetleni`, `odpad`, `zelen`, `jine` zůstala, aby platila stávající hlášení.
 - `stavy`: `[{id, nazev}]`: `nove` Přijato, `prijato` Převzato, `v_reseni` Řeší se, `vyrizeno` Vyřízeno, `zamitnuto` Zamítnuto.
 - `hlaseni`: `[{id, cislo (HZ-<rok>-<nnnn>), sledovaciKod (8 znaků bez 0, O, 1, I, L), stav, verejnaOdpoved, kategorie, popis, misto, poloha (null), kontakt ({jmeno, email, telefon} nebo null), pocetFotek, vytvoreno, zmeneno}]`, 7 hlášení ve všech stavech. `kontakt` se nikdy nevrací veřejným endpointem.
 

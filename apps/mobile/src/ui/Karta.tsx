@@ -40,8 +40,8 @@ export function Karta({
           styles.karta,
           {
             backgroundColor: barvy.surface,
-            borderColor: vybrano ? barvy.primary : barvy.line,
-            borderWidth: vybrano ? 2 : 1,
+            borderColor: vybrano ? barvy.primary : 'transparent',
+            borderWidth: 2,
             opacity: pressed ? 0.8 : 1,
           },
           zaostreno && {
@@ -64,8 +64,8 @@ export function Karta({
         styles.karta,
         {
           backgroundColor: barvy.surface,
-          borderColor: barvy.line,
-          borderWidth: 1,
+          borderColor: 'transparent',
+          borderWidth: 2,
         },
         style,
       ]}
@@ -77,15 +77,15 @@ export function Karta({
 
 const styles = StyleSheet.create({
   karta: {
-    borderRadius: 16,
-    padding: 16,
+    borderRadius: 24,
+    padding: 20,
     marginVertical: 6,
     width: '100%',
-    // Jemný stín odliší kartu od pozadí i u palet, kde mají podobný odstín.
-    shadowColor: '#000',
+    // Měkký rozptýlený stín odliší bílou kartu od šedého pozadí.
+    shadowColor: '#111311',
     shadowOpacity: 0.06,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 1,
+    shadowRadius: 18,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 2,
   },
 })

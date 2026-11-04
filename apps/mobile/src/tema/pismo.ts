@@ -2,7 +2,7 @@ import { Platform } from 'react-native'
 
 export const pismo = {
   rodina: Platform.select({
-    web: '"Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    web: '"Inter Tight", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     ios: 'System',
     android: 'sans-serif',
     default: 'sans-serif',

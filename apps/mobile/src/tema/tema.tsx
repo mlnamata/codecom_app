@@ -15,33 +15,45 @@ export interface BarvyTemy {
   primarySoft: string
   /** Druhá plocha pro skupiny a stopy přepínačů. */
   surfaceAlt: string
-  /** Doplňková teplá barva pro zvýraznění (body, odznaky). */
+  /** Limetková barva pro hlavní výzvy (nahlášení závady, odeslání). */
   accent: string
+  onAccent: string
+  /** Tmavé plochy (hlavička přehledu, spodní lišta) a text na nich. */
+  tmava: string
+  tmavaPlocha: string
+  naTmave: string
+  naTmaveTlumene: string
 }
 
 /**
- * Moderní vzhled aplikace: neutrální chladné pozadí, bílé karty, svěží
- * smaragdová. Kontrasty ověřuje test `tema.test.ts` (WCAG 2.2 AA).
+ * Moderní vzhled aplikace: černá a limetková, bílé karty na světle šedém
+ * pozadí, výrazné tučné písmo. Kontrasty ověřuje test `tema.test.ts`
+ * (WCAG 2.2 AA). Tmavé plochy používají `tmava` a `naTmave`.
  */
 const MODERNI: BarvyTemy = {
-  bg: '#F4F6F5',
+  bg: '#F1F3EE',
   surface: '#FFFFFF',
-  ink: '#0F1B16',
-  muted: '#5A6862',
-  line: '#E3E8E5',
-  primary: '#0B7A4B',
+  ink: '#111311',
+  muted: '#5C6159',
+  line: '#E2E5DE',
+  primary: '#111311',
   onPrimary: '#FFFFFF',
-  link: '#0B7A4B',
-  primarySoft: '#E7F5EE',
-  surfaceAlt: '#EBEFED',
-  accent: '#F2A93B',
+  link: '#3D6B00',
+  primarySoft: '#EEF8C6',
+  surfaceAlt: '#E6E9E2',
+  accent: '#D4F24A',
+  onAccent: '#111311',
+  tmava: '#111311',
+  tmavaPlocha: '#1D201C',
+  naTmave: '#FFFFFF',
+  naTmaveTlumene: '#9AA196',
 }
 
 /** Zaoblení rohů. */
 export const zaobleni = {
-  male: 10,
-  stredni: 14,
-  velke: 20,
+  male: 12,
+  stredni: 18,
+  velke: 26,
   plne: 999,
 } as const
 

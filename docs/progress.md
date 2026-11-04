@@ -21,6 +21,9 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Sjednocení karet (zaoblení 12, jemný stín), mezery ve Zprávách, česká data u akcí, rezervací a desky na přehledech | hotovo | session aplikace (design 2) |
 | Moderní vzhled: vlastní barevný systém (bílé karty, smaragdová, tónované plochy), písmo Plus Jakarta Sans, logo CodeKom, větší zaoblení a nadpisy, lišta s aktivní „pilulkou“, barevné rychlé akce | hotovo | session aplikace (design 2) |
 | Moderní vzhled: úvod s logem a ikonami rolí, Služby s barevnými ikonami a šipkami | hotovo | session aplikace (design 2) |
+| Vzhled podle referencí (černá a limetková, Inter Tight, karty 24 px, plovoucí tmavá lišta s tlačítkem „+“ pro nahlášení závady) | hotovo | session aplikace (design 2) |
+| 16 kategorií závad (koš, nepořádek, vysoká tráva, výmol, lampa, kanál, sníh, vandalismus…) s ikonami a barvami | hotovo | session aplikace (design 2) |
+| Přehled s výraznou kartou nahlášení závady, formulář závady s dlaždicemi kategorií | dělá se | session aplikace (design 2) |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

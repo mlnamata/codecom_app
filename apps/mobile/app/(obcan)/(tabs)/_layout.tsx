@@ -1,8 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
-import { Tabs } from 'expo-router'
+import { Tabs, useRouter } from 'expo-router'
 import { useTema } from '@/tema'
-import { Ikona, type NazevIkony } from '@/ui/Ikony'
+import { type NazevIkony } from '@/ui/Ikony'
+import { PlovouciLista } from '@/ui'
 
 const IKONY: Record<string, NazevIkony> = {
   prehled: 'domu',
@@ -13,47 +13,25 @@ const IKONY: Record<string, NazevIkony> = {
 }
 
 export default function ObcanTabsLayout() {
-  const { barvy, pismo } = useTema()
+  const { barvy } = useTema()
+  const router = useRouter()
 
   return (
     <Tabs
-      screenOptions={({ route }) => ({
+      tabBar={(props) => (
+        <PlovouciLista
+          {...props}
+          ikony={IKONY}
+          stredniAkce={{
+            popisek: 'Nahlásit závadu v obci',
+            onPress: () => router.push('/(obcan)/(tabs)/sluzby/zavada'),
+          }}
+        />
+      )}
+      screenOptions={{
         headerShown: false,
         sceneStyle: { backgroundColor: barvy.bg },
-        tabBarStyle: {
-          backgroundColor: barvy.surface,
-          borderTopColor: barvy.line,
-          borderTopWidth: 1,
-          height: 92,
-          paddingTop: 10,
-          paddingBottom: 14,
-        },
-        tabBarActiveTintColor: barvy.primary,
-        tabBarInactiveTintColor: barvy.muted,
-        tabBarLabelStyle: {
-          fontFamily: pismo.rodina,
-          fontSize: 12,
-          fontWeight: pismo.vahy.polotucne,
-          marginTop: 4,
-        },
-        tabBarIcon: ({ color, focused }) => (
-          // Aktivní záložka má ikonu v tónované „pilulce“ (Material 3).
-          <View
-            style={{
-              paddingHorizontal: 18,
-              paddingVertical: 3,
-              borderRadius: 999,
-              backgroundColor: focused ? barvy.primarySoft : 'transparent',
-            }}
-          >
-            <Ikona
-              nazev={IKONY[route.name] ?? 'domu'}
-              barva={typeof color === 'string' ? color : barvy.muted}
-              velikost={22}
-            />
-          </View>
-        ),
-      })}
+      }}
     >
       <Tabs.Screen name="prehled" options={{ title: 'Přehled' }} />
       <Tabs.Screen name="deska" options={{ title: 'Deska' }} />

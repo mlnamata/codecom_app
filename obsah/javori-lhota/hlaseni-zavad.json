@@ -1,9 +1,20 @@
 {
   "kategorie": [
-    { "id": "vymol", "nazev": "Výmol" },
-    { "id": "osvetleni", "nazev": "Osvětlení" },
-    { "id": "odpad", "nazev": "Odpad" },
-    { "id": "zelen", "nazev": "Zeleň" },
+    { "id": "kos-nevyvezeny", "nazev": "Nevyvezený koš" },
+    { "id": "kos-neuklizeny", "nazev": "Nepořádek u koše" },
+    { "id": "neporadek", "nazev": "Odpadky a nepořádek" },
+    { "id": "odpad", "nazev": "Černá skládka" },
+    { "id": "vysoka-trava", "nazev": "Vysoká tráva" },
+    { "id": "zelen", "nazev": "Stromy a keře" },
+    { "id": "vymol", "nazev": "Výmol v silnici" },
+    { "id": "chodnik", "nazev": "Rozbitý chodník" },
+    { "id": "osvetleni", "nazev": "Nesvítí lampa" },
+    { "id": "mobiliar", "nazev": "Rozbitá lavička či hřiště" },
+    { "id": "znaceni", "nazev": "Dopravní značka" },
+    { "id": "kanal", "nazev": "Ucpaný kanál" },
+    { "id": "snih", "nazev": "Sníh a náledí" },
+    { "id": "vandalismus", "nazev": "Graffiti a vandalismus" },
+    { "id": "psi", "nazev": "Psí exkrementy" },
     { "id": "jine", "nazev": "Jiné" }
   ],
   "stavy": [

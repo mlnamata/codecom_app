@@ -31,6 +31,19 @@ export type NazevIkony =
   | 'kriz'
   | 'ruka'
   | 'video'
+  | 'kos'
+  | 'trava'
+  | 'strom'
+  | 'lavicka'
+  | 'znacka'
+  | 'vlocka'
+  | 'kanal'
+  | 'sprej'
+  | 'tlapka'
+  | 'zarovka'
+  | 'dlazba'
+  | 'pytel'
+  | 'plus'
 
 export interface IkonaProps {
   nazev: NazevIkony
@@ -246,6 +259,100 @@ function vykresli(nazev: NazevIkony, s: Record<string, unknown>): React.ReactNod
           <Path d="M7 14l3-3h5l5 4v4l-5 1-8-2" {...s} />
         </>
       )
+    case 'kos':
+      return (
+        <>
+          <Path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14" {...s} />
+          <Path d="M10 11v6M14 11v6" {...s} />
+        </>
+      )
+    case 'trava':
+      return (
+        <>
+          <Path d="M3 21h18" {...s} />
+          <Path
+            d="M6 21c0-5-2-8-3-10M9 21c0-6 1-10 3-13M15 21c0-6-1-10-3-13M18 21c0-5 2-8 3-10"
+            {...s}
+          />
+        </>
+      )
+    case 'strom':
+      return (
+        <>
+          <Path d="M12 3a6 6 0 0 0-6 6 5 5 0 0 0 2 9h8a5 5 0 0 0 2-9 6 6 0 0 0-6-6z" {...s} />
+          <Path d="M12 12v9" {...s} />
+        </>
+      )
+    case 'lavicka':
+      return (
+        <>
+          <Path d="M3 10h18M3 14h18M5 14v6M19 14v6M6 10V6h12v4" {...s} />
+        </>
+      )
+    case 'znacka':
+      return (
+        <>
+          <Path d="M12 2l9 9-9 9-9-9z" {...s} />
+          <Path d="M12 20v2M12 8v4M12 14.5v.5" {...s} />
+        </>
+      )
+    case 'vlocka':
+      return (
+        <>
+          <Path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7" {...s} />
+          <Path d="M9 4l3 2 3-2M9 20l3-2 3 2" {...s} />
+        </>
+      )
+    case 'kanal':
+      return (
+        <>
+          <Circle cx="12" cy="12" r="8.5" {...s} />
+          <Path d="M7 9h10M6 12h12M7 15h10" {...s} />
+        </>
+      )
+    case 'sprej':
+      return (
+        <>
+          <Rect x="6" y="9" width="8" height="12" rx="2" {...s} />
+          <Path d="M8 9V6h4v3M12 4h1M16 4v.01M18 6v.01M16 8v.01M19 9v.01" {...s} />
+        </>
+      )
+    case 'tlapka':
+      return (
+        <>
+          <Path d="M12 13c-3 0-6 3-6 5.5S8 21 12 21s6-.5 6-2.5S15 13 12 13z" {...s} />
+          <Circle cx="5.5" cy="10" r="1.8" {...s} />
+          <Circle cx="9.5" cy="5.5" r="1.8" {...s} />
+          <Circle cx="14.5" cy="5.5" r="1.8" {...s} />
+          <Circle cx="18.5" cy="10" r="1.8" {...s} />
+        </>
+      )
+    case 'zarovka':
+      return (
+        <>
+          <Path d="M9 18h6M10 21h4" {...s} />
+          <Path
+            d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"
+            {...s}
+          />
+        </>
+      )
+    case 'dlazba':
+      return (
+        <>
+          <Rect x="3" y="4" width="18" height="16" rx="2" {...s} />
+          <Path d="M3 12h18M10 4v8M14 12v8" {...s} />
+        </>
+      )
+    case 'pytel':
+      return (
+        <>
+          <Path d="M8 7c-3 3-4 7-3 11 .5 2 2 3 7 3s6.5-1 7-3c1-4 0-8-3-11" {...s} />
+          <Path d="M8 7h8M10 3l2 4 2-4" {...s} />
+        </>
+      )
+    case 'plus':
+      return <Path d="M12 5v14M5 12h14" {...s} />
     case 'video':
       return (
         <>

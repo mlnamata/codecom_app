@@ -11,9 +11,9 @@ export interface RamecProps {
  * a na úzkém zabere celou šířku. Obrys je jemný stín, ne tvrdá hrana.
  */
 const ADRESA_PISMA =
-  'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
+  'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap'
 
-/** Jednou vloží do hlavičky stránky písmo Plus Jakarta Sans (umí češtinu). */
+/** Jednou vloží do hlavičky stránky písmo Inter Tight (umí češtinu). */
 function nactiPismo() {
   if (typeof document === 'undefined') return
   if (document.getElementById('codekom-pismo')) return
