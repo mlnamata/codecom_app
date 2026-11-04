@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>IoT dashboard – budovy obce</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F5F5F0;font-family:'Public Sans',system-ui,sans-serif;color:#18211D}
+a{color:#1D5C4D}a:hover{color:#123D33}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F5F5F0; color: #18211D; font-family: 'Public Sans', system-ui, sans-serif; font-size: 15px">
+  <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 24px; background: #FFFFFF; border-bottom: 1px solid #DAD9D2">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div style="width: 32px; height: 32px; border-radius: 8px; background: #1D5C4D; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path></svg></div>
+      <span style="font-weight: 700; font-size: 16px">Obec Horní Vzorov · Budovy</span>
+      <span style="padding: 2px 10px; border-radius: 999px; background: #EDECE6; font-size: 12px; font-weight: 700; color: #3A423D">Ukázková data</span>
+    </div>
+    <span style="font-size: 14px; color: #4A524D">Úterý 27. 10. 2026 · 10:50 · všechny brány online</span>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; padding: 20px 24px 0">
+    <div style="padding: 14px 16px; border-radius: 12px; background: #FDECEA; border: 1px solid #F2C4BE; display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700; color: #8F1C14">Alarmy</span><span style="font-size: 26px; font-weight: 700; color: #8F1C14">{{alarmCount}}</span><span style="font-size: 13px; color: #8F1C14">{{alarmText}}</span></div>
+    <div style="padding: 14px 16px; border-radius: 12px; background: #FFF4E5; border: 1px solid #F3D3AE; display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700; color: #8A3B0C">Varování</span><span style="font-size: 26px; font-weight: 700; color: #8A3B0C">1</span><span style="font-size: 13px; color: #8A3B0C">slabá baterie hlavice</span></div>
+    <div style="padding: 14px 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700; color: #4A524D">Dnešní rezervace</span><span style="font-size: 26px; font-weight: 700">2</span><span style="font-size: 13px; color: #4A524D">sál 18:00, hřiště 16:00</span></div>
+    <div style="padding: 14px 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 700; color: #4A524D">Elektřina tento týden</span><span style="font-size: 26px; font-weight: 700">{{weekTotal}}</span><span style="font-size: 13px; color: #4A524D">všech 5 budov</span></div>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 20px 24px 32px; align-items: flex-start">
+    <nav aria-label="Budovy" style="flex: 1 1 280px; max-width: 340px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{buildings}}" as="b" hint-placeholder-count="5">
+        <button type="button" onClick="{{b.pick}}" style="display: flex; flex-direction: column; gap: 6px; width: 100%; text-align: left; padding: 12px 14px; border-radius: 10px; border: 2px solid {{b.ring}}; background: #FFFFFF; font: inherit; color: #18211D; cursor: pointer">
+          <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%">
+            <span style="font-weight: 700">{{b.name}}</span>
+            <span style="padding: 2px 8px; border-radius: 999px; background: {{b.stBg}}; color: {{b.stInk}}; font-size: 12px; font-weight: 700">{{b.stLabel}}</span>
+          </span>
+          <span style="font-size: 13px; color: #4A524D">{{b.summary}}</span>
+        </button>
+      </sc-for>
+    </nav>
+
+    <main style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+      <section style="padding: 16px 20px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <h1 style="margin: 0; font-size: 22px">{{cur.name}}</h1>
+          <span style="font-size: 14px; color: #4A524D">{{cur.address}} · brána online, poslední zpráva před 20 s</span>
+        </div>
+        <div role="group" aria-label="Režim vytápění" style="display: flex; border: 1px solid #BDBCB4; border-radius: 8px; overflow: hidden">
+          <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+            <button type="button" onClick="{{m.pick}}" style="min-height: 40px; padding: 0 14px; border: 0; border-left: 1px solid #DAD9D2; font: inherit; font-weight: 600; cursor: pointer; background: {{m.bg}}; color: {{m.ink}}">{{m.label}}</button>
+          </sc-for>
+        </div>
+      </section>
+
+      <sc-if value="{{cur.hasAlarm}}" hint-placeholder-val="{{ false }}">
+        <section role="alert" style="padding: 14px 18px; border-radius: 12px; background: #FDECEA; border: 1px solid #F2C4BE; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 2px; color: #8F1C14">
+            <span style="font-weight: 700">Teplota v tělocvičně 4 °C – hrozí zamrznutí</span>
+            <span style="font-size: 14px">Od 10:12 · protimrazové topení zapnuto automaticky · SMS odeslána správci</span>
+          </div>
+          <sc-if value="{{alarmOpen}}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{takeAlarm}}" style="min-height: 44px; padding: 0 18px; border-radius: 8px; border: 0; background: #B42318; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer">Převzít alarm</button>
+          </sc-if>
+          <sc-if value="{{alarmTaken}}" hint-placeholder-val="{{ false }}">
+            <span style="font-weight: 700; color: #8F1C14">Převzal Pavel Dvořák v 10:51</span>
+          </sc-if>
+        </section>
+      </sc-if>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+        <section aria-label="Místnosti" style="padding: 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 8px">
+          <h2 style="margin: 0; font-size: 16px">Místnosti</h2>
+          <div style="overflow-x: auto">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px">
+              <thead><tr style="text-align: left; color: #4A524D"><th style="padding: 6px 4px; font-weight: 600">Místnost</th><th style="padding: 6px 4px; font-weight: 600">Teď</th><th style="padding: 6px 4px; font-weight: 600">Cíl</th><th style="padding: 6px 4px; font-weight: 600">Okno</th><th style="padding: 6px 4px; font-weight: 600">Baterie</th></tr></thead>
+              <tbody>
+                <sc-for list="{{cur.rooms}}" as="r" hint-placeholder-count="3">
+                  <tr style="border-top: 1px solid #ECEBE6"><td style="padding: 8px 4px; font-weight: 600">{{r.name}}</td><td style="padding: 8px 4px; color: {{r.tInk}}; font-weight: 700">{{r.t}}</td><td style="padding: 8px 4px">{{r.target}}</td><td style="padding: 8px 4px">{{r.window}}</td><td style="padding: 8px 4px; color: {{r.bInk}}">{{r.battery}}</td></tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section aria-label="Dnešní plán" style="padding: 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 10px">
+          <h2 style="margin: 0; font-size: 16px">Dnešní plán</h2>
+          <sc-for list="{{cur.plan}}" as="p" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 4px">
+              <span style="font-size: 13px; font-weight: 600">{{p.label}} · {{p.time}}</span>
+              <div style="position: relative; height: 14px; border-radius: 999px; background: #ECEBE6"><span style="position: absolute; top: 0; bottom: 0; left: {{p.left}}; width: {{p.width}}; border-radius: 999px; background: {{p.color}}"></span></div>
+            </div>
+          </sc-for>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #4A524D"><span>0:00</span><span>6:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+        </section>
+
+        <section aria-label="Dveře a přístupy" style="padding: 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 10px">
+          <h2 style="margin: 0; font-size: 16px">Dveře</h2>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Hlavní vchod</span><span style="font-size: 13px; color: #4A524D">Poslední vstup {{cur.lastEntry}}</span></span>
+            <span style="padding: 2px 10px; border-radius: 999px; background: {{doorBg}}; color: {{doorInk}}; font-size: 13px; font-weight: 700">{{doorLabel}}</span>
+          </div>
+          <sc-if value="{{unlockIdle}}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{askUnlock}}" style="align-self: flex-start; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #BDBCB4; background: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer">Odemknout na dálku</button>
+          </sc-if>
+          <sc-if value="{{unlockAsk}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 8px; background: #F5F5F0">
+              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Důvod odemčení (zapíše se do logu)
+                <select style="height: 40px; padding: 0 8px; border: 1px solid #BDBCB4; border-radius: 6px; font: inherit; font-weight: 400; background: #FFFFFF"><option>Servis nebo oprava</option><option>Nájemce zapomněl PIN</option><option>Zásah hasičů</option><option>Jiný</option></select>
+              </label>
+              <span style="font-size: 13px; color: #4A524D">Dveře se po 5 minutách samy zamknou.</span>
+              <div style="display: flex; gap: 8px">
+                <button type="button" onClick="{{doUnlock}}" style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 0; background: #1D5C4D; color: #FFFFFF; font: inherit; font-weight: 700; cursor: pointer">Potvrdit odemčení</button>
+                <button type="button" onClick="{{cancelUnlock}}" style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #BDBCB4; background: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Zrušit</button>
+              </div>
+            </div>
+          </sc-if>
+          <a href="#" style="font-size: 14px; font-weight: 600">Přístupy a záznam vstupů (90 dní)</a>
+        </section>
+
+        <section aria-label="Spotřeba elektřiny" style="padding: 16px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 10px">
+          <h2 style="margin: 0; font-size: 16px">Elektřina za 7 dní · {{cur.energyTotal}}</h2>
+          <div style="display: flex; align-items: flex-end; gap: 8px; height: 120px" role="img" aria-label="Denní spotřeba elektřiny za posledních 7 dní">
+            <sc-for list="{{cur.energy}}" as="e" hint-placeholder-count="7">
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end">
+                <span style="font-size: 11px; color: #4A524D">{{e.v}}</span>
+                <span style="width: 100%; height: {{e.h}}; border-radius: 4px 4px 0 0; background: {{e.c}}"></span>
+                <span style="font-size: 12px; font-weight: 600">{{e.d}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <span style="font-size: 13px; color: #4A524D">kWh za den, měřeno Shelly Pro 3EM</span>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 'urad', modes: { urad: 'auto', sokol: 'auto', ms: 'auto', hasici: 'utlum', knih: 'auto' }, alarm: 'open', door: 'idle' };
+  }
+  renderVals() {
+    const s = this.state;
+    const st = {
+      ok: ['V pořádku', '#E7F4EC', '#155C34'], warn: ['Varování', '#FFF4E5', '#8A3B0C'], crit: ['Alarm', '#FDECEA', '#8F1C14']
+    };
+    const data = [
+      { id: 'urad', name: 'Obecní úřad a sál', address: 'Náves 1', status: 'ok', summary: '21 °C · sál rezervován 18:00–22:00', lastEntry: '7:42 · Jana N. (PIN)',
+        rooms: [{ name: 'Sál', t: 17.5, target: '21 °C od 16:00', window: 'zavřeno', battery: '78 %' }, { name: 'Kancelář', t: 21.2, target: '21 °C', window: 'zavřeno', battery: '64 %' }, { name: 'Zasedačka', t: 19.0, target: '19 °C', window: 'otevřeno – hlavice zavřena', battery: '81 %' }],
+        plan: [{ label: 'Kancelář – komfort', time: '7:00–17:00', a: 7, b: 17, c: '#1D5C4D' }, { label: 'Sál – předtopení a akce', time: '16:00–21:30', a: 16, b: 21.5, c: '#B4531F' }, { label: 'PIN nájemce', time: '17:30–22:30', a: 17.5, b: 22.5, c: '#5E6560' }],
+        energy: [52, 48, 55, 61, 58, 30, 22] },
+      { id: 'sokol', name: 'Sokolovna', address: 'Za Školou 210', status: 'crit', summary: '4 °C v tělocvičně – alarm', lastEntry: 'včera 20:15 · TJ Sokol (karta)',
+        rooms: [{ name: 'Tělocvična', t: 4.0, target: '8 °C (protimraz)', window: 'zavřeno', battery: '55 %' }, { name: 'Šatny', t: 9.5, target: '8 °C', window: 'zavřeno', battery: '60 %' }],
+        plan: [{ label: 'Protimrazová ochrana', time: 'celý den', a: 0, b: 24, c: '#B42318' }, { label: 'Trénink TJ Sokol', time: '17:00–20:00', a: 17, b: 20, c: '#B4531F' }],
+        energy: [38, 35, 40, 37, 42, 44, 51] },
+      { id: 'ms', name: 'Mateřská škola', address: 'Školní 15', status: 'warn', summary: 'baterie hlavice ve třídě Berušky 12 %', lastEntry: '6:30 · úklid (karta)',
+        rooms: [{ name: 'Berušky', t: 21.8, target: '22 °C', window: 'zavřeno', battery: '12 %' }, { name: 'Sluníčka', t: 22.1, target: '22 °C', window: 'zavřeno', battery: '71 %' }, { name: 'Jídelna', t: 20.4, target: '20 °C', window: 'zavřeno', battery: '68 %' }],
+        plan: [{ label: 'Provoz školky', time: '6:30–16:30', a: 6.5, b: 16.5, c: '#1D5C4D' }],
+        energy: [88, 91, 86, 90, 84, 20, 18] },
+      { id: 'hasici', name: 'Hasičská zbrojnice', address: 'U Rybníka 3', status: 'ok', summary: '15 °C · útlum', lastEntry: 'pá 19:05 · SDH (karta)',
+        rooms: [{ name: 'Garáž', t: 12.0, target: '12 °C', window: 'zavřeno', battery: '90 %' }, { name: 'Klubovna', t: 15.1, target: '15 °C', window: 'zavřeno', battery: '88 %' }],
+        plan: [{ label: 'Útlum', time: 'celý den', a: 0, b: 24, c: '#5E6560' }],
+        energy: [12, 11, 12, 10, 25, 14, 11] },
+      { id: 'knih', name: 'Knihovna', address: 'Náves 4', status: 'ok', summary: '20 °C · otevřeno od 13:00', lastEntry: 'po 13:02 · knihovnice (PIN)',
+        rooms: [{ name: 'Půjčovna', t: 18.6, target: '20 °C od 12:30', window: 'zavřeno', battery: '73 %' }],
+        plan: [{ label: 'Otevírací doba', time: '13:00–18:00', a: 12.5, b: 18, c: '#1D5C4D' }],
+        energy: [9, 14, 8, 15, 9, 3, 3] }
+    ];
+    const statusOf = (d) => (d.id === 'sokol' && s.alarm === 'taken') ? 'warn' : d.status;
+    const buildings = data.map((d) => {
+      const x = st[statusOf(d)];
+      return { name: d.name, summary: d.id === 'sokol' && s.alarm === 'taken' ? '4 °C – alarm převzat, řeší se' : d.summary, stLabel: x[0], stBg: x[1], stInk: x[2], ring: d.id === s.sel ? '#1D5C4D' : '#DAD9D2', pick: () => this.setState({ sel: d.id, door: 'idle' }) };
+    });
+    const d = data.find((y) => y.id === s.sel) || data[0];
+    const days = ['St', 'Čt', 'Pá', 'So', 'Ne', 'Po', 'Út'];
+    const max = Math.max.apply(null, d.energy);
+    const cur = {
+      name: d.name, address: d.address, lastEntry: d.lastEntry, hasAlarm: d.id === 'sokol',
+      rooms: d.rooms.map((r) => ({ name: r.name, t: r.t.toFixed(1).replace('.', ',') + ' °C', target: r.target, window: r.window, battery: r.battery, tInk: r.t < 6 ? '#B42318' : '#18211D', bInk: parseInt(r.battery, 10) < 20 ? '#8A3B0C' : '#18211D' })),
+      plan: d.plan.map((p) => ({ label: p.label, time: p.time, left: (p.a / 24 * 100) + '%', width: ((p.b - p.a) / 24 * 100) + '%', color: p.c })),
+      energy: d.energy.map((v, i) => ({ v: v, d: days[i], h: Math.round(v / max * 80) + 'px', c: i === 6 ? '#1D5C4D' : '#9DB8AE' })),
+      energyTotal: d.energy.reduce((a, b) => a + b, 0) + ' kWh'
+    };
+    const modeDefs = [['auto', 'Automaticky'], ['komfort', 'Komfort'], ['utlum', 'Útlum']];
+    const modes = modeDefs.map((m) => {
+      const on = s.modes[d.id] === m[0];
+      return { label: m[1], bg: on ? '#1D5C4D' : '#FFFFFF', ink: on ? '#FFFFFF' : '#18211D', pick: () => { const n = Object.assign({}, s.modes); n[d.id] = m[0]; this.setState({ modes: n }); } };
+    });
+    const unlocked = s.door === 'open';
+    const alarmCount = s.alarm === 'open' ? 1 : 0;
+    return {
+      buildings: buildings, cur: cur, modes: modes,
+      weekTotal: data.reduce((a, x) => a + x.energy.reduce((p, q) => p + q, 0), 0).toLocaleString('cs-CZ') + ' kWh',
+      alarmCount: alarmCount, alarmText: alarmCount ? 'Sokolovna: mráz v tělocvičně' : 'žádný otevřený',
+      alarmOpen: s.alarm === 'open', alarmTaken: s.alarm === 'taken', takeAlarm: () => this.setState({ alarm: 'taken' }),
+      unlockIdle: s.door === 'idle', unlockAsk: s.door === 'ask',
+      askUnlock: () => this.setState({ door: 'ask' }), cancelUnlock: () => this.setState({ door: 'idle' }), doUnlock: () => this.setState({ door: 'open' }),
+      doorLabel: unlocked ? 'Odemčeno do 10:56' : 'Zamčeno', doorBg: unlocked ? '#FFF4E5' : '#E7F4EC', doorInk: unlocked ? '#8A3B0C' : '#155C34'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -7,9 +7,7 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Základ repozitáře (pnpm, TypeScript, ESLint, Vitest) | hotovo | agent IoT brána |
 | Katalog standardů v `packages/iot` | hotovo | agent IoT brána |
 | Schémata konfigurace a zpráv MQTT | hotovo | agent IoT brána |
-| Adaptéry brány (Home Assistant, MQTT, Modbus TCP, Shelly RPC, HTTP JSON) | rozpracováno | agent IoT brána |
-| Objevování v síti (mDNS) a příkaz `pnpm brana:objev` | čeká | agent IoT brána |
-| Vyrovnávací fronta a odesílání do cloudu | čeká | agent IoT brána |
-| Protimrazové pravidlo na bráně | čeká | agent IoT brána |
-| Dokumentace (README, průvodce připojením, rozhodnutí, SECURITY) | čeká | agent IoT brána |
-| Mobilní aplikace | nezačato | – |
+| Prototyp aplikace (zadání 08) | čeká | session aplikace |
+| Ostrá aplikace (zadání 02) | čeká | session aplikace |
+| IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
+| Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

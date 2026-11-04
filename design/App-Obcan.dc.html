@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Aplikace CodeKom – občan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; display: flex; flex-direction: column; background: #F6F8F1; color: #1A1F1C; font-family: 'Public Sans', system-ui, sans-serif; font-size: 15px; overflow: hidden">
+  <div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 52px 20px 12px; background: #3D6B21; color: #FFFFFF">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <svg width="26" height="31" viewBox="0 0 40 48" aria-hidden="true"><path d="M2 2h36v20c0 12-8 20-18 24C10 42 2 34 2 22z" fill="#FFFFFF"></path><path d="M20 12v26M13 21l7-7 7 7M11 30l9-9 9 9" stroke="#3D6B21" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 12px">Obec</span><span style="font-weight: 700; font-size: 18px">Horní Vzorov</span></span>
+    </div>
+    <button type="button" aria-label="Upozornění" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #FFFFFF22; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10 21h4"></path></svg></button>
+  </div>
+
+  <div style="flex: 1 1 auto; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+
+    <sc-if value="{{isDomu}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div role="alert" style="padding: 14px; border-radius: 12px; background: #FFF4E5; border: 1px solid #F3D3AE; color: #5C2A0B; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-weight: 700">Ve čtvrtek nepoteče voda</span>
+          <span style="font-size: 14px">29. 10. od 8 do 14 hodin v ulicích Hlavní a Za Školou.</span>
+        </div>
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; align-items: center; gap: 12px">
+          <span style="width: 44px; height: 44px; border-radius: 10px; background: #FFF6CC; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B5300" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></span>
+          <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Zítra svoz plastů</span><span style="font-size: 14px; color: #4C534F">Lipová 12 · nádobu připravte do 6:00</span></span>
+        </div>
+        <sc-if value="{{unpaid}}" hint-placeholder-val="{{ true }}">
+          <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+            <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Poplatek za odpad 2026</span><span style="font-size: 14px; color: #4C534F">900 Kč · splatnost 30. 11.</span></span>
+            <button type="button" onClick="{{toPlatby}}" style="min-height: 44px; padding: 0 16px; border-radius: 10px; border: 0; background: #3D6B21; color: #FFFFFF; font: inherit; font-weight: 700">Zaplatit</button>
+          </div>
+        </sc-if>
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; gap: 12px; align-items: center">
+          <button type="button" aria-label="Přehrát hlášení rozhlasu" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #3D6B21; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"></path></svg></button>
+          <span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #4C534F">Hlášení rozhlasu · dnes 9:00</span><span style="font-weight: 600">Sběr nebezpečného odpadu v sobotu na návsi</span></span>
+        </div>
+        <h2 style="margin: 4px 0 0; font-size: 17px">Nejbližší akce</h2>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; gap: 12px; align-items: center">
+          <span style="width: 48px; height: 48px; border-radius: 10px; background: #3D6B21; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1"><span style="font-weight: 800; font-size: 18px">7</span><span style="font-size: 11px">LIS</span></span>
+          <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Lampionový průvod</span><span style="font-size: 14px; color: #4C534F">Náves, 17:00</span></span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isZpravy}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h1 style="margin: 0; font-size: 22px">Zprávy</h1>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <sc-for list="{{topics}}" as="tp" hint-placeholder-count="4">
+            <button type="button" onClick="{{tp.pick}}" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{tp.border}}; background: {{tp.bg}}; color: {{tp.ink}}; font: inherit; font-weight: 600">{{tp.label}}</button>
+          </sc-for>
+        </div>
+        <sc-for list="{{msgs}}" as="ms" hint-placeholder-count="4">
+          <a href="#" style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; color: #1A1F1C; text-decoration: none; display: flex; flex-direction: column; gap: 4px">
+            <span style="font-size: 13px; color: #4C534F">{{ms.when}} · {{ms.topic}}</span>
+            <span style="font-weight: 700">{{ms.title}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isNahlasit}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h1 style="margin: 0; font-size: 22px">Nahlásit závadu</h1>
+        <sc-if value="{{reportForm}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <button type="button" style="min-height: 120px; border-radius: 12px; border: 2px dashed #9AA39D; background: #FFFFFF; color: #3D6B21; font: inherit; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>Vyfotit</button>
+            <span style="font-weight: 600">Co se stalo</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <sc-for list="{{cats}}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{c.pick}}" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.ink}}; font: inherit; font-weight: 600">{{c.label}}</button>
+              </sc-for>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 12px; border-radius: 10px; background: #FFFFFF; border: 1px solid #DAD8D0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D6B21" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+              <span>Lipová 12 · podle polohy telefonu</span>
+            </div>
+            <label for="popis" style="font-weight: 600">Popis (nepovinné)</label>
+            <textarea id="popis" rows="3" style="padding: 10px 12px; border: 1px solid #BDBCB4; border-radius: 10px; font: inherit">Nesvítí lampa u zastávky, je tam večer úplná tma.</textarea>
+            <button type="button" onClick="{{sendReport}}" style="min-height: 52px; border-radius: 12px; border: 0; background: #3D6B21; color: #FFFFFF; font: inherit; font-size: 17px; font-weight: 700">Odeslat obci</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{reportSent}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="padding: 16px; border-radius: 12px; background: #E7F4EC; color: #155C34; display: flex; flex-direction: column; gap: 6px">
+            <span style="font-weight: 700; font-size: 17px">Podnět č. 2026-047 přijat</span>
+            <span>Kategorie: {{catLabel}}. Jakmile ho obec převezme, dáme vám vědět.</span>
+          </div>
+        </sc-if>
+        <h2 style="margin: 4px 0 0; font-size: 17px">Moje podněty</h2>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+          <span style="display: flex; flex-direction: column"><span style="font-weight: 600">Výmol v ulici Za Školou</span><span style="font-size: 13px; color: #4C534F">nahlášeno 2. 10.</span></span>
+          <span style="padding: 2px 10px; border-radius: 999px; background: #E7F4EC; color: #155C34; font-size: 13px; font-weight: 700">Vyřešeno</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isPlatby}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h1 style="margin: 0; font-size: 22px">Moje platby</h1>
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; gap: 8px">
+            <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Poplatek za odpad 2026</span><span style="font-size: 14px; color: #4C534F">domácnost Lipová 12 · 3 osoby</span></span>
+            <span style="font-weight: 700; font-size: 17px">900 Kč</span>
+          </div>
+          <sc-if value="{{unpaid}}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{payPick}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <button type="button" onClick="{{payDone}}" style="min-height: 48px; border-radius: 10px; border: 0; background: #111111; color: #FFFFFF; font: inherit; font-weight: 700">Zaplatit přes Apple Pay</button>
+                <button type="button" onClick="{{payDone}}" style="min-height: 48px; border-radius: 10px; border: 1px solid #BDBCB4; background: #FFFFFF; color: #1A1F1C; font: inherit; font-weight: 700">Platební kartou</button>
+                <button type="button" onClick="{{payDone}}" style="min-height: 48px; border-radius: 10px; border: 1px solid #BDBCB4; background: #FFFFFF; color: #1A1F1C; font: inherit; font-weight: 700">QR platba z bankovní aplikace</button>
+                <span style="font-size: 13px; color: #4C534F">Peníze jdou přímo na účet obce.</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{payIdle}}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{startPay}}" style="min-height: 48px; border-radius: 10px; border: 0; background: #3D6B21; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 700">Zaplatit 900 Kč</button>
+            </sc-if>
+          </sc-if>
+          <sc-if value="{{paid}}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="padding: 10px 12px; border-radius: 10px; background: #E7F4EC; color: #155C34; font-weight: 600">Zaplaceno dnes. Potvrzení jsme poslali e-mailem.</div>
+          </sc-if>
+        </div>
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; justify-content: space-between; align-items: center; gap: 8px">
+          <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Poplatek ze psa 2026</span><span style="font-size: 14px; color: #4C534F">Bára, čip 203…418</span></span>
+          <span style="padding: 2px 10px; border-radius: 999px; background: #E7F4EC; color: #155C34; font-size: 13px; font-weight: 700">Zaplaceno 3. 3.</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isRez}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h1 style="margin: 0; font-size: 22px">Rezervace</h1>
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD8D0; display: flex; flex-direction: column; gap: 10px">
+          <span style="font-weight: 700; font-size: 17px">Sál obecního úřadu</span>
+          <span style="font-size: 14px; color: #4C534F">do 80 osob · 800 Kč za blok + kauce 1 000 Kč</span>
+          <span style="font-weight: 600">Den</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <sc-for list="{{days}}" as="dy" hint-placeholder-count="3">
+              <button type="button" onClick="{{dy.pick}}" disabled="{{dy.full}}" style="flex: 1 1 90px; min-height: 52px; border-radius: 10px; border: 2px solid {{dy.border}}; background: {{dy.bg}}; color: {{dy.ink}}; font: inherit; font-weight: 700">{{dy.label}}</button>
+            </sc-for>
+          </div>
+          <span style="font-weight: 600">Čas</span>
+          <div style="display: flex; gap: 8px">
+            <sc-for list="{{slots}}" as="sl" hint-placeholder-count="2">
+              <button type="button" onClick="{{sl.pick}}" style="flex: 1; min-height: 48px; border-radius: 10px; border: 2px solid {{sl.border}}; background: {{sl.bg}}; color: {{sl.ink}}; font: inherit; font-weight: 700">{{sl.label}}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{rezForm}}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{book}}" style="min-height: 52px; border-radius: 12px; border: 0; background: #3D6B21; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 700">Rezervovat {{rezSummary}}</button>
+          </sc-if>
+        </div>
+        <sc-if value="{{rezDone}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="padding: 16px; border-radius: 12px; background: #FFFFFF; border: 2px solid #3D6B21; display: flex; flex-direction: column; gap: 8px">
+            <span style="font-weight: 700; color: #155C34">Rezervace potvrzena · {{rezSummary}}</span>
+            <span style="font-size: 14px">PIN ke vstupu do sálu</span>
+            <span style="font-size: 34px; font-weight: 700; letter-spacing: 0.3em">4821</span>
+            <span style="font-size: 14px; color: #4C534F">{{pinWindow}}. Sál předtopíme na 21 °C. Po skončení se dveře samy zamknou.</span>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <nav aria-label="Hlavní navigace" style="flex: 0 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 6px 4px 24px; background: #FFFFFF; border-top: 1px solid #DAD8D0">
+    <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="5">
+      <button type="button" onClick="{{tb.pick}}" aria-current="{{tb.current}}" style="min-height: 52px; border: 0; background: transparent; color: {{tb.ink}}; font: inherit; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+        <sc-if value="{{tb.home}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path></svg></sc-if>
+        <sc-if value="{{tb.news}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 9h10M7 13h10M7 17h6"></path></svg></sc-if>
+        <sc-if value="{{tb.report}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></sc-if>
+        <sc-if value="{{tb.pay}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M3 10h18M7 15h3"></path></svg></sc-if>
+        <sc-if value="{{tb.cal}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></sc-if>
+        <span>{{tb.label}}</span>
+      </button>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'domu', topic: 'Vše', cat: 'Osvětlení', report: 'form', pay: 'idle', day: 'pa30', slot: 'vecer', rez: 'form' };
+  }
+  renderVals() {
+    const s = this.state;
+    const tabDefs = [['domu', 'Domů', 'home'], ['zpravy', 'Zprávy', 'news'], ['nahlasit', 'Nahlásit', 'report'], ['platby', 'Platby', 'pay'], ['rez', 'Rezervace', 'cal']];
+    const tabs = tabDefs.map((t) => {
+      const o = { label: t[1], ink: s.tab === t[0] ? '#3D6B21' : '#5E6560', current: s.tab === t[0] ? 'page' : 'false', pick: () => this.setState({ tab: t[0] }) };
+      o[t[2]] = true;
+      return o;
+    });
+    const allMsgs = [
+      { when: 'dnes 9:00', topic: 'Odpady', title: 'Sběr nebezpečného odpadu v sobotu na návsi' },
+      { when: 'včera', topic: 'Voda', title: 'Ve čtvrtek nepoteče voda v ulicích Hlavní a Za Školou' },
+      { when: '22. 10.', topic: 'Doprava', title: 'Oprava chodníku v Lipové ulici začne 3. listopadu' },
+      { when: '20. 10.', topic: 'Akce', title: 'Lampionový průvod 7. listopadu v 17:00' }
+    ];
+    const topics = ['Vše', 'Odpady', 'Doprava', 'Akce'].map((t) => {
+      const on = s.topic === t;
+      return { label: t, bg: on ? '#3D6B21' : '#FFFFFF', ink: on ? '#FFFFFF' : '#1A1F1C', border: on ? '#3D6B21' : '#BDBCB4', pick: () => this.setState({ topic: t }) };
+    });
+    const msgs = allMsgs.filter((m) => s.topic === 'Vše' || m.topic === s.topic);
+    const cats = ['Výmol', 'Osvětlení', 'Odpad', 'Zeleň', 'Jiné'].map((c) => {
+      const on = s.cat === c;
+      return { label: c, bg: on ? '#3D6B21' : '#FFFFFF', ink: on ? '#FFFFFF' : '#1A1F1C', border: on ? '#3D6B21' : '#BDBCB4', pick: () => this.setState({ cat: c }) };
+    });
+    const dayDefs = [['pa30', 'Pá 30. 10.', false], ['so31', 'So 31. 10.', true], ['pa6', 'Pá 6. 11.', false]];
+    const days = dayDefs.map((d) => {
+      const on = s.day === d[0];
+      return { label: d[2] ? d[1] + ' · obsazeno' : d[1], full: d[2], bg: d[2] ? '#EDECE6' : (on ? '#3D6B21' : '#FFFFFF'), ink: d[2] ? '#5E6560' : (on ? '#FFFFFF' : '#1A1F1C'), border: on ? '#3D6B21' : '#BDBCB4', pick: () => { if (!d[2]) this.setState({ day: d[0], rez: 'form' }); } };
+    });
+    const slotDefs = [['odpo', '14:00–18:00'], ['vecer', '18:00–22:00']];
+    const slots = slotDefs.map((x) => {
+      const on = s.slot === x[0];
+      return { label: x[1], bg: on ? '#3D6B21' : '#FFFFFF', ink: on ? '#FFFFFF' : '#1A1F1C', border: on ? '#3D6B21' : '#BDBCB4', pick: () => this.setState({ slot: x[0], rez: 'form' }) };
+    });
+    const dayLabel = (dayDefs.find((d) => d[0] === s.day) || dayDefs[0])[1];
+    const slotLabel = (slotDefs.find((x) => x[0] === s.slot) || slotDefs[1])[1];
+    return {
+      tabs: tabs,
+      isDomu: s.tab === 'domu', isZpravy: s.tab === 'zpravy', isNahlasit: s.tab === 'nahlasit', isPlatby: s.tab === 'platby', isRez: s.tab === 'rez',
+      toPlatby: () => this.setState({ tab: 'platby' }),
+      topics: topics, msgs: msgs,
+      cats: cats, catLabel: s.cat, reportForm: s.report === 'form', reportSent: s.report === 'sent', sendReport: () => this.setState({ report: 'sent' }),
+      unpaid: s.pay !== 'paid', paid: s.pay === 'paid', payIdle: s.pay === 'idle', payPick: s.pay === 'pick',
+      startPay: () => this.setState({ pay: 'pick' }), payDone: () => this.setState({ pay: 'paid' }),
+      days: days, slots: slots, rezSummary: dayLabel + ', ' + slotLabel,
+      pinWindow: s.slot === 'vecer' ? 'Platí 17:30–22:30' : 'Platí 13:30–18:30',
+      rezForm: s.rez === 'form', rezDone: s.rez === 'done', book: () => this.setState({ rez: 'done' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Aplikace CodeKom – úřad</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; display: flex; flex-direction: column; background: #F5F5F0; color: #18211D; font-family: 'Public Sans', system-ui, sans-serif; font-size: 15px; overflow: hidden">
+  <div style="flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 52px 20px 12px; background: #18211D; color: #FFFFFF">
+    <span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 12px">Úřad · Horní Vzorov</span><span style="font-weight: 700; font-size: 18px">{{title}}</span></span>
+    <span style="padding: 4px 10px; border-radius: 999px; background: #FFFFFF22; font-size: 12px; font-weight: 700">starosta</span>
+  </div>
+
+  <div style="flex: 1 1 auto; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+
+    <sc-if value="{{isPrehled}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <sc-if value="{{alarmOpen}}" hint-placeholder-val="{{ true }}">
+          <div role="alert" style="padding: 14px; border-radius: 12px; background: #FDECEA; border: 1px solid #F2C4BE; color: #8F1C14; display: flex; flex-direction: column; gap: 8px">
+            <span style="font-weight: 700">Sokolovna: 4 °C v tělocvičně</span>
+            <span style="font-size: 14px">Protimrazové topení zapnuto. Správce Karel zatím nereagoval (15 min).</span>
+            <button type="button" onClick="{{takeAlarm}}" style="min-height: 44px; border-radius: 10px; border: 0; background: #B42318; color: #FFFFFF; font: inherit; font-weight: 700">Převzít alarm</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{alarmTaken}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="padding: 12px 14px; border-radius: 12px; background: #FFF4E5; color: #5C2A0B; font-weight: 600">Alarm Sokolovna převzat vámi v 10:51</div>
+        </sc-if>
+        <h2 style="margin: 4px 0 0; font-size: 17px">Ke schválení</h2>
+        <sc-for list="{{approvals}}" as="ap" hint-placeholder-count="2">
+          <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 8px">
+            <span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #4A524D">{{ap.kind}}</span><span style="font-weight: 700">{{ap.title}}</span></span>
+            <sc-if value="{{ap.open}}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; gap: 8px">
+                <button type="button" onClick="{{ap.ok}}" style="flex: 1; min-height: 44px; border-radius: 10px; border: 0; background: #1D5C4D; color: #FFFFFF; font: inherit; font-weight: 700">Schválit</button>
+                <button type="button" onClick="{{ap.no}}" style="flex: 1; min-height: 44px; border-radius: 10px; border: 1px solid #BDBCB4; background: #FFFFFF; color: #18211D; font: inherit; font-weight: 600">Zamítnout</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ap.closed}}" hint-placeholder-val="{{ false }}">
+              <span style="font-weight: 700; color: {{ap.ink}}">{{ap.result}}</span>
+            </sc-if>
+          </div>
+        </sc-for>
+        <h2 style="margin: 4px 0 0; font-size: 17px">Dnes v budovách</h2>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 6px; font-size: 14px">
+          <span><strong>18:00–22:00</strong> sál · Spolek rodičů · PIN aktivní od 17:30</span>
+          <span><strong>16:00–18:00</strong> hřiště · TJ Sokol</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isBudovy}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+            <span style="font-weight: 700; font-size: 17px">Obecní úřad a sál</span>
+            <span style="padding: 2px 10px; border-radius: 999px; background: #E7F4EC; color: #155C34; font-size: 12px; font-weight: 700">V pořádku</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; text-align: center">
+            <div style="padding: 10px 4px; border-radius: 10px; background: #F5F5F0"><div style="font-size: 20px; font-weight: 700">17,5°</div><div style="font-size: 12px; color: #4A524D">Sál</div></div>
+            <div style="padding: 10px 4px; border-radius: 10px; background: #F5F5F0"><div style="font-size: 20px; font-weight: 700">21,2°</div><div style="font-size: 12px; color: #4A524D">Kancelář</div></div>
+            <div style="padding: 10px 4px; border-radius: 10px; background: #F5F5F0"><div style="font-size: 20px; font-weight: 700">19,0°</div><div style="font-size: 12px; color: #4A524D">Zasedačka</div></div>
+          </div>
+          <span style="font-weight: 600">Režim topení</span>
+          <div role="group" aria-label="Režim topení" style="display: flex; border: 1px solid #BDBCB4; border-radius: 10px; overflow: hidden">
+            <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+              <button type="button" onClick="{{m.pick}}" style="flex: 1; min-height: 44px; border: 0; background: {{m.bg}}; color: {{m.ink}}; font: inherit; font-weight: 700">{{m.label}}</button>
+            </sc-for>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 6px; border-top: 1px solid #ECEBE6">
+            <span style="display: flex; flex-direction: column"><span style="font-weight: 700">Hlavní vchod</span><span style="font-size: 13px; color: #4A524D">{{doorText}}</span></span>
+            <sc-if value="{{doorIdle}}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{askUnlock}}" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid #BDBCB4; background: #FFFFFF; font: inherit; font-weight: 700">Odemknout</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{doorAsk}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 10px; background: #F5F5F0">
+              <span style="font-weight: 700">Proč odemykáte?</span>
+              <sc-for list="{{reasons}}" as="rs" hint-placeholder-count="3">
+                <button type="button" onClick="{{rs.pick}}" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 2px solid {{rs.border}}; background: #FFFFFF; font: inherit; font-weight: 600; text-align: left">{{rs.label}}</button>
+              </sc-for>
+              <button type="button" onClick="{{doUnlock}}" style="min-height: 48px; border-radius: 10px; border: 0; background: #1D5C4D; color: #FFFFFF; font: inherit; font-weight: 700">Potvrdit otiskem prstu</button>
+              <span style="font-size: 12px; color: #4A524D">Zapíše se do auditního logu. Dveře se samy zamknou za 5 minut.</span>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 700">Sokolovna</span><span style="padding: 2px 10px; border-radius: 999px; background: #FDECEA; color: #8F1C14; font-size: 12px; font-weight: 700">4 °C</span></div>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 700">Mateřská škola</span><span style="padding: 2px 10px; border-radius: 999px; background: #FFF4E5; color: #8A3B0C; font-size: 12px; font-weight: 700">baterie 12 %</span></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isZprava}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <label for="msg" style="font-weight: 700">Text zprávy</label>
+        <textarea id="msg" rows="5" style="padding: 10px 12px; border: 1px solid #BDBCB4; border-radius: 10px; font: inherit">Vážení spoluobčané, z důvodu opravy vodovodního řadu nepoteče ve čtvrtek 29. 10. od 8 do 14 hodin voda v ulicích Hlavní a Za Školou. Cisterna s pitnou vodou bude přistavena u obecního úřadu. Děkujeme za pochopení.</textarea>
+        <span style="font-weight: 700">Komu</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <sc-for list="{{targets}}" as="tg" hint-placeholder-count="3">
+            <button type="button" onClick="{{tg.pick}}" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{tg.border}}; background: {{tg.bg}}; color: {{tg.ink}}; font: inherit; font-weight: 600">{{tg.label}}</button>
+          </sc-for>
+        </div>
+        <span style="font-weight: 700">Kanály</span>
+        <sc-for list="{{chans}}" as="cn" hint-placeholder-count="4">
+          <label style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 0 12px; border-radius: 10px; background: #FFFFFF; border: 1px solid #DAD9D2">
+            <span style="font-weight: 600">{{cn.label}}</span>
+            <input type="checkbox" checked="{{cn.on}}" onChange="{{cn.toggle}}" style="width: 22px; height: 22px; accent-color: #1D5C4D">
+          </label>
+        </sc-for>
+        <sc-if value="{{smsOn}}" hint-placeholder-val="{{ true }}">
+          <div style="padding: 12px; border-radius: 10px; background: #FFFFFF; border: 1px dashed #9AA39D; display: flex; flex-direction: column; gap: 6px">
+            <span style="font-size: 13px; font-weight: 700; color: #4A524D">Verze pro SMS (zkrátila AI, {{smsLen}} znaků)</span>
+            <span>{{smsText}}</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{msgIdle}}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{send}}" style="min-height: 52px; border-radius: 12px; border: 0; background: #1D5C4D; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 700">Odeslat {{recipients}}</button>
+        </sc-if>
+        <sc-if value="{{msgSent}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="padding: 12px 14px; border-radius: 12px; background: #E7F4EC; color: #155C34; font-weight: 600">Odesláno {{recipients}}. Zpráva je i na webu v aktualitách.</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isPodnety}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <sc-for list="{{reports}}" as="rp" hint-placeholder-count="2">
+          <div style="padding: 14px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DAD9D2; display: flex; flex-direction: column; gap: 8px">
+            <div style="display: flex; justify-content: space-between; gap: 8px">
+              <span style="display: flex; flex-direction: column"><span style="font-weight: 700">{{rp.title}}</span><span style="font-size: 13px; color: #4A524D">{{rp.where}} · {{rp.when}}</span></span>
+              <span style="align-self: flex-start; padding: 2px 10px; border-radius: 999px; background: {{rp.bg}}; color: {{rp.ink}}; font-size: 12px; font-weight: 700">{{rp.status}}</span>
+            </div>
+            <sc-if value="{{rp.canAssign}}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{rp.assign}}" style="min-height: 44px; border-radius: 10px; border: 0; background: #1D5C4D; color: #FFFFFF; font: inherit; font-weight: 700">Přiřadit údržbáři Karlovi</button>
+            </sc-if>
+            <sc-if value="{{rp.canClose}}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{rp.close}}" style="min-height: 44px; border-radius: 10px; border: 1px solid #BDBCB4; background: #FFFFFF; font: inherit; font-weight: 700">Označit jako vyřešené a odpovědět</button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+  </div>
+
+  <nav aria-label="Navigace úřadu" style="flex: 0 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 4px 24px; background: #FFFFFF; border-top: 1px solid #DAD9D2">
+    <sc-for list="{{tabs}}" as="tb" hint-placeholder-count="4">
+      <button type="button" onClick="{{tb.pick}}" aria-current="{{tb.current}}" style="min-height: 52px; border: 0; background: transparent; color: {{tb.ink}}; font: inherit; font-size: 12px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+        <sc-if value="{{tb.a}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg></sc-if>
+        <sc-if value="{{tb.b}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"></path><path d="M9 21v-6h6v6"></path></svg></sc-if>
+        <sc-if value="{{tb.c}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 001 1h3l5 4V6L7 10H4a1 1 0 00-1 1z"></path><path d="M16 9a4 4 0 010 6M19 6a8 8 0 010 12"></path></svg></sc-if>
+        <sc-if value="{{tb.d}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"></path><path d="M12 10v4M12 17h.01"></path></svg></sc-if>
+        <span>{{tb.label}}</span>
+      </button>
+    </sc-for>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'prehled', alarm: 'open', appr: { r1: 'open', r2: 'open' }, mode: 'auto', door: 'idle', reason: 'servis', target: 'ulice', ch: { push: true, sms: true, mail: true, web: true }, msg: 'idle', rep: { p1: 'new', p2: 'work' } };
+  }
+  renderVals() {
+    const s = this.state;
+    const tabDefs = [['prehled', 'Přehled', 'a'], ['budovy', 'Budovy', 'b'], ['zprava', 'Zpráva', 'c'], ['podnety', 'Podněty', 'd']];
+    const titles = { prehled: 'Přehled', budovy: 'Budovy', zprava: 'Poslat zprávu', podnety: 'Podněty občanů' };
+    const tabs = tabDefs.map((t) => { const o = { label: t[1], ink: s.tab === t[0] ? '#1D5C4D' : '#5E6560', current: s.tab === t[0] ? 'page' : 'false', pick: () => this.setState({ tab: t[0] }) }; o[t[2]] = true; return o; });
+    const apDefs = [{ k: 'r1', kind: 'Rezervace sálu', title: 'Myslivecký spolek · pá 6. 11. 18:00–22:00' }, { k: 'r2', kind: 'Článek z podwebu školy', title: 'Zápis do 1. třídy 2027' }];
+    const approvals = apDefs.map((a) => {
+      const st = s.appr[a.k];
+      const set = (v) => { const n = Object.assign({}, s.appr); n[a.k] = v; this.setState({ appr: n }); };
+      return { kind: a.kind, title: a.title, open: st === 'open', closed: st !== 'open', result: st === 'ok' ? (a.k === 'r1' ? 'Schváleno · nájemci odešel PIN a platba' : 'Schváleno a zveřejněno') : 'Zamítnuto · autor dostal zprávu', ink: st === 'ok' ? '#155C34' : '#3A423D', ok: () => set('ok'), no: () => set('no') };
+    });
+    const modes = [['auto', 'Auto'], ['komfort', 'Komfort'], ['utlum', 'Útlum']].map((m) => ({ label: m[1], bg: s.mode === m[0] ? '#1D5C4D' : '#FFFFFF', ink: s.mode === m[0] ? '#FFFFFF' : '#18211D', pick: () => this.setState({ mode: m[0] }) }));
+    const reasons = [['servis', 'Servis nebo oprava'], ['pin', 'Nájemce zapomněl PIN'], ['hasici', 'Zásah hasičů']].map((r) => ({ label: r[1], border: s.reason === r[0] ? '#1D5C4D' : '#DAD9D2', pick: () => this.setState({ reason: r[0] }) }));
+    const targets = [['obec', 'Celá obec'], ['ulice', 'Hlavní + Za Školou'], ['cast', 'Část Lhotka']].map((t) => ({ label: t[1], bg: s.target === t[0] ? '#1D5C4D' : '#FFFFFF', ink: s.target === t[0] ? '#FFFFFF' : '#18211D', border: s.target === t[0] ? '#1D5C4D' : '#BDBCB4', pick: () => this.setState({ target: t[0], msg: 'idle' }) }));
+    const chDefs = [['push', 'Push v aplikaci'], ['sms', 'SMS'], ['mail', 'E-mail'], ['web', 'Web – aktuality']];
+    const chans = chDefs.map((c) => ({ label: c[1], on: !!s.ch[c[0]], toggle: () => { const n = Object.assign({}, s.ch); n[c[0]] = !n[c[0]]; this.setState({ ch: n, msg: 'idle' }); } }));
+    const counts = { obec: 486, ulice: 74, cast: 61 };
+    const smsText = 'Obec Horní Vzorov: čt 29.10. 8-14 h nepoteče voda v ul. Hlavní a Za Školou. Cisterna u OÚ.';
+    const repDefs = [{ k: 'p1', title: 'Nesvítí lampa u zastávky', where: 'Lipová 12', when: 'dnes 10:31' }, { k: 'p2', title: 'Přeplněný kontejner na sklo', where: 'Náves', when: 'včera' }];
+    const stMap = { new: ['Nový', '#FFF4E5', '#8A3B0C'], work: ['V řešení · Karel', '#E8F0EC', '#1D5C4D'], done: ['Vyřešeno', '#E7F4EC', '#155C34'] };
+    const reports = repDefs.map((r) => {
+      const st = s.rep[r.k];
+      const set = (v) => { const n = Object.assign({}, s.rep); n[r.k] = v; this.setState({ rep: n }); };
+      return { title: r.title, where: r.where, when: r.when, status: stMap[st][0], bg: stMap[st][1], ink: stMap[st][2], canAssign: st === 'new', canClose: st === 'work', assign: () => set('work'), close: () => set('done') };
+    });
+    return {
+      tabs: tabs, title: titles[s.tab],
+      isPrehled: s.tab === 'prehled', isBudovy: s.tab === 'budovy', isZprava: s.tab === 'zprava', isPodnety: s.tab === 'podnety',
+      alarmOpen: s.alarm === 'open', alarmTaken: s.alarm === 'taken', takeAlarm: () => this.setState({ alarm: 'taken' }),
+      approvals: approvals, modes: modes, reasons: reasons,
+      doorIdle: s.door === 'idle', doorAsk: s.door === 'ask', askUnlock: () => this.setState({ door: 'ask' }), doUnlock: () => this.setState({ door: 'open' }),
+      doorText: s.door === 'open' ? 'Odemčeno do 10:56 · zapsáno do logu' : 'Zamčeno · poslední vstup 7:42',
+      targets: targets, chans: chans, smsOn: !!s.ch.sms, smsText: smsText, smsLen: smsText.length,
+      recipients: counts[s.target] + ' obyvatelům',
+      msgIdle: s.msg === 'idle', msgSent: s.msg === 'sent', send: () => this.setState({ msg: 'sent' }),
+      reports: reports
+    };
+  }
+}
+</script>
+</body>
+</html>

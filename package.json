@@ -6,9 +6,7 @@
   "scripts": {
     "typecheck": "pnpm -r typecheck",
     "lint": "eslint .",
-    "test": "pnpm -r test",
-    "brana:objev": "pnpm --filter @codekom-app/brana objev",
-    "brana:start": "pnpm --filter @codekom-app/brana start"
+    "test": "pnpm -r test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
