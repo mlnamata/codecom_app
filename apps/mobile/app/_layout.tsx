@@ -5,7 +5,8 @@ import { StatusBar } from 'expo-status-bar'
 import { TemaProvider } from '../src/tema'
 import { ZdrojProvider } from '../src/zdroj'
 import { RelaceProvider } from '../src/stav/relace'
-import { Ramec, PruhUkazky } from '../src/ui'
+import { OznameniProvider } from '../src/stav/oznameni'
+import { Ramec, PruhUkazky, PruhOznameni } from '../src/ui'
 
 export default function RootLayout() {
   const [queryClient] = useState(
@@ -24,13 +25,16 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <ZdrojProvider>
         <RelaceProvider>
-          <TemaProvider>
-            <Ramec>
-              <StatusBar style="auto" />
-              <PruhUkazky />
-              <Slot />
-            </Ramec>
-          </TemaProvider>
+          <OznameniProvider>
+            <TemaProvider>
+              <Ramec>
+                <StatusBar style="auto" />
+                <PruhUkazky />
+                <PruhOznameni />
+                <Slot />
+              </Ramec>
+            </TemaProvider>
+          </OznameniProvider>
         </RelaceProvider>
       </ZdrojProvider>
     </QueryClientProvider>
