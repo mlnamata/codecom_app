@@ -4,6 +4,7 @@ import { Slot } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { TemaProvider } from '../src/tema'
 import { ZdrojProvider } from '../src/zdroj'
+import { RelaceProvider } from '../src/stav/relace'
 import { Ramec, PruhUkazky } from '../src/ui'
 
 export default function RootLayout() {
@@ -22,13 +23,15 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <ZdrojProvider>
-        <TemaProvider>
-          <Ramec>
-            <StatusBar style="auto" />
-            <PruhUkazky />
-            <Slot />
-          </Ramec>
-        </TemaProvider>
+        <RelaceProvider>
+          <TemaProvider>
+            <Ramec>
+              <StatusBar style="auto" />
+              <PruhUkazky />
+              <Slot />
+            </Ramec>
+          </TemaProvider>
+        </RelaceProvider>
       </ZdrojProvider>
     </QueryClientProvider>
   )

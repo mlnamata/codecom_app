@@ -1,3 +1,5 @@
 export * from './Ramec'
 export * from './Tlacitko'
 export * from './PruhUkazky'
+export * from './Pole'
+export * from './Karta'
