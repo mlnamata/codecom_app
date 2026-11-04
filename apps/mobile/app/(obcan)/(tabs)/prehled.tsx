@@ -1,103 +1,96 @@
-import React, { useEffect, useState, useCallback } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-  Pressable,
-} from "react-native";
-import { useRouter } from "expo-router";
-import { useTema } from "@/tema";
-import { useZdroj } from "@/zdroj";
-import { useRelace } from "@/stav/relace";
-import { KrizovyBanner, Karta, Tlacitko, Logo } from "@/ui";
-import { Ikona, type NazevIkony } from "@/ui/Ikony";
-import type { Prehled, KrizoveHlaseni } from "@codekom/typy";
-import { formatDay } from "@codekom/typy/pravidla";
+import React, { useEffect, useState, useCallback } from 'react'
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Pressable } from 'react-native'
+import { useRouter } from 'expo-router'
+import { useTema } from '@/tema'
+import { useZdroj } from '@/zdroj'
+import { useRelace } from '@/stav/relace'
+import { KrizovyBanner, Karta, Tlacitko, Logo } from '@/ui'
+import { Ikona, type NazevIkony } from '@/ui/Ikony'
+import type { Prehled, KrizoveHlaseni } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 function zacinaVelkym(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
+  return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
 interface RychlaAkce {
-  nazev: string;
-  cil: string;
-  ikona: NazevIkony;
+  nazev: string
+  cil: string
+  ikona: NazevIkony
   /** Barva ikony a tónované pozadí (kontrast ikony ≥ 3 : 1). */
-  barva: string;
-  pozadi: string;
+  barva: string
+  pozadi: string
 }
 
 const RYCHLE_AKCE: RychlaAkce[] = [
   {
-    nazev: "Nahlásit závadu",
-    cil: "/(obcan)/(tabs)/sluzby/zavada",
-    ikona: "zavada",
-    barva: "#C2410C",
-    pozadi: "#FFF1E6",
+    nazev: 'Nahlásit závadu',
+    cil: '/(obcan)/(tabs)/sluzby/zavada',
+    ikona: 'zavada',
+    barva: '#C2410C',
+    pozadi: '#FFF1E6',
   },
   {
-    nazev: "Poplatky",
-    cil: "/(obcan)/(tabs)/sluzby/poplatky",
-    ikona: "platby",
-    barva: "#1D4ED8",
-    pozadi: "#E8EFFE",
+    nazev: 'Poplatky',
+    cil: '/(obcan)/(tabs)/sluzby/poplatky',
+    ikona: 'platby',
+    barva: '#1D4ED8',
+    pozadi: '#E8EFFE',
   },
   {
-    nazev: "Rezervace",
-    cil: "/(obcan)/(tabs)/sluzby/rezervace",
-    ikona: "rezervace",
-    barva: "#6D28D9",
-    pozadi: "#F1EAFE",
+    nazev: 'Rezervace',
+    cil: '/(obcan)/(tabs)/sluzby/rezervace',
+    ikona: 'rezervace',
+    barva: '#6D28D9',
+    pozadi: '#F1EAFE',
   },
   {
-    nazev: "Úřední deska",
-    cil: "/(obcan)/(tabs)/deska",
-    ikona: "deska",
-    barva: "#0B7A4B",
-    pozadi: "#E7F5EE",
+    nazev: 'Úřední deska',
+    cil: '/(obcan)/(tabs)/deska',
+    ikona: 'deska',
+    barva: '#0B7A4B',
+    pozadi: '#E7F5EE',
   },
-];
+]
 
 export default function ObcanPrehledScreen() {
-  const router = useRouter();
-  const { barvy, pismo } = useTema();
-  const { zdroj } = useZdroj();
-  const { relace } = useRelace();
+  const router = useRouter()
+  const { barvy, pismo } = useTema()
+  const { zdroj } = useZdroj()
+  const { relace } = useRelace()
 
-  const [data, setData] = useState<Prehled | null>(null);
+  const [data, setData] = useState<Prehled | null>(null)
   const [aktivniKrize, setAktivniKrize] = useState<{
-    hlavni: KrizoveHlaseni | null;
-    dalsich: number;
-  }>({ hlavni: null, dalsich: 0 });
-  const [nacitaSe, setNacitaSe] = useState(true);
-  const [chyba, setChyba] = useState<string | null>(null);
+    hlavni: KrizoveHlaseni | null
+    dalsich: number
+  }>({ hlavni: null, dalsich: 0 })
+  const [nacitaSe, setNacitaSe] = useState(true)
+  const [chyba, setChyba] = useState<string | null>(null)
 
   const nactiPrehled = useCallback(async () => {
-    const slug = relace.obec || "javori-lhota";
-    setChyba(null);
+    const slug = relace.obec || 'javori-lhota'
+    setChyba(null)
     try {
       const [prehledData, krizeData] = await Promise.all([
         zdroj.prehled(slug),
         zdroj.krizeAktivni(slug),
-      ]);
-      setData(prehledData);
-      setAktivniKrize(krizeData);
+      ])
+      setData(prehledData)
+      setAktivniKrize(krizeData)
     } catch (err) {
-      console.warn("Chyba při načítání přehledu:", err);
-      setChyba("Nepodařilo se načíst přehled obce.");
+      console.warn('Chyba při načítání přehledu:', err)
+      setChyba('Nepodařilo se načíst přehled obce.')
     } finally {
-      setNacitaSe(false);
+      setNacitaSe(false)
     }
-  }, [zdroj, relace.obec]);
+  }, [zdroj, relace.obec])
 
   useEffect(() => {
-    void nactiPrehled();
+    void nactiPrehled()
     // Obnovování dat každých 10 sekund pro aktualizaci krizí a rozhlasu
-    const timer = setInterval(() => void nactiPrehled(), 10_000);
-    return () => clearInterval(timer);
-  }, [nactiPrehled]);
+    const timer = setInterval(() => void nactiPrehled(), 10_000)
+    return () => clearInterval(timer)
+  }, [nactiPrehled])
 
   if (nacitaSe && !data) {
     return (
@@ -108,26 +101,21 @@ export default function ObcanPrehledScreen() {
           accessibilityLabel="Načítání přehledu"
         />
       </View>
-    );
+    )
   }
 
   if (chyba && !data) {
     return (
       <View style={[styles.stred, { backgroundColor: barvy.bg }]}>
-        <Text
-          style={[
-            styles.chybaText,
-            { color: barvy.ink, fontFamily: pismo.rodina },
-          ]}
-        >
+        <Text style={[styles.chybaText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
           {chyba}
         </Text>
         <Tlacitko nazev="Zkusit znovu" onPress={() => void nactiPrehled()} />
       </View>
-    );
+    )
   }
 
-  const nejnovejsiRozhlas = data?.rozhlas?.[0];
+  const nejnovejsiRozhlas = data?.rozhlas?.[0]
 
   return (
     <ScrollView
@@ -138,23 +126,18 @@ export default function ObcanPrehledScreen() {
       <KrizovyBanner
         hlavni={aktivniKrize.hlavni}
         dalsich={aktivniKrize.dalsich}
-        onZobrazitDalsi={() => router.push("/(obcan)/(tabs)/zpravy")}
+        onZobrazitDalsi={() => router.push('/(obcan)/(tabs)/zpravy')}
       />
 
       <View style={styles.zahlavi}>
         <Logo velikost={48} />
         <View style={styles.zahlaviText}>
-          <Text
-            style={[
-              styles.zahlaviDatum,
-              { color: barvy.muted, fontFamily: pismo.rodina },
-            ]}
-          >
+          <Text style={[styles.zahlaviDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
             {zacinaVelkym(
-              new Date().toLocaleDateString("cs-CZ", {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
+              new Date().toLocaleDateString('cs-CZ', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
               }),
             )}
           </Text>
@@ -162,12 +145,9 @@ export default function ObcanPrehledScreen() {
             role="heading"
             aria-level={1}
             accessibilityRole="header"
-            style={[
-              styles.zahlaviNadpis,
-              { color: barvy.ink, fontFamily: pismo.rodina },
-            ]}
+            style={[styles.zahlaviNadpis, { color: barvy.ink, fontFamily: pismo.rodina }]}
           >
-            {data?.obec.nazev ?? "Přehled obce"}
+            {data?.obec.nazev ?? 'Přehled obce'}
           </Text>
         </View>
       </View>
@@ -189,16 +169,11 @@ export default function ObcanPrehledScreen() {
               },
             ]}
           >
-            <View
-              style={[styles.rychlaIkona, { backgroundColor: akce.pozadi }]}
-            >
+            <View style={[styles.rychlaIkona, { backgroundColor: akce.pozadi }]}>
               <Ikona nazev={akce.ikona} barva={akce.barva} velikost={24} />
             </View>
             <Text
-              style={[
-                styles.rychlaNazev,
-                { color: barvy.ink, fontFamily: pismo.rodina },
-              ]}
+              style={[styles.rychlaNazev, { color: barvy.ink, fontFamily: pismo.rodina }]}
               numberOfLines={2}
             >
               {akce.nazev}
@@ -233,15 +208,10 @@ export default function ObcanPrehledScreen() {
             >
               Hlášení rozhlasu
             </Text>
-            <Text
-              style={[
-                styles.rozhlasCas,
-                { color: barvy.muted, fontFamily: pismo.rodina },
-              ]}
-            >
-              {new Date(nejnovejsiRozhlas.cas).toLocaleTimeString("cs-CZ", {
-                hour: "2-digit",
-                minute: "2-digit",
+            <Text style={[styles.rozhlasCas, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+              {new Date(nejnovejsiRozhlas.cas).toLocaleTimeString('cs-CZ', {
+                hour: '2-digit',
+                minute: '2-digit',
               })}
             </Text>
           </View>
@@ -257,12 +227,7 @@ export default function ObcanPrehledScreen() {
           >
             {nejnovejsiRozhlas.titulek}
           </Text>
-          <Text
-            style={[
-              styles.rozhlasText,
-              { color: barvy.ink, fontFamily: pismo.rodina },
-            ]}
-          >
+          <Text style={[styles.rozhlasText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
             {nejnovejsiRozhlas.text}
           </Text>
         </View>
@@ -290,15 +255,10 @@ export default function ObcanPrehledScreen() {
             role="button"
             accessibilityRole="button"
             accessibilityLabel="Zobrazit všechny aktuality"
-            onPress={() => router.push("/(obcan)/(tabs)/zpravy")}
+            onPress={() => router.push('/(obcan)/(tabs)/zpravy')}
             style={styles.odkazSekce}
           >
-            <Text
-              style={[
-                styles.odkazSekceText,
-                { color: barvy.link, fontFamily: pismo.rodina },
-              ]}
-            >
+            <Text style={[styles.odkazSekceText, { color: barvy.link, fontFamily: pismo.rodina }]}>
               Všechny aktuality →
             </Text>
           </Pressable>
@@ -308,7 +268,7 @@ export default function ObcanPrehledScreen() {
           data.aktuality.map((a) => (
             <Karta
               key={a.id}
-              onPress={() => router.push("/(obcan)/(tabs)/zpravy")}
+              onPress={() => router.push('/(obcan)/(tabs)/zpravy')}
               popisekProCtecku={`Aktualita: ${a.titulek}`}
             >
               <Text
@@ -325,30 +285,17 @@ export default function ObcanPrehledScreen() {
               </Text>
               <Text
                 numberOfLines={2}
-                style={[
-                  styles.kartaPerex,
-                  { color: barvy.muted, fontFamily: pismo.rodina },
-                ]}
+                style={[styles.kartaPerex, { color: barvy.muted, fontFamily: pismo.rodina }]}
               >
                 {a.perex}
               </Text>
-              <Text
-                style={[
-                  styles.kartaDatum,
-                  { color: barvy.muted, fontFamily: pismo.rodina },
-                ]}
-              >
-                {new Date(a.publikovano).toLocaleDateString("cs-CZ")}
+              <Text style={[styles.kartaDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+                {new Date(a.publikovano).toLocaleDateString('cs-CZ')}
               </Text>
             </Karta>
           ))
         ) : (
-          <Text
-            style={[
-              styles.prazdnoText,
-              { color: barvy.muted, fontFamily: pismo.rodina },
-            ]}
-          >
+          <Text style={[styles.prazdnoText, { color: barvy.muted, fontFamily: pismo.rodina }]}>
             Žádné nové aktuality.
           </Text>
         )}
@@ -376,15 +323,10 @@ export default function ObcanPrehledScreen() {
             role="button"
             accessibilityRole="button"
             accessibilityLabel="Zobrazit celou úřední desku"
-            onPress={() => router.push("/(obcan)/(tabs)/deska")}
+            onPress={() => router.push('/(obcan)/(tabs)/deska')}
             style={styles.odkazSekce}
           >
-            <Text
-              style={[
-                styles.odkazSekceText,
-                { color: barvy.link, fontFamily: pismo.rodina },
-              ]}
-            >
+            <Text style={[styles.odkazSekceText, { color: barvy.link, fontFamily: pismo.rodina }]}>
               Celá deska →
             </Text>
           </Pressable>
@@ -418,24 +360,14 @@ export default function ObcanPrehledScreen() {
                 >
                   {d.kategorie}
                 </Text>
-                <Text
-                  style={[
-                    styles.kartaDatum,
-                    { color: barvy.muted, fontFamily: pismo.rodina },
-                  ]}
-                >
+                <Text style={[styles.kartaDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
                   Vyvěšeno {formatDay(d.vyvesenoOd)}
                 </Text>
               </View>
             </Karta>
           ))
         ) : (
-          <Text
-            style={[
-              styles.prazdnoText,
-              { color: barvy.muted, fontFamily: pismo.rodina },
-            ]}
-          >
+          <Text style={[styles.prazdnoText, { color: barvy.muted, fontFamily: pismo.rodina }]}>
             Na desce právě nevisí žádný dokument.
           </Text>
         )}
@@ -466,34 +398,18 @@ export default function ObcanPrehledScreen() {
         >
           Kontakt na obecní úřad
         </Text>
-        <Text
-          style={[
-            styles.kontaktText,
-            { color: barvy.ink, fontFamily: pismo.rodina },
-          ]}
-        >
+        <Text style={[styles.kontaktText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
           Obecní úřad Javoří Lhota, Náves 1
         </Text>
-        <Text
-          style={[
-            styles.kontaktText,
-            { color: barvy.ink, fontFamily: pismo.rodina },
-          ]}
-        >
+        <Text style={[styles.kontaktText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
           Telefon: [TELEFON] · E-mail: [E-MAIL]
         </Text>
-        <Text
-          style={[
-            styles.kontaktHodiny,
-            { color: barvy.muted, fontFamily: pismo.rodina },
-          ]}
-        >
-          Úřední hodiny: pondělí a středa 8:00 – 17:00, úterý a čtvrtek 8:00 –
-          12:00
+        <Text style={[styles.kontaktHodiny, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+          Úřední hodiny: pondělí a středa 8:00 – 17:00, úterý a čtvrtek 8:00 – 12:00
         </Text>
       </View>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -503,18 +419,18 @@ const styles = StyleSheet.create({
   },
   stred: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
   },
   chybaText: {
     fontSize: 16,
     marginBottom: 16,
-    textAlign: "center",
+    textAlign: 'center',
   },
   zahlavi: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 14,
     marginTop: 8,
     marginBottom: 4,
@@ -525,16 +441,16 @@ const styles = StyleSheet.create({
   },
   zahlaviDatum: {
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: '500',
   },
   zahlaviNadpis: {
     fontSize: 28,
-    fontWeight: "800",
+    fontWeight: '800',
     letterSpacing: -0.8,
     lineHeight: 34,
   },
   rychleAkce: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 10,
     marginTop: 20,
     marginBottom: 8,
@@ -546,8 +462,8 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 6,
     gap: 10,
-    alignItems: "center",
-    shadowColor: "#0F1B16",
+    alignItems: 'center',
+    shadowColor: '#0F1B16',
     shadowOpacity: 0.07,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 4 },
@@ -557,13 +473,13 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   rychlaNazev: {
     fontSize: 13,
-    fontWeight: "600",
-    textAlign: "center",
+    fontWeight: '600',
+    textAlign: 'center',
     lineHeight: 17,
   },
   rozhlasBox: {
@@ -573,14 +489,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   rozhlasHlavicka: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 4,
   },
   rozhlasStitek: {
     fontSize: 12,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   rozhlasCas: {
@@ -598,9 +514,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   radekSekce: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 8,
   },
   nadpisSekce: {
@@ -608,7 +524,7 @@ const styles = StyleSheet.create({
   },
   odkazSekce: {
     minHeight: 44,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingVertical: 8,
   },
   odkazSekceText: {
@@ -628,14 +544,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   radekDokumentu: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginTop: 4,
   },
   kategorieStitek: {
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   prazdnoText: {
     fontSize: 14,
@@ -656,4 +572,4 @@ const styles = StyleSheet.create({
     marginTop: 8,
     lineHeight: 18,
   },
-});
+})
