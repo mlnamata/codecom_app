@@ -7,6 +7,7 @@ import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { Pole, Tlacitko, Karta } from '@/ui'
 import type { StavZavadyVerejny } from '@codekom/typy'
+import { nazevKategorieZavady } from '@/zdroj/kategorieZavad'
 
 const KLIC_MOJE_HLASENI = 'codekom.ukazka.moje_hlaseni'
 
@@ -228,7 +229,7 @@ export default function SledovaniZavadyScreen() {
                   Kategorie:
                 </Text>
                 <Text style={[styles.polozkaHodnota, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-                  {vysledek.kategorie}
+                  {nazevKategorieZavady(vysledek.kategorie)}
                 </Text>
               </View>
 

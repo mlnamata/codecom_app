@@ -17,7 +17,8 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Prototyp aplikace (zadání 08) – M6: Dokončení prototypu, statický export a dokumentace | hotovo | session aplikace |
 | Redesign vzhledu prototypu: ikony v navigaci, rámec telefonu, tenký pruh ukázky, rychlé akce na přehledu, barvy přepínačů | hotovo | session aplikace (design) |
 | Oprava úřední desky: filtry z kategorií v datech (dřív pevné a neexistující), čitelné názvy kategorií, české datum | hotovo | session aplikace (design 2) |
-| Sjednocení vzhledu Zprávy, Deska, Krize, Závady, Budovy (karty, štítky, kategorie závad slovy) | dělá se | session aplikace (design 2) |
+| Kategorie závad slovy a jednotně: formulář občana ukládá id z dat (dřív „Výmol“ místo `vymol`), úřad a sledování ukazují název | hotovo | session aplikace (design 2) |
+| Sjednocení vzhledu karet a štítků na obrazovkách Zprávy, Deska, Krize, Závady, Budovy | dělá se | session aplikace (design 2) |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

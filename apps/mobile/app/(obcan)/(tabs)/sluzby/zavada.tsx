@@ -7,8 +7,8 @@ import { useRelace } from '@/stav/relace'
 import { useOznameni } from '@/stav/oznameni'
 import { Pole, Tlacitko, Karta } from '@/ui'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { KATEGORIE_ZAVAD } from '@/zdroj/kategorieZavad'
 
-const KATEGORIE = ['Výmol', 'Osvětlení', 'Odpad', 'Zeleň', 'Jiné']
 const MAX_POPIS = 1000
 const KLIC_MOJE_HLASENI = 'codekom.ukazka.moje_hlaseni'
 
@@ -19,7 +19,7 @@ export default function NahlasitZavaduScreen() {
   const { relace } = useRelace()
   const { zobrazitOznameni } = useOznameni()
 
-  const [vybranaKategorie, setVybranaKategorie] = useState('Výmol')
+  const [vybranaKategorie, setVybranaKategorie] = useState<string>(KATEGORIE_ZAVAD[0]?.id ?? 'jine')
   const [popis, setPopis] = useState('')
   const [popisMista, setPopisMista] = useState('')
   const [poloha, setPoloha] = useState<{ lat: number; lng: number } | null>(null)
@@ -253,16 +253,16 @@ export default function NahlasitZavaduScreen() {
         Kategorie závady:
       </Text>
       <View style={styles.kategorieWrap}>
-        {KATEGORIE.map((kat) => {
-          const vybrana = vybranaKategorie === kat
+        {KATEGORIE_ZAVAD.map((kat) => {
+          const vybrana = vybranaKategorie === kat.id
           return (
             <Pressable
-              key={kat}
+              key={kat.id}
               role="button"
               accessibilityRole="button"
-              accessibilityLabel={`Kategorie ${kat}`}
+              accessibilityLabel={`Kategorie ${kat.nazev}`}
               accessibilityState={{ selected: vybrana }}
-              onPress={() => setVybranaKategorie(kat)}
+              onPress={() => setVybranaKategorie(kat.id)}
               style={[
                 styles.kategorieTlacitko,
                 {
@@ -281,7 +281,7 @@ export default function NahlasitZavaduScreen() {
                   },
                 ]}
               >
-                {kat}
+                {kat.nazev}
               </Text>
             </Pressable>
           )

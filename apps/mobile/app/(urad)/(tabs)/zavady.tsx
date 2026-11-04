@@ -12,6 +12,7 @@ import { useRelace } from '@/stav/relace'
 import { useZdroj } from '@/zdroj'
 import { Karta, Tlacitko, Pole } from '@/ui'
 import type { HlaseniZavady, StavZavady } from '@codekom/typy'
+import { nazevKategorieZavady } from '@/zdroj/kategorieZavad'
 
 const STAVY: { id: StavZavady; nazev: string }[] = [
   { id: 'nove', nazev: 'Nové' },
@@ -218,12 +219,12 @@ export default function UradZavadyScreen() {
                 key={zavada.id}
                 onPress={() => otevritDetail(zavada)}
                 style={styles.zavadaKarta}
-                popisekProCtecku={`Hlášení ${zavada.cislo}, stav ${stavNazev}, kategorie ${zavada.kategorie}. Klepnutím otevřete detail a vyřízení.`}
+                popisekProCtecku={`Hlášení ${zavada.cislo}, stav ${stavNazev}, kategorie ${nazevKategorieZavady(zavada.kategorie)}. Klepnutím otevřete detail a vyřízení.`}
               >
                 <View style={styles.zavadaHlavicka}>
                   <View style={{ flex: 1 }}>
                     <Text style={[styles.kategorieText, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-                      {zavada.cislo} • {zavada.kategorie} • {formatDatum(zavada.vytvoreno)}
+                      {zavada.cislo} • {nazevKategorieZavady(zavada.kategorie)} • {formatDatum(zavada.vytvoreno)}
                     </Text>
                     <Text
                       style={[
@@ -324,7 +325,7 @@ export default function UradZavadyScreen() {
               <View style={styles.infoSekce}>
                 <Text style={[styles.infoRadek, { color: barvy.ink, fontFamily: pismo.rodina }]}>
                   <Text style={{ fontWeight: '600' }}>Kategorie: </Text>
-                  {vybranaZavada?.kategorie}
+                  {vybranaZavada ? nazevKategorieZavady(vybranaZavada.kategorie) : ''}
                 </Text>
                 <Text style={[styles.infoRadek, { color: barvy.ink, fontFamily: pismo.rodina }]}>
                   <Text style={{ fontWeight: '600' }}>Sledovací kód: </Text>
