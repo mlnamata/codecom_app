@@ -12,6 +12,7 @@ import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { Tlacitko, Karta } from '@/ui'
 import type { DokumentDesky } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 export default function DeskaDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>()
@@ -22,6 +23,7 @@ export default function DeskaDetailScreen() {
 
   const [dokument, setDokument] = useState<DokumentDesky | null>(null)
   const [nacitaSe, setNacitaSe] = useState(true)
+  const [nazevKategorie, setNazevKategorie] = useState<string | null>(null)
 
   useEffect(() => {
     let aktivni = true
@@ -29,8 +31,14 @@ export default function DeskaDetailScreen() {
       if (!id) return
       try {
         const slug = relace.obec || 'javori-lhota'
-        const d = await zdroj.dokument(slug, id)
-        if (aktivni) setDokument(d)
+        const [d, kategorie] = await Promise.all([
+          zdroj.dokument(slug, id),
+          zdroj.kategorieDesky(slug),
+        ])
+        if (aktivni) {
+          setDokument(d)
+          setNazevKategorie(kategorie.find((k) => k.id === d?.kategorie)?.nazev ?? null)
+        }
       } catch (err) {
         console.warn('Chyba při načítání detailu dokumentu:', err)
       } finally {
@@ -105,7 +113,7 @@ export default function DeskaDetailScreen() {
             Kategorie:
           </Text>
           <Text style={[styles.hodnota, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-            {dokument.kategorie}
+            {nazevKategorie ?? dokument.kategorie}
           </Text>
         </View>
 
@@ -114,7 +122,7 @@ export default function DeskaDetailScreen() {
             Vyvěšeno od:
           </Text>
           <Text style={[styles.hodnota, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-            {dokument.vyvesenoOd}
+            {formatDay(dokument.vyvesenoOd)}
           </Text>
         </View>
 
@@ -123,7 +131,7 @@ export default function DeskaDetailScreen() {
             Vyvěšeno do:
           </Text>
           <Text style={[styles.hodnota, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-            {dokument.vyvesenoDo ?? 'Do odvolání'}
+            {dokument.vyvesenoDo ? formatDay(dokument.vyvesenoDo) : 'Do odvolání'}
           </Text>
         </View>
       </Karta>

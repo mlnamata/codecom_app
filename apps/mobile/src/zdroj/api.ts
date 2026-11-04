@@ -4,6 +4,7 @@ import {
   Budova,
   DokumentDesky,
   FiltrDesky,
+  KategorieDesky,
   HlaseniRozhlasu,
   HlaseniZavady,
   KrizeAktivniOdpoved,
@@ -96,6 +97,12 @@ export const apiZdroj: ZdrojAplikace = {
     } catch {
       return vestaveneZdroj.deska(obec, filtr)
     }
+  },
+
+  async kategorieDesky(obec: string): Promise<KategorieDesky[]> {
+    // [OVĚŘIT] Veřejné API zatím nemá samostatný výpis kategorií desky,
+    // proto se kategorie berou z vestavěných dat ukázkové obce.
+    return vestaveneZdroj.kategorieDesky(obec)
   },
 
   async dokument(obec: string, id: string): Promise<DokumentDesky | null> {

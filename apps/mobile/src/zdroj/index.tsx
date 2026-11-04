@@ -95,6 +95,14 @@ export function ZdrojProvider({ children }: { children: React.ReactNode }) {
           return vestaveneZdroj.deska(obec, filtr)
         }
       },
+      async kategorieDesky(obec) {
+        try {
+          return await apiZdroj.kategorieDesky(obec)
+        } catch (e) {
+          prepad(e)
+          return vestaveneZdroj.kategorieDesky(obec)
+        }
+      },
       async dokument(obec, id) {
         try {
           return await apiZdroj.dokument(obec, id)

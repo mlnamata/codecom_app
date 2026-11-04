@@ -4,6 +4,7 @@ import type {
   Budova,
   DokumentDesky,
   FiltrDesky,
+  KategorieDesky,
   HlaseniRozhlasu,
   HlaseniZavady,
   KrizoveHlaseni,
@@ -30,6 +31,7 @@ export interface ZdrojAplikace {
   prehled(obec: string): Promise<Prehled>
   krizeAktivni(obec: string): Promise<{ hlavni: KrizoveHlaseni | null; dalsich: number }>
   deska(obec: string, filtr?: FiltrDesky): Promise<DokumentDesky[]>
+  kategorieDesky(obec: string): Promise<KategorieDesky[]>
   dokument(obec: string, id: string): Promise<DokumentDesky | null>
   aktuality(obec: string): Promise<Aktualita[]>
   akce(obec: string): Promise<Akce[]>

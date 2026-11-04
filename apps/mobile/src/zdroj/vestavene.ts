@@ -18,6 +18,7 @@ import type {
   Budova,
   DokumentDesky,
   FiltrDesky,
+  KategorieDesky,
   HlaseniRozhlasu,
   HlaseniZavady,
   KrizoveHlaseni,
@@ -139,6 +140,10 @@ export const vestaveneZdroj: ZdrojAplikace = {
       },
       DEN,
     )
+  },
+
+  async kategorieDesky(_obec: string): Promise<KategorieDesky[]> {
+    return [...demoDeska.kategorie].sort((a, b) => a.poradi - b.poradi)
   },
 
   async dokument(_obec: string, id: string): Promise<DokumentDesky | null> {

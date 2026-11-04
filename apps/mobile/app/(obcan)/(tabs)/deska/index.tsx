@@ -12,15 +12,8 @@ import { useTema } from '@/tema'
 import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { Pole, Karta } from '@/ui'
-import type { DokumentDesky } from '@codekom/typy'
-
-const KATEGORIE = [
-  { id: 'vse', nazev: 'Vše' },
-  { id: 'zamery', nazev: 'Záměry' },
-  { id: 'vyhlasky', nazev: 'Vyhlášky' },
-  { id: 'rozpocty', nazev: 'Rozpočty' },
-  { id: 'volby', nazev: 'Volby' },
-]
+import type { DokumentDesky, KategorieDesky } from '@codekom/typy'
+import { formatDay } from '@codekom/typy/pravidla'
 
 export default function DeskaSeznamScreen() {
   const router = useRouter()
@@ -33,6 +26,23 @@ export default function DeskaSeznamScreen() {
   const [vybranaKategorie, setVybranaKategorie] = useState<string | null>(null)
   const [hledani, setHledani] = useState('')
   const [nacitaSe, setNacitaSe] = useState(true)
+  const [kategorieDesky, setKategorieDesky] = useState<KategorieDesky[]>([])
+
+  useEffect(() => {
+    let aktivni = true
+    zdroj
+      .kategorieDesky(relace.obec || 'javori-lhota')
+      .then((k) => {
+        if (aktivni) setKategorieDesky(k)
+      })
+      .catch((err: unknown) => console.warn('Chyba při načítání kategorií desky:', err))
+    return () => {
+      aktivni = false
+    }
+  }, [zdroj, relace.obec])
+
+  const filtry = [{ id: 'vse', nazev: 'Vše' }, ...kategorieDesky]
+  const nazevKategorie = (id: string) => kategorieDesky.find((k) => k.id === id)?.nazev ?? id
 
   const nactiDokumenty = useCallback(async () => {
     setNacitaSe(true)
@@ -146,7 +156,7 @@ export default function DeskaSeznamScreen() {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.kategorieSeznam}
       >
-        {KATEGORIE.map((kat) => {
+        {filtry.map((kat) => {
           const jeVybrana =
             kat.id === 'vse' ? vybranaKategorie === null : vybranaKategorie === kat.id
           return (
@@ -197,7 +207,7 @@ export default function DeskaSeznamScreen() {
             <Karta
               key={dok.id}
               onPress={() => router.push(`/(obcan)/(tabs)/deska/${dok.id}`)}
-              popisekProCtecku={`Dokument: ${dok.nazev}, vyvěšeno od ${dok.vyvesenoOd}`}
+              popisekProCtecku={`Dokument: ${dok.nazev}, vyvěšeno od ${formatDay(dok.vyvesenoOd)}`}
             >
               <Text
                 style={[
@@ -224,10 +234,12 @@ export default function DeskaSeznamScreen() {
                     },
                   ]}
                 >
-                  {dok.kategorie}
+                  {nazevKategorie(dok.kategorie)}
                 </Text>
                 <Text style={[styles.dokDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-                  {archiv ? `Sejmuto: ${dok.vyvesenoDo ?? '–'}` : `Vyvěšeno: ${dok.vyvesenoOd}`}
+                  {archiv
+                    ? `Sejmuto ${dok.vyvesenoDo ? formatDay(dok.vyvesenoDo) : '–'}`
+                    : `Vyvěšeno ${formatDay(dok.vyvesenoOd)}`}
                 </Text>
               </View>
             </Karta>
