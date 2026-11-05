@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native'
-import { useRouter } from 'expo-router'
+import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useTema } from '@/tema'
 import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { useOznameni } from '@/stav/oznameni'
 import { Pole, Tlacitko, Karta } from '@/ui'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { KATEGORIE_ZAVAD } from '@/zdroj/kategorieZavad'
+import { KATEGORIE_ZAVAD, vzhledKategorieZavady } from '@/zdroj/kategorieZavad'
+import { Ikona } from '@/ui/Ikony'
 
 const MAX_POPIS = 1000
 const KLIC_MOJE_HLASENI = 'codekom.ukazka.moje_hlaseni'
@@ -19,7 +20,13 @@ export default function NahlasitZavaduScreen() {
   const { relace } = useRelace()
   const { zobrazitOznameni } = useOznameni()
 
-  const [vybranaKategorie, setVybranaKategorie] = useState<string>(KATEGORIE_ZAVAD[0]?.id ?? 'jine')
+  // Kategorii lze předvybrat z přehledu (?kategorie=vysoka-trava).
+  const { kategorie: predvybrana } = useLocalSearchParams<{ kategorie?: string }>()
+  const [vybranaKategorie, setVybranaKategorie] = useState<string>(
+    KATEGORIE_ZAVAD.some((k) => k.id === predvybrana)
+      ? (predvybrana as string)
+      : (KATEGORIE_ZAVAD[0]?.id ?? 'jine'),
+  )
   const [popis, setPopis] = useState('')
   const [popisMista, setPopisMista] = useState('')
   const [poloha, setPoloha] = useState<{ lat: number; lng: number } | null>(null)
@@ -250,39 +257,51 @@ export default function NahlasitZavaduScreen() {
           },
         ]}
       >
-        Kategorie závady:
+        Co se děje?
       </Text>
-      <View style={styles.kategorieWrap}>
+      <View style={styles.kategorieWrap} role="radiogroup" aria-label="Kategorie závady">
         {KATEGORIE_ZAVAD.map((kat) => {
           const vybrana = vybranaKategorie === kat.id
+          const vzhled = vzhledKategorieZavady(kat.id)
           return (
             <Pressable
               key={kat.id}
-              role="button"
-              accessibilityRole="button"
-              accessibilityLabel={`Kategorie ${kat.nazev}`}
-              accessibilityState={{ selected: vybrana }}
+              role="radio"
+              accessibilityRole="radio"
+              accessibilityLabel={kat.nazev}
+              accessibilityState={{ checked: vybrana }}
+              aria-checked={vybrana}
               onPress={() => setVybranaKategorie(kat.id)}
-              style={[
-                styles.kategorieTlacitko,
+              style={({ pressed }) => [
+                styles.kategorieDlazdice,
                 {
-                  backgroundColor: vybrana ? barvy.primary : barvy.surface,
-                  borderColor: vybrana ? barvy.primary : barvy.line,
+                  backgroundColor: barvy.surface,
+                  borderColor: vybrana ? barvy.ink : 'transparent',
+                  opacity: pressed ? 0.85 : 1,
                 },
               ]}
             >
+              <View style={[styles.kategorieIkona, { backgroundColor: vzhled.pozadi }]}>
+                <Ikona nazev={vzhled.ikona} barva={vzhled.barva} velikost={24} />
+              </View>
               <Text
+                numberOfLines={2}
                 style={[
                   styles.kategorieText,
                   {
-                    color: vybrana ? barvy.onPrimary : barvy.ink,
+                    color: barvy.ink,
                     fontFamily: pismo.rodina,
-                    fontWeight: pismo.vahy.stredni,
+                    fontWeight: vybrana ? pismo.vahy.tucne : pismo.vahy.stredni,
                   },
                 ]}
               >
                 {kat.nazev}
               </Text>
+              {vybrana && (
+                <View style={[styles.kategorieFajfka, { backgroundColor: barvy.accent }]}>
+                  <Text style={{ color: barvy.onAccent, fontSize: 12, fontWeight: '800' }}>✓</Text>
+                </View>
+              )}
             </Pressable>
           )
         })}
@@ -323,37 +342,44 @@ export default function NahlasitZavaduScreen() {
       </View>
 
       {/* Fotografie */}
-      <View
-        style={[styles.fotoSekce, { backgroundColor: barvy.surface, borderColor: barvy.line }]}
+      <Pressable
+        role="button"
+        accessibilityRole="button"
+        accessibilityLabel={
+          pocetFotek > 0 ? `Přidat další fotku, vybráno ${pocetFotek} ze 3` : 'Přidat fotku závady'
+        }
+        disabled={pocetFotek >= 3}
+        onPress={pridatUkazkovouFotku}
+        style={({ pressed }) => [
+          styles.fotoSekce,
+          {
+            backgroundColor: barvy.primarySoft,
+            borderColor: barvy.link,
+            opacity: pocetFotek >= 3 ? 0.6 : pressed ? 0.85 : 1,
+          },
+        ]}
       >
+        <View style={[styles.fotoIkona, { backgroundColor: barvy.accent }]}>
+          <Ikona nazev="fotoaparat" barva={barvy.onAccent} velikost={28} />
+        </View>
         <Text
           style={[
             styles.fotoNadpis,
-            {
-              color: barvy.ink,
-              fontFamily: pismo.rodina,
-              fontWeight: pismo.vahy.polotucne,
-            },
+            { color: barvy.ink, fontFamily: pismo.rodina, fontWeight: pismo.vahy.tucne },
           ]}
         >
-          Fotografie místa (volitelné)
+          {pocetFotek > 0 ? `Vybráno fotek: ${pocetFotek} ze 3` : 'Vyfoťte závadu'}
         </Text>
         <Text style={[styles.fotoVarovani, { color: barvy.muted, fontFamily: pismo.rodina }]}>
-          Nefoťte lidi ani registrační značky vozidel.
+          Volitelné. Nefoťte lidi ani registrační značky vozidel.
         </Text>
-
-        <Tlacitko
-          nazev={pocetFotek > 0 ? `Vybráno fotek: ${pocetFotek} (přidat další)` : 'Přidat fotku'}
-          varianta="outline"
-          onPress={pridatUkazkovouFotku}
-          zakazano={pocetFotek >= 3}
-        />
-      </View>
+      </Pressable>
 
       {/* Odeslání */}
       <View style={styles.odeslatSekce}>
         <Tlacitko
           nazev="Odeslat hlášení závady"
+          varianta="akcent"
           onPress={() => void odeslatHlaseni()}
           nacitani={odesilaSe}
         />
@@ -397,20 +423,44 @@ const styles = StyleSheet.create({
   kategorieWrap: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 12,
+    gap: 10,
+    marginBottom: 16,
   },
-  kategorieTlacitko: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+  kategorieDlazdice: {
+    // Tři dlaždice v řádku; poslední se neroztahuje přes celou šířku.
+    width: '31.5%',
+    minHeight: 108,
+    borderRadius: 22,
+    borderWidth: 2,
+    padding: 12,
+    gap: 8,
+    alignItems: 'flex-start',
+    shadowColor: '#111311',
+    shadowOpacity: 0.05,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 1,
+  },
+  kategorieIkona: {
+    width: 44,
+    height: 44,
     borderRadius: 14,
-    borderWidth: 1,
-    minHeight: 40,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   kategorieText: {
-    fontSize: 14,
+    fontSize: 13.5,
+    lineHeight: 17,
+  },
+  kategorieFajfka: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 22,
+    height: 22,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   pocitadloZnaku: {
     fontSize: 12,
@@ -422,19 +472,30 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   fotoSekce: {
-    padding: 14,
-    borderRadius: 14,
-    borderWidth: 1,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    borderRadius: 24,
+    borderWidth: 2,
+    borderStyle: 'dashed',
     marginVertical: 12,
+    alignItems: 'center',
+    gap: 6,
+  },
+  fotoIkona: {
+    width: 60,
+    height: 60,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 4,
   },
   fotoNadpis: {
-    fontSize: 15,
-    marginBottom: 4,
+    fontSize: 17,
   },
   fotoVarovani: {
     fontSize: 13,
-    marginBottom: 10,
     lineHeight: 18,
+    textAlign: 'center',
   },
   odeslatSekce: {
     marginTop: 16,

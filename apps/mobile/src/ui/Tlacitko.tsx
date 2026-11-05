@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { useTema } from '../tema'
 
-export type VariantaTlacitka = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
+export type VariantaTlacitka = 'primary' | 'akcent' | 'secondary' | 'outline' | 'ghost' | 'danger'
 
 export interface TlacitkoProps {
   nazev: string
@@ -50,6 +50,12 @@ export function Tlacitko({
         return {
           bg: barvy.primary,
           text: barvy.onPrimary,
+          border: 'transparent',
+        }
+      case 'akcent':
+        return {
+          bg: barvy.accent,
+          text: barvy.onAccent,
           border: 'transparent',
         }
       case 'secondary':
@@ -116,11 +122,7 @@ export function Tlacitko({
       ]}
     >
       {nacitani ? (
-        <ActivityIndicator
-          size="small"
-          color={barvyVarianty.text}
-          accessibilityLabel="Načítání"
-        />
+        <ActivityIndicator size="small" color={barvyVarianty.text} accessibilityLabel="Načítání" />
       ) : (
         <React.Fragment>
           {ikonaPred}

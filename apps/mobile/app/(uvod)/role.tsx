@@ -26,7 +26,7 @@ export default function RoleScreen() {
         <View style={styles.logo}>
           <Logo velikost={64} />
           <Text style={[styles.znacka, { color: barvy.ink, fontFamily: pismo.rodina }]}>
-            Code<Text style={{ color: barvy.primary }}>Kom</Text>
+            Code<Text style={{ color: barvy.link }}>Kom</Text>
           </Text>
         </View>
         <Text

@@ -6,6 +6,7 @@ import { useZdroj } from '@/zdroj'
 import { useRelace } from '@/stav/relace'
 import { KrizovyBanner, Karta, Tlacitko, Logo } from '@/ui'
 import { Ikona, type NazevIkony } from '@/ui/Ikony'
+import { nazevKategorieZavady, vzhledKategorieZavady } from '@/zdroj/kategorieZavad'
 import type { Prehled, KrizoveHlaseni } from '@codekom/typy'
 import { formatDay } from '@codekom/typy/pravidla'
 
@@ -24,13 +25,6 @@ interface RychlaAkce {
 
 const RYCHLE_AKCE: RychlaAkce[] = [
   {
-    nazev: 'Nahlásit závadu',
-    cil: '/(obcan)/(tabs)/sluzby/zavada',
-    ikona: 'zavada',
-    barva: '#C2410C',
-    pozadi: '#FFF1E6',
-  },
-  {
     nazev: 'Poplatky',
     cil: '/(obcan)/(tabs)/sluzby/poplatky',
     ikona: 'platby',
@@ -48,10 +42,13 @@ const RYCHLE_AKCE: RychlaAkce[] = [
     nazev: 'Úřední deska',
     cil: '/(obcan)/(tabs)/deska',
     ikona: 'deska',
-    barva: '#0B7A4B',
-    pozadi: '#E7F5EE',
+    barva: '#3D6B00',
+    pozadi: '#EEF8C6',
   },
 ]
+
+/** Nejčastější drobnosti, které lze nahlásit jedním klepnutím z přehledu. */
+const ZKRATKY_ZAVAD = ['kos-nevyvezeny', 'neporadek', 'vysoka-trava', 'vymol', 'osvetleni', 'jine']
 
 export default function ObcanPrehledScreen() {
   const router = useRouter()
@@ -150,6 +147,87 @@ export default function ObcanPrehledScreen() {
             {data?.obec.nazev ?? 'Přehled obce'}
           </Text>
         </View>
+      </View>
+
+      {/* Hlavní výzva: nahlášení závady */}
+      <View style={[styles.hero, { backgroundColor: barvy.tmava }]}>
+        <Text style={[styles.heroStitek, { color: barvy.accent, fontFamily: pismo.rodina }]}>
+          Pomozte obci
+        </Text>
+        <Text
+          role="heading"
+          aria-level={2}
+          style={[styles.heroNadpis, { color: barvy.naTmave, fontFamily: pismo.rodina }]}
+        >
+          Vidíte nepořádek nebo závadu?
+        </Text>
+        <Text style={[styles.heroText, { color: barvy.naTmaveTlumene, fontFamily: pismo.rodina }]}>
+          Vyfoťte, označte místo a odešlete. Obec vám odpoví ke sledovacímu kódu.
+        </Text>
+        <View style={styles.heroZkratky}>
+          {ZKRATKY_ZAVAD.map((id) => {
+            const vzhled = vzhledKategorieZavady(id)
+            const nazev = nazevKategorieZavady(id)
+            return (
+              <Pressable
+                key={id}
+                role="button"
+                accessibilityRole="button"
+                accessibilityLabel={`Nahlásit: ${nazev}`}
+                onPress={() =>
+                  router.push({
+                    pathname: '/(obcan)/(tabs)/sluzby/zavada',
+                    params: { kategorie: id },
+                  })
+                }
+                style={({ pressed }) => [
+                  styles.heroZkratka,
+                  { backgroundColor: barvy.tmavaPlocha, opacity: pressed ? 0.8 : 1 },
+                ]}
+              >
+                <View style={[styles.heroZkratkaIkona, { backgroundColor: vzhled.pozadi }]}>
+                  <Ikona nazev={vzhled.ikona} barva={vzhled.barva} velikost={18} />
+                </View>
+                <Text
+                  numberOfLines={1}
+                  style={[
+                    styles.heroZkratkaText,
+                    { color: barvy.naTmave, fontFamily: pismo.rodina },
+                  ]}
+                >
+                  {nazev}
+                </Text>
+              </Pressable>
+            )
+          })}
+        </View>
+        <Pressable
+          role="button"
+          accessibilityRole="button"
+          accessibilityLabel="Nahlásit závadu v obci"
+          onPress={() => router.push('/(obcan)/(tabs)/sluzby/zavada')}
+          style={({ pressed }) => [
+            styles.heroTlacitko,
+            { backgroundColor: barvy.accent, opacity: pressed ? 0.85 : 1 },
+          ]}
+        >
+          <Ikona nazev="fotoaparat" barva={barvy.onAccent} velikost={22} />
+          <Text
+            style={[styles.heroTlacitkoText, { color: barvy.onAccent, fontFamily: pismo.rodina }]}
+          >
+            Nahlásit závadu
+          </Text>
+        </Pressable>
+        <Pressable
+          role="link"
+          accessibilityRole="link"
+          onPress={() => router.push('/(obcan)/(tabs)/sluzby/sledovani')}
+          style={styles.heroOdkaz}
+        >
+          <Text style={[styles.heroOdkazText, { color: barvy.naTmave, fontFamily: pismo.rodina }]}>
+            Sledovat stav mého hlášení →
+          </Text>
+        </Pressable>
       </View>
 
       {/* Rychlé akce */}
@@ -448,6 +526,79 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: -0.8,
     lineHeight: 34,
+  },
+  hero: {
+    borderRadius: 28,
+    padding: 22,
+    marginTop: 18,
+    gap: 8,
+  },
+  heroStitek: {
+    fontSize: 13,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+  },
+  heroNadpis: {
+    fontSize: 30,
+    lineHeight: 33,
+    fontWeight: '800',
+    letterSpacing: -1,
+  },
+  heroText: {
+    fontSize: 15,
+    lineHeight: 21,
+  },
+  heroZkratky: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 8,
+  },
+  heroZkratka: {
+    flexBasis: '47%',
+    flexGrow: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    padding: 8,
+    borderRadius: 16,
+    minHeight: 48,
+  },
+  heroZkratkaIkona: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroZkratkaText: {
+    flex: 1,
+    fontSize: 13.5,
+    fontWeight: '600',
+  },
+  heroTlacitko: {
+    marginTop: 10,
+    minHeight: 56,
+    borderRadius: 999,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+  },
+  heroTlacitkoText: {
+    fontSize: 17,
+    fontWeight: '800',
+  },
+  heroOdkaz: {
+    alignSelf: 'center',
+    minHeight: 44,
+    justifyContent: 'center',
+  },
+  heroOdkazText: {
+    fontSize: 14,
+    fontWeight: '600',
+    textDecorationLine: 'underline',
   },
   rychleAkce: {
     flexDirection: 'row',

@@ -11,7 +11,7 @@ export interface LogoProps {
 
 /**
  * Značka CodeKom: střecha obecního domu a signál v zaobleném čtverci
- * se smaragdovým přechodem. Dekorativní, název nese text vedle.
+ * v černém čtverci s limetkovým bodem. Dekorativní, název nese text vedle.
  */
 export function Logo({ velikost = 40, sNazvem = false }: LogoProps) {
   const { barvy, pismo } = useTema()
@@ -27,8 +27,8 @@ export function Logo({ velikost = 40, sNazvem = false }: LogoProps) {
       >
         <Defs>
           <LinearGradient id="codekomPrechod" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor="#14A06A" />
-            <Stop offset="1" stopColor="#0A5E3B" />
+            <Stop offset="0" stopColor="#2A2F28" />
+            <Stop offset="1" stopColor="#111311" />
           </LinearGradient>
         </Defs>
         <Rect x="0" y="0" width="48" height="48" rx="14" fill="url(#codekomPrechod)" />
@@ -48,7 +48,7 @@ export function Logo({ velikost = 40, sNazvem = false }: LogoProps) {
           strokeLinejoin="round"
           fill="none"
         />
-        <Circle cx="24" cy="28.5" r="2.6" fill="#F2A93B" />
+        <Circle cx="24" cy="28.5" r="2.6" fill="#D4F24A" />
       </Svg>
       {sNazvem && (
         <Text
@@ -57,7 +57,7 @@ export function Logo({ velikost = 40, sNazvem = false }: LogoProps) {
             { color: barvy.ink, fontFamily: pismo.rodina, fontSize: velikost * 0.5 },
           ]}
         >
-          Code<Text style={{ color: barvy.primary }}>Kom</Text>
+          Code<Text style={{ color: barvy.link }}>Kom</Text>
         </Text>
       )}
     </View>
