@@ -167,7 +167,7 @@ export default function UradPrehledScreen() {
       <View style={styles.kartyMrizka}>
         {/* Nová hlášení závad */}
         <Karta
-          onPress={() => router.push('/(urad)/(tabs)/zavady')}
+          onPress={() => router.push('/urad/(tabs)/zavady')}
           popisekProCtecku={`Nová hlášení závad od občanů: celkem ${data?.novaHlaseniZavad ?? 0}.`}
           style={styles.prehledKarta}
         >
@@ -189,7 +189,7 @@ export default function UradPrehledScreen() {
 
         {/* Stav obecních budov */}
         <Karta
-          onPress={() => router.push('/(urad)/(tabs)/budovy')}
+          onPress={() => router.push('/urad/(tabs)/budovy')}
           popisekProCtecku={`Stav obecních budov: ${data?.budovSVyhradou ?? 0} s výhradou.`}
           style={styles.prehledKarta}
         >
@@ -226,11 +226,8 @@ export default function UradPrehledScreen() {
       </View>
 
       {/* Aktivní krizové hlášení */}
-      <Karta
-        onPress={() => router.push('/(urad)/(tabs)/krize')}
-        style={styles.krizeStavKarta}
-        popisekProCtecku="Správa krizových hlášení a rozhlasu."
-      >
+      {/* Karta není klikací: obsahuje tlačítko a tlačítko v tlačítku je neplatné HTML. */}
+      <Karta style={styles.krizeStavKarta}>
         <Text
           style={[
             styles.sekceNadpis,
@@ -306,7 +303,7 @@ export default function UradPrehledScreen() {
         <Tlacitko
           nazev="Spravovat krizová hlášení"
           varianta="secondary"
-          onPress={() => router.push('/(urad)/(tabs)/krize')}
+          onPress={() => router.push('/urad/(tabs)/krize')}
           style={{ marginTop: 8 }}
         />
       </Karta>

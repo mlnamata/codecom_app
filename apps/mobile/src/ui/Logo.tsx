@@ -17,14 +17,7 @@ export function Logo({ velikost = 40, sNazvem = false }: LogoProps) {
   const { barvy, pismo } = useTema()
   return (
     <View style={styles.radek}>
-      <Svg
-        width={velikost}
-        height={velikost}
-        viewBox="0 0 48 48"
-        accessible={false}
-        importantForAccessibility="no"
-        aria-hidden
-      >
+      <Svg width={velikost} height={velikost} viewBox="0 0 48 48" aria-hidden>
         <Defs>
           <LinearGradient id="codekomPrechod" x1="0" y1="0" x2="1" y2="1">
             <Stop offset="0" stopColor="#2A2F28" />

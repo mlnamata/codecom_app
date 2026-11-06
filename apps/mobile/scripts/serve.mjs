@@ -20,6 +20,33 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
 }
 
+const jeSoubor = (p) => fs.existsSync(p) && fs.statSync(p).isFile()
+
+/**
+ * Najde soubor statického exportu pro cestu tak, jak ho vytváří Expo Router:
+ * `deska.html`, `deska/index.html` i dynamické `deska/[id].html`.
+ * Vrácení jiné stránky by rozbilo hydrataci (React #418).
+ */
+function najdiSoubor(pathname) {
+  const zaklad = path.join(distDir, pathname)
+  // Nikdy nevracej soubor mimo složku exportu.
+  if (zaklad !== distDir && !zaklad.startsWith(distDir + path.sep)) {
+    return path.join(distDir, '+not-found.html')
+  }
+  const kandidati = [zaklad, `${zaklad}.html`, path.join(zaklad, 'index.html')]
+  for (const k of kandidati) {
+    if (jeSoubor(k)) return k
+  }
+  // Dynamická trasa: ve stejné složce soubor [parametr].html
+  const slozka = path.dirname(zaklad)
+  if (fs.existsSync(slozka) && fs.statSync(slozka).isDirectory()) {
+    const dynamicky = fs.readdirSync(slozka).find((f) => /^\[[^\]]+\]\.html$/.test(f))
+    if (dynamicky) return path.join(slozka, dynamicky)
+  }
+  const nenalezeno = path.join(distDir, '+not-found.html')
+  return jeSoubor(nenalezeno) ? nenalezeno : path.join(distDir, 'index.html')
+}
+
 const server = http.createServer((req, res) => {
   const url = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`)
   let pathname = decodeURIComponent(url.pathname)
@@ -27,17 +54,8 @@ const server = http.createServer((req, res) => {
     pathname += 'index.html'
   }
 
-  let filePath = path.join(distDir, pathname)
-
-  // Pokud soubor neexistuje, zkus doplnit .html
-  if (!fs.existsSync(filePath) && fs.existsSync(`${filePath}.html`)) {
-    filePath = `${filePath}.html`
-  }
-
-  // SPA / hluboké trasy fallback
-  if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(distDir, 'index.html')
-  }
+  const filePath = najdiSoubor(pathname)
+  const status = filePath.endsWith('+not-found.html') ? 404 : 200
 
   if (!fs.existsSync(filePath)) {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
@@ -48,7 +66,7 @@ const server = http.createServer((req, res) => {
   const ext = path.extname(filePath).toLowerCase()
   const mime = MIME_TYPES[ext] || 'application/octet-stream'
 
-  res.writeHead(200, {
+  res.writeHead(status, {
     'Content-Type': mime,
     'Cache-Control': 'no-cache',
   })

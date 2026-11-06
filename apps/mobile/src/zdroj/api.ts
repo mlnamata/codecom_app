@@ -28,9 +28,10 @@ import {
 } from '@codekom/typy'
 import type { ZdrojAplikace } from './typy'
 import { vestaveneZdroj } from './vestavene'
+import { adresaApi } from './pripojeni'
 import { z } from 'zod'
 
-const ZAKLAD_API = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'
+const ZAKLAD_API = adresaApi()
 
 async function volaniApi<T>(
   cesta: string,

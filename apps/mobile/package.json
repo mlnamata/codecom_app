@@ -7,6 +7,7 @@
     "web": "expo start --web",
     "export:web": "expo export --platform web",
     "serve:web": "node scripts/serve.mjs",
+    "kontrola:web": "node scripts/kontrola-web.cjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run"

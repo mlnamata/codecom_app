@@ -1,9 +1,18 @@
 import { ObceSeznamOdpoved } from '@codekom/typy'
 import type { RezimZdroje } from './typy'
 
+/**
+ * Adresa API z `EXPO_PUBLIC_API_URL`. Bez ní běží aplikace jen ve vestavěném
+ * režimu a API se vůbec nezkouší (zadání 08), takže zveřejněná ukázka
+ * nevolá `localhost` v prohlížeči návštěvníka.
+ */
+export function adresaApi(): string {
+  return (process.env.EXPO_PUBLIC_API_URL ?? '').trim()
+}
+
 export async function overitPripojeniApi(urlVychozi?: string): Promise<RezimZdroje> {
-  const zakladApi = urlVychozi ?? process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:3000'
-  if (!zakladApi || zakladApi.trim() === '') {
+  const zakladApi = (urlVychozi ?? adresaApi()).trim()
+  if (zakladApi === '') {
     return 'vestavene'
   }
 

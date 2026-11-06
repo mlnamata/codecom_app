@@ -6,7 +6,7 @@ import { TemaProvider } from '../src/tema'
 import { RelaceProvider } from '../src/stav/relace'
 import { ZdrojProvider } from '../src/zdroj'
 import { vestaveneZdroj } from '../src/zdroj/vestavene'
-import UradBudovyScreen from '../app/(urad)/(tabs)/budovy'
+import UradBudovyScreen from '../app/urad/(tabs)/budovy'
 
 vi.mock('expo-router', () => ({
   useRouter: () => ({

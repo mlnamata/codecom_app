@@ -314,7 +314,9 @@ export const vestaveneZdroj: ZdrojAplikace = {
         odkazText: v.odkazText ?? null,
         odkazUrl: v.odkazUrl ?? null,
         casti: v.casti ?? [],
-        platiOd: new Date().toISOString(),
+        // Ukázka běží v pevném čase DEMO_DNES; skutečné „teď“ by hlášení
+        // posunulo do budoucnosti a občan by ho neviděl.
+        platiOd: DNES_DATUM.toISOString(),
         platiDo: v.platiDo ?? null,
         updatedAt: new Date().toISOString(),
       }
@@ -341,7 +343,8 @@ export const vestaveneZdroj: ZdrojAplikace = {
 
       const aktualizovana: KrizoveHlaseni = {
         ...krize,
-        platiDo: new Date().toISOString(),
+        // Konec v čase ukázky, jinak by hlášení v ukázce zůstalo aktivní.
+        platiDo: DNES_DATUM.toISOString(),
         updatedAt: new Date().toISOString(),
       }
 

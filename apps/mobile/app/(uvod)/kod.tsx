@@ -22,7 +22,7 @@ export default function KodScreen() {
     await prihlasit()
 
     if (relace.role === 'urad') {
-      router.replace('/(urad)/(tabs)/prehled')
+      router.replace('/urad/(tabs)/prehled')
     } else {
       router.replace('/(obcan)/(tabs)/prehled')
     }

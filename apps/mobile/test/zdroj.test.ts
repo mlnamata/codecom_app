@@ -116,10 +116,40 @@ describe('vestaveneZdroj', () => {
   })
 })
 
+describe('krize v čase ukázky', () => {
+  it('vydané hlášení je hned aktivní a ukončené hned zmizí', async () => {
+    await vestaveneZdroj.obnovitUkazku()
+    const pocet = async () => {
+      const a = await vestaveneZdroj.krizeAktivni('javori-lhota')
+      return a.hlavni ? a.dalsich + 1 : 0
+    }
+    const predVydanim = await pocet()
+
+    const nova = await vestaveneZdroj.urad.vydatKrizi(
+      'javori-lhota',
+      { uroven: 'info', titulek: 'Odstávka vody', text: 'Ve čtvrtek od 8 do 12 hodin.' },
+      'spravce',
+    )
+    expect(await pocet()).toBe(predVydanim + 1)
+
+    await vestaveneZdroj.urad.ukoncitKrizi('javori-lhota', nova.id, 'spravce')
+    expect(await pocet()).toBe(predVydanim)
+  })
+})
+
 describe('pripojeniApi', () => {
-  it('při chybějícím nebo nedostupném API vrací režim vestavene', async () => {
+  it('bez adresy API vrací režim vestavene a API vůbec nevolá', async () => {
+    const fetchMock = vi.fn()
+    vi.stubGlobal('fetch', fetchMock)
+    const rezim = await overitPripojeniApi('')
+    expect(rezim).toBe('vestavene')
+    expect(fetchMock).not.toHaveBeenCalled()
+    vi.unstubAllGlobals()
+  })
+
+  it('při nedostupném API vrací režim vestavene', async () => {
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network error')))
-    const rezim = await overitPripojeniApi()
+    const rezim = await overitPripojeniApi('http://localhost:3000')
     expect(rezim).toBe('vestavene')
     vi.unstubAllGlobals()
   })
@@ -143,7 +173,7 @@ describe('pripojeniApi', () => {
       }),
     )
 
-    const rezim = await overitPripojeniApi()
+    const rezim = await overitPripojeniApi('http://localhost:3000')
     expect(rezim).toBe('api')
     vi.unstubAllGlobals()
   })

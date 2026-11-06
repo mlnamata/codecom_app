@@ -65,14 +65,7 @@ export function Ikona({ nazev, velikost = 24, barva }: IkonaProps) {
   }
 
   return (
-    <Svg
-      width={velikost}
-      height={velikost}
-      viewBox="0 0 24 24"
-      accessible={false}
-      importantForAccessibility="no"
-      aria-hidden
-    >
+    <Svg width={velikost} height={velikost} viewBox="0 0 24 24" aria-hidden>
       {vykresli(nazev, spolecne)}
     </Svg>
   )
