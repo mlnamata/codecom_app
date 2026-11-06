@@ -15,6 +15,7 @@ import { useOznameni } from '@/stav/oznameni'
 import { Karta, Tlacitko, Pole, KrizovyBanner } from '@/ui'
 import { bezpecnyOdkaz, type Uroven } from '@codekom/typy/pravidla'
 import type { KrizoveHlaseni, VstupKrize } from '@codekom/typy'
+import { zacinaVelkym } from '@/text'
 
 const KLIC_KONCEPTY = 'codekom.ukazka.koncepty_krize'
 const MAX_TITULEK = 90
@@ -260,7 +261,7 @@ export default function UradKrizeScreen() {
         // Ignoruj
       }
 
-      setZpravaUspech(`Koncept „${koncept.titulek}“ byl úspěšně vydán.`)
+      setZpravaUspech(`Koncept „${zacinaVelkym(koncept.titulek)}“ byl úspěšně vydán.`)
       void nactiAktivniKrize()
     } catch (err) {
       console.warn('Chyba při vydání konceptu:', err)
@@ -671,7 +672,7 @@ export default function UradKrizeScreen() {
                       { color: barvy.ink, fontFamily: pismo.rodina, fontWeight: pismo.vahy.polotucne },
                     ]}
                   >
-                    {koncept.titulek}
+                    {zacinaVelkym(koncept.titulek)}
                   </Text>
                   <Text style={[styles.konceptAutor, { color: barvy.muted, fontFamily: pismo.rodina }]}>
                     Autor: {koncept.autor}
@@ -714,7 +715,7 @@ export default function UradKrizeScreen() {
                   { color: barvy.ink, fontFamily: pismo.rodina, fontWeight: pismo.vahy.polotucne },
                 ]}
               >
-                {h.titulek}
+                {zacinaVelkym(h.titulek)}
               </Text>
               <Text style={[styles.aktivniText, { color: barvy.ink, fontFamily: pismo.rodina }]}>
                 {h.text}

@@ -7,6 +7,7 @@ import { useZdroj } from '@/zdroj'
 import { Karta, Tlacitko } from '@/ui'
 import type { PrehledUradu, Rezervace, RoleUradu } from '@codekom/typy'
 import { formatDay } from '@codekom/typy/pravidla'
+import { zacinaVelkym } from '@/text'
 
 export default function UradPrehledScreen() {
   const router = useRouter()
@@ -81,7 +82,7 @@ export default function UradPrehledScreen() {
           </Text>
         </View>
         <Tlacitko
-          nazev="Role: Občan"
+          nazev="Změnit roli"
           varianta="ghost"
           onPress={() => void odhlasitNaVyberRole()}
           style={styles.zmenaRoleTlacitko}
@@ -289,7 +290,7 @@ export default function UradPrehledScreen() {
                 { color: barvy.ink, fontFamily: pismo.rodina, fontWeight: pismo.vahy.polotucne },
               ]}
             >
-              {data.aktivniKrize.titulek}
+              {zacinaVelkym(data.aktivniKrize.titulek)}
             </Text>
             <Text style={[styles.krizePopis, { color: barvy.ink, fontFamily: pismo.rodina }]}>
               {data.aktivniKrize.text}

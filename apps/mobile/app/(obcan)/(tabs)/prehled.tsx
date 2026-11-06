@@ -9,10 +9,8 @@ import { Ikona, type NazevIkony } from '@/ui/Ikony'
 import { nazevKategorieZavady, vzhledKategorieZavady } from '@/zdroj/kategorieZavad'
 import type { Prehled, KrizoveHlaseni } from '@codekom/typy'
 import { formatDay } from '@codekom/typy/pravidla'
-
-function zacinaVelkym(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1)
-}
+import { zacinaVelkym } from '@/text'
+import { DEMO_DNES } from '@codekom/demo-data'
 
 interface RychlaAkce {
   nazev: string
@@ -130,11 +128,14 @@ export default function ObcanPrehledScreen() {
         <Logo velikost={48} />
         <View style={styles.zahlaviText}>
           <Text style={[styles.zahlaviDatum, { color: barvy.muted, fontFamily: pismo.rodina }]}>
+            {/* Den ukázky, ne skutečné dnešní datum: data ukázky platí k DEMO_DNES
+                a pevná hodnota se stejně vykreslí při exportu i v prohlížeči. */}
             {zacinaVelkym(
-              new Date().toLocaleDateString('cs-CZ', {
+              new Date(DEMO_DNES).toLocaleDateString('cs-CZ', {
                 weekday: 'long',
                 day: 'numeric',
                 month: 'long',
+                timeZone: 'Europe/Prague',
               }),
             )}
           </Text>
@@ -189,7 +190,7 @@ export default function ObcanPrehledScreen() {
                   <Ikona nazev={vzhled.ikona} barva={vzhled.barva} velikost={18} />
                 </View>
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={2}
                   style={[
                     styles.heroZkratkaText,
                     { color: barvy.naTmave, fontFamily: pismo.rodina },

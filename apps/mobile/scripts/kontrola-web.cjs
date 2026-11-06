@@ -287,7 +287,9 @@ async function main() {
       })
       await krok('Úřad: Přehled', async () => {
         await page.getByRole('tab', { name: 'Přehled' }).click()
-        await zkontrolujObrazovku(page)
+        await zkontrolujObrazovku(page, 'Administrace úřadu')
+        if (await page.getByText('Role: Občan').count())
+          throw new Error('úřad má popisek „Role: Občan“')
       })
       await krok('Občan vidí krizi vydanou úřadem', async () => {
         await page.evaluate(

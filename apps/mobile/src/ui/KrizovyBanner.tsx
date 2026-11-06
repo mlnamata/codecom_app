@@ -9,6 +9,7 @@ import {
 } from '@codekom/typy/pravidla'
 import type { KrizoveHlaseni } from '@codekom/typy'
 import { useTema } from '../tema'
+import { zacinaVelkym } from '../text'
 
 export interface KrizovyBannerProps {
   hlavni: KrizoveHlaseni | null
@@ -134,7 +135,7 @@ export function KrizovyBanner({
           },
         ]}
       >
-        {hlavni.titulek}
+        {zacinaVelkym(hlavni.titulek)}
       </Text>
 
       <Text
