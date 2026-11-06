@@ -24,8 +24,8 @@ Aktualizuj v každém commitu. Kdo: označení sezení nebo agenta.
 | Vzhled podle referencí (černá a limetková, Inter Tight, karty 24 px, plovoucí tmavá lišta s tlačítkem „+“ pro nahlášení závady) | hotovo | session aplikace (design 2) |
 | 16 kategorií závad (koš, nepořádek, vysoká tráva, výmol, lampa, kanál, sníh, vandalismus…) s ikonami a barvami | hotovo | session aplikace (design 2) |
 | Přehled s tmavou kartou „Vidíte nepořádek nebo závadu?“ a zkratkami kategorií, formulář závady s dlaždicemi kategorií, plochou na fotku a limetkovým odesláním | hotovo | session aplikace (design 2) |
-| Celková kontrola MVP: automatický průchod v prohlížeči (`pnpm --filter mobile kontrola:web`, 38 kroků občana i úřadu) a opravy nalezených chyb | hotovo | session aplikace (design 2) |
-| Finální MVP: dokumentace spuštění a předání | dělá se | session aplikace (design 2) |
+| Celková kontrola MVP: automatický průchod v prohlížeči (`pnpm --filter mobile kontrola:web`, 39 kroků občana i úřadu) a opravy nalezených chyb | hotovo | session aplikace (design 2) |
+| Finální MVP: dokumentace spuštění, kontroly a předání (`apps/mobile/README.md`, `docs/PREDANI.md`) | hotovo | session aplikace (design 2) |
 | Ostrá aplikace (zadání 02) | čeká | session aplikace |
 | IoT brána `apps/brana` (zadání 04, část brána) | čeká | session aplikace |
 | Otevření dveří v aplikaci (zadání 04, milník 9) | čeká | session aplikace |

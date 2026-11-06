@@ -310,7 +310,17 @@ async function main() {
       await page.context().close()
     }
 
-    // 5. Redaktor smí krizi uložit jen jako koncept
+    // 5. Neznámá adresa ukáže českou stránku
+    {
+      const page = await novaStranka(browser, OBCAN)
+      await krok('Neznámá adresa ukáže stránku „Stránka nenalezena“', () =>
+        navstiv(page, '/neexistuje', 'Stránka nenalezena'),
+      )
+      vsechnyChyby.push(...page.chyby.filter((c) => !c.includes('404')))
+      await page.context().close()
+    }
+
+    // 6. Redaktor smí krizi uložit jen jako koncept
     {
       const page = await novaStranka(browser, { ...URAD, roleUradu: 'redaktor' })
       await krok('Úřad (redaktor): krizi nelze vydat, jen uložit koncept', async () => {

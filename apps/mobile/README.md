@@ -30,12 +30,12 @@ Na obrazovkách širších než telefon se aplikace zobrazí v centrovaném rám
 
 ### 3. Režimy zdroje dat (`vestavene` vs. `api`)
 Aplikace podporuje dva režimy, mezi kterými automaticky přepíná:
-1. **Offline ukázka (`vestavene`)** – výchozí stav, pokud není nastavena proměnná `EXPO_PUBLIC_API_URL` nebo pokud server neodpovídá do 2,5 s. Veškerá data se načítají z `@codekom/demo-data` (obec Javoří Lhota) a změny (nové závady, vydané krize, rezervace) se ukládají do `AsyncStorage` v prohlížeči. Tlačítko **„Obnovit ukázku“** v horním pruhu vrátí stav do výchozího semínka.
+1. **Offline ukázka (`vestavene`)** – výchozí stav, pokud není nastavena proměnná `EXPO_PUBLIC_API_URL` (pak se API vůbec nezkouší) nebo pokud server neodpovídá do 2,5 s. Veškerá data se načítají z `@codekom/demo-data` (obec Javoří Lhota) a změny (nové závady, vydané krize, rezervace) se ukládají do `AsyncStorage` v prohlížeči. Tlačítko **„Obnovit ukázku“** v horním pruhu vrátí stav do výchozího semínka.
 2. **Připojeno k ukázkovému serveru (`api`)** – pokud v `.env` nastavíte:
    ```env
    EXPO_PUBLIC_API_URL=http://localhost:3000
    ```
-   Aplikace ověří dostupnost přes `GET /api/ukazka/obce`. Při výpadku spojení nebo chybě CORS se bez pádu přepne na vestavěná data a zobrazí tlačítko **„Zkusit znovu“**.
+   Aplikace ověří dostupnost přes `GET /api/obce`. Při výpadku spojení nebo chybě CORS se bez pádu přepne na vestavěná data a zobrazí tlačítko **„Zkusit znovu“**.
 
 ### 4. CORS a propojení s webem (zadání 07)
 Při běhu proti lokálnímu serveru `apps/web` (port 3000) povolte původ mobilní aplikace (`http://localhost:8081` nebo port statického serveru) v konfiguraci webu a povolte hlavičky `Content-Type` a `X-Ukazka-Role`.
@@ -46,6 +46,21 @@ Aplikace je nakonfigurována s `web.output: "static"`. Statický export vygeneru
 pnpm --filter mobile export:web
 pnpm --filter mobile serve:web
 ```
+`serve:web` vrací pro každou cestu stránku, kterou pro ni Expo vygenerovalo (`deska.html`, `deska/index.html`, dynamické `deska/[id].html`), a neznámé cesty jako 404. Hosting zveřejněné ukázky musí cesty překládat stejně, jinak React hlásí chybu hydratace #418.
+
+### 6. Celková kontrola MVP
+Před předáním nebo nasazením spusťte z kořene repozitáře:
+```bash
+pnpm typecheck
+pnpm lint
+pnpm test
+pnpm --filter mobile export:web
+pnpm --filter mobile kontrola:web
+```
+`kontrola:web` (`scripts/kontrola-web.cjs`) projde statický export v Chromiu na 390 × 844 v 39 krocích: úvod a volbu role, všechny obrazovky občana a služeb, filtry a detail desky, nahlášení závady se sledovacím kódem a dohledáním stavu, tlačítko „+“, přihlášení úřadu kódem, obnovení stránky v roli úřadu, vydání krize (a že ji občan vidí), změnu stavu závady a omezení redaktora a českou stránku pro neznámou adresu. Na každé obrazovce hlídá pády, chyby v konzoli, rozbité texty („undefined“, „NaN“) a vodorovné přetečení. Potřebuje Playwright s Chromiem.
+
+### 7. Vzhled
+Černá a limetková na světle šedém pozadí, bílé karty se zaoblením 24 px, písmo Inter Tight (na webu z Google Fonts), plovoucí tmavá spodní lišta s aktivní záložkou v limetkovém kruhu. Barvy jsou v `src/tema/tema.tsx` (kontrasty WCAG AA hlídá test `tema.test.ts`), ikony v `src/ui/Ikony.tsx`, logo v `src/ui/Logo.tsx`. Snímky obrazovek jsou ve složce `snimky-ukazka/` v kořeni repozitáře.
 
 ---
 
@@ -56,7 +71,7 @@ pnpm --filter mobile serve:web
 - **Úřední deska:** Seznam vyvěšených dokumentů, vyhledávání, filtry kategorií, detail dokumentu a archiv sejmutých dokumentů (respektuje příznak *Po sejmutí nezveřejňovat*).
 - **Zprávy a akce:** Aktuality obce a kalendář kulturních či spolkových akcí.
 - **Služby – Základní agenda:**
-  - **Nahlásit závadu:** Formulář s výběrem kategorie, fotkou, polohou a okamžitým vygenerováním osmimístného sledovacího kódu (Crockford Base32).
+  - **Nahlásit závadu:** Hlavní funkce aplikace. Otevírá se tlačítkem „+“ uprostřed spodní lišty, velkou kartou „Vidíte nepořádek nebo závadu?“ na přehledu (se zkratkami nejčastějších kategorií) i ze Služeb. Formulář nabízí 16 kategorií jako dlaždice s ikonou (nevyvezený koš, nepořádek u koše, odpadky, černá skládka, vysoká tráva, stromy a keře, výmol, chodník, lampa, lavička či hřiště, dopravní značka, kanál, sníh a náledí, graffiti, psí exkrementy, jiné), fotku, polohu a okamžitě vygeneruje osmimístný sledovací kód (Crockford Base32). Kategorie jsou v `obsah/javori-lhota/hlaseni-zavad.json`, ikony a barvy v `src/zdroj/kategorieZavad.ts`.
   - **Sledovat stav závady:** Dohledání stavu a veřejné odpovědi úřadu podle kódu.
   - **Poplatky a QR platba:** Přehled poplatků s generováním SPD řetězce a výrazným štítkem *„Ukázka, neplaťte“*.
   - **Rezervace prostor:** Rezervace obecního sálu a klubovny.
@@ -81,6 +96,8 @@ pnpm --filter mobile serve:web
      - **Developer portál (`developer`):** Dokumentace otevřeného REST API a registrace webhooků.
 
 ### Role Úřad
+Obrazovky úřadu mají vlastní adresy `/urad/prehled`, `/urad/krize`, `/urad/zavady` a `/urad/budovy`, aby se nepletly s obrazovkami občana (`/prehled`).
+
 - **Přehled úřadu (`prehled`):** Přepínač podrole **Správce** / **Redaktor**, souhrn nových závad, čekajících rezervací, aktivní krize a stavu budov.
 - **Krize a rozhlas (`krize`):** Editor krizového hlášení a rozhlasu s živým náhledem občanského banneru, počítadlem znaků slovem a kontrolou bezpečných odkazů. **Správce** může hlášení vydat a ukončit jeho platnost; **Redaktor** může pouze uložit koncept. Žádné krizové hlášení nelze smazat.
 - **Závady (`zavady`):** Správa hlášení od občanů, filtrování podle stavu a uložení veřejné odpovědi při vyřízení nebo zamítnutí.

@@ -1,6 +1,6 @@
 # Předání: co má udělat session aplikace
 
-Stav ke 4. 11. 2026. Tento repozitář je pro mobilní aplikaci CodeKom (občan a úřad) a pro IoT bránu do obecních budov. Web obcí a jeho API jsou v `mlnamata/codecom` (`apps/web`), firemní web v `mlnamata/codekom_web`.
+Stav k 6. 11. 2026. Tento repozitář je pro mobilní aplikaci CodeKom (občan a úřad) a pro IoT bránu do obecních budov. Web obcí a jeho API jsou v `mlnamata/codecom` (`apps/web`), firemní web v `mlnamata/codekom_web`.
 
 ## Co už je hotové
 
@@ -10,7 +10,20 @@ Stav ke 4. 11. 2026. Tento repozitář je pro mobilní aplikaci CodeKom (občan 
   - `konfigurace.ts`: zod schéma konfigurace brány (připojení Home Assistant, MQTT s předvolbami, Modbus TCP, Shelly RPC, HTTP JSON; protimrazové pravidlo).
   - `zpravy.ts`: témata a zprávy MQTT podle zadání 04 (`codekom/v1/brany/<branaId>/telemetrie|stav|udalost|prikaz|ack|plan|lwt`).
 
-Nic dalšího hotové není. Adaptéry brány (`apps/brana`) se začaly psát, ale práce se zastavila, a proto složka v repozitáři není.
+- **MVP prototypu aplikace** (`apps/mobile`, zadání 08), stav k 6. 11. 2026, větev `claude/youthful-mayer-cq8f79`:
+  - role Občan (přehled, deska, zprávy, služby včetně rozšířených modulů, více) a Úřad (přehled, krize a rozhlas, závady, budovy ke čtení) nad daty Javoří Lhoty, vestavěný režim i režim API,
+  - nahlašování závad je hlavní funkce: tlačítko „+“ v liště, karta na přehledu, 16 kategorií s ikonami, sledovací kód a dohledání stavu,
+  - vzhled černá a limetková s písmem Inter Tight, snímky v `snimky-ukazka/`,
+  - ověření: `pnpm typecheck`, `pnpm lint`, `pnpm test` (58 testů) a `pnpm --filter mobile kontrola:web` (39 kroků v prohlížeči nad statickým exportem), vše prochází,
+  - postup spuštění a kontroly je v `apps/mobile/README.md`.
+
+  Otevřené body MVP:
+  - napojení na ostré API webu 07 není ověřené (API ani CORS v tomto prostředí neběží); nové kategorie závad a kategorie desky v režimu API se berou z vestavěných dat [OVĚŘIT],
+  - hosting zveřejněné ukázky musí překládat cesty na soubory exportu jako `scripts/serve.mjs` (`deska/index.html`, `deska/[id].html`), jinak chyba hydratace,
+  - písmo Inter Tight se zatím načítá jen na webu, nativní aplikace má systémové písmo,
+  - na webu `codecom` je u AI fotografií textový popisek; uživatel chce místo něj vodoznak, rozhodnutí a změna patří do `codecom` [DOPLNIT: kdo změnu udělá].
+
+Adaptéry brány (`apps/brana`) se začaly psát, ale práce se zastavila, a proto složka v repozitáři není.
 
 ## Co udělat
 
